@@ -1,9 +1,9 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "ReScan",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/rescan-dark.svg",
+    "light": "/logo/rescan-light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -18,74 +18,88 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@blockflow.network"
+    },
+    {
+      "name": "Get API Key",
+      "url": "https://app.blockflow.network/"
     }
   ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "EigenLayer",
+      "url": "eigen-reference"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "EigenDA",
+      "url": "eigenda-reference"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "API Documentation",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "eigen-reference/introduction",
+        "eigen-reference/prerequisites",
+        "eigen-reference/errors"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "AVS",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "eigen-reference/avs/index",
+        "eigen-reference/avs/avs-all-address",
+        "eigen-reference/avs/avs-by-address",
+        "eigen-reference/avs/stakers-by-avs",
+        "eigen-reference/avs/operators-by-avs"
+      ]
+    },
+    {
+      "group": "Operator",
+      "pages": [
+        "eigen-reference/operators/index",
+        "eigen-reference/operators/operator-by-address",
+        "eigen-reference/operators/operator-all-address",
+        "eigen-reference/operators/operator-stakers",
+        "eigen-reference/operators/operator-staker-history",
+        "eigen-reference/operators/operator-avs-history"
+      ]
+    },
+    {
+      "group": "Stakers",
+      "pages": [
+        "eigen-reference/stakers/index",
+        "eigen-reference/stakers/staker-by-address",
+        "eigen-reference/stakers/staker-withdrawals-all",
+        "eigen-reference/stakers/staker-withdrawals-queued",
+        "eigen-reference/stakers/staker-withdrawal-completed",
+        "eigen-reference/stakers/deposits-by-staker"
+      ]
+    },
+    {
+      "group": "Deposits and withdrawals",
+      "pages": [
+        "eigen-reference/deposits/index",
+        "eigen-reference/withdrawals/index",
+        "eigen-reference/withdrawals/withdrawal-by-root"
       ]
     },
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
+        "eigenda-reference/introduction",
+        "eigenda-reference/prerequisites",
+        "eigenda-reference/errors"
       ]
     },
     {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
+      "group": "EigenDA",
+      "pages": ["eigenda-reference/eigenda/operator"]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/blockflowLabs",
+    "github": "https://github.com/blockflowlabs",
+    "linkedin": "https://in.linkedin.com/company/blockflowlabs"
   }
 }
