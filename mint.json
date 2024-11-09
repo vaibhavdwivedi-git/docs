@@ -30,11 +30,6 @@
       "name": "EigenLayer",
       "url": "eigen-reference",
       "openapi": "/eigen-reference/openapi.json"
-    },
-    {
-      "name": "EigenDA",
-      "url": "eigenda-reference",
-      "openapi": "/eigenda-reference/openapi.json"
     }
   ],
   "navigation": [
