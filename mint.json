@@ -101,9 +101,5 @@
     "x": "https://x.com/blockflowLabs",
     "github": "https://github.com/blockflowlabs",
     "linkedin": "https://in.linkedin.com/company/blockflowlabs"
-  },
-  "openapi": [
-    "../eigen-reference/openapi.json",
-    "../eigenda-reference/openapi.json"
-  ]
+  }
 }
