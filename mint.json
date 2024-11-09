@@ -28,11 +28,13 @@
   "tabs": [
     {
       "name": "EigenLayer",
-      "url": "eigen-reference"
+      "url": "eigen-reference",
+      "openapi": "../eigen-reference/openapi.json"
     },
     {
       "name": "EigenDA",
-      "url": "eigenda-reference"
+      "url": "eigenda-reference",
+      "openapi": "../eigenda-reference/openapi.json"
     }
   ],
   "navigation": [
