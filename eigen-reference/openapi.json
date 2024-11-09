@@ -5368,7 +5368,8 @@
       "ApiKeyAuth": {
         "type": "apiKey",
         "in": "header",
-        "name": "x-api-key"
+        "name": "x-api-key",
+        "x-api-key": "1mPU/TsWuVYqPx6fQNXbWQ==:T4fa4ltXa+LybOfCxz2eVhrZtLeqWz+0d4m691U+S4XPlpEKTJg5OM6Ok+ziqsjDOHadoeowzP+CJmwawtjSmw=="
       }
     }
   }
