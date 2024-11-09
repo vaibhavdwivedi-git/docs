@@ -20,7 +20,7 @@
   ],
   "paths": {
     "/metrics": {
-      "post": {
+      "get": {
         "operationId": "getAllMetrics",
         "summary": "Retrieve summary metrics",
         "description": "Returns summary metrics, including TVLs for both restaking strategies and the Beacon Chain ETH strategy, as well as the total number of AVS, operators, and stakers.",
@@ -119,7 +119,7 @@
       }
     },
     "/metrics-tvl": {
-      "post": {
+      "get": {
         "operationId": "getTvlMetrics",
         "summary": "Retrieve total TVL",
         "description": "Returns the total value locked (TVL) in all restaking strategies and Beacon Chain restaking.",
@@ -197,7 +197,7 @@
       }
     },
     "/metrics-tvl-strategy": {
-      "post": {
+      "get": {
         "operationId": "getTvlRestakingMetricByStrategy",
         "summary": "Retrieve a strategy TVL by name",
         "description": "Returns the total value locked (TVL) in a specific LST strategy.",
@@ -278,7 +278,7 @@
       }
     },
     "/total-avs": {
-      "post": {
+      "get": {
         "operationId": "getTotalAvsMetric",
         "summary": "Retrieve total number of AVS",
         "description": "Returns the total number of AVS registered.",
@@ -343,7 +343,7 @@
       }
     },
     "/total-operators": {
-      "post": {
+      "get": {
         "operationId": "getTotalOperatorsMetric",
         "summary": "Retrieve total number of AVS operators",
         "description": "Returns the total number of AVS operators registered.",
@@ -408,7 +408,7 @@
       }
     },
     "/total-stakers": {
-      "post": {
+      "get": {
         "operationId": "getTotalStakerssMetric",
         "summary": "Retrieve total number of AVS stakers",
         "description": "Returns the total number of AVS stakers registered.",
@@ -473,7 +473,7 @@
       }
     },
     "/total-withdrawals": {
-      "post": {
+      "get": {
         "operationId": "getTotalWithdrawals",
         "summary": "Retrieve total number of withdrawals ",
         "description": "Returns the total number of withdrawals.",
@@ -548,7 +548,7 @@
       }
     },
     "/total-deposits": {
-      "post": {
+      "get": {
         "operationId": "getTotalDeposits",
         "summary": "Retrieve total number of deposits",
         "description": "Returns the total number of deposits.",
@@ -613,7 +613,7 @@
       }
     },
     "/stakers": {
-      "post": {
+      "get": {
         "operationId": "getAllStakers",
         "summary": "Retrieve all stakers",
         "description": "Fetches a paginated list of all stakers with their operator assignments and share distributions across strategies.",
@@ -825,7 +825,7 @@
       }
     },
     "/staker-by-address": {
-      "post": {
+      "get": {
         "operationId": "getStakerByAddress",
         "summary": "Retrieve staker details for a specific address",
         "description": "Fetches detailed information about a specific staker including their operator assignment and share distributions across strategies.",
@@ -1028,7 +1028,7 @@
       }
     },
     "/staker-withdrawals-all": {
-      "post": {
+      "get": {
         "operationId": "getStakerWithdrawals",
         "summary": "Retrieve all withdrawals for a specific staker",
         "description": "Fetches a paginated list of withdrawal records for a specific staker, including completed and pending withdrawals.",
@@ -1278,7 +1278,7 @@
       }
     },
     "/staker-withdrawal-completed": {
-      "post": {
+      "get": {
         "operationId": "getStakerCompletedWithdrawals",
         "summary": "Retrieve completed withdrawals for a specific staker",
         "description": "Fetches a paginated list of completed withdrawal records for a specific staker.",
@@ -1524,7 +1524,7 @@
       }
     },
     "/staker-deposits": {
-      "post": {
+      "get": {
         "operationId": "getStakerDeposits",
         "summary": "Retrieve deposits for a specific staker",
         "description": "Fetches a paginated list of deposit records for a specific staker.",
@@ -1733,7 +1733,7 @@
       }
     },
     "/staker-withdrawals-queued": {
-      "post": {
+      "get": {
         "operationId": "getStakerQueuedWithdrawals",
         "summary": "Retrieve queued withdrawals for a specific staker",
         "description": "Fetches a paginated list of pending (non-completed) withdrawal records for a specific staker.",
@@ -1966,7 +1966,7 @@
       }
     },
     "/avs": {
-      "post": {
+      "get": {
         "operationId": "getAllAvs",
         "summary": "Retrieve all registered AVS",
         "description": "Returns all AVS records. Pagination Enabled.",
@@ -2223,7 +2223,7 @@
       }
     },
     "/avs-all-address": {
-      "post": {
+      "get": {
         "operationId": "getAllAvsAddresses",
         "summary": "Retrieve all AVS addresses",
         "description": "Returns a list of all AVS addresses. Pagination Enabled.",
@@ -2358,7 +2358,7 @@
       }
     },
     "/avs-by-address": {
-      "post": {
+      "get": {
         "operationId": "getAvsByAddress",
         "summary": "Retrieve an AVS details for a specific address",
         "description": "Returns a single AVS record by address.",
@@ -2584,7 +2584,7 @@
       }
     },
     "/avs-its-stakers": {
-      "post": {
+      "get": {
         "operationId": "getAvsStakersByAddress",
         "summary": "Retrieve all stakers for a specific AVS address",
         "description": "Returns all stakers for a specific AVS address. Pagination Enabled.",
@@ -2767,7 +2767,7 @@
       }
     },
     "/avs-its-operators": {
-      "post": {
+      "get": {
         "operationId": "getAvsOperatorsByAddress",
         "summary": "Retrieve all operators for a given AVS address",
         "description": "Returns all operators for a given AVS address. Pagination Enabled.",
@@ -3026,7 +3026,7 @@
       }
     },
     "/deposits": {
-      "post": {
+      "get": {
         "operationId": "getAllDeposits",
         "summary": "Retrieve all deposits",
         "description": "Fetches a paginated list of all deposit records across all stakers, ordered by creation time in descending order.",
@@ -3227,7 +3227,7 @@
       }
     },
     "/withdrawals": {
-      "post": {
+      "get": {
         "operationId": "getAllWithdrawals",
         "summary": "Retrieve all withdrawals",
         "description": "Fetches a paginated list of all withdrawal records across all stakers, including both completed and pending withdrawals, ordered by creation time in descending order.",
@@ -3467,7 +3467,7 @@
       }
     },
     "/withdrawals-by-withdrawal-root": {
-      "post": {
+      "get": {
         "operationId": "getWithdrawalByRoot",
         "summary": "Retrieve withdrawal details by withdrawal root",
         "description": "Fetches detailed information about a specific withdrawal using its withdrawal root identifier.",
@@ -3696,7 +3696,7 @@
       }
     },
     "/operators": {
-      "post": {
+      "get": {
         "operationId": "getAllOperators",
         "summary": "Retrieve all operators",
         "description": "Fetches all operator records with pagination support. Use query parameters to specify page number and limit.",
@@ -4025,7 +4025,7 @@
       }
     },
     "/operator-by-address": {
-      "post": {
+      "get": {
         "operationId": "getOperatorByAddress",
         "summary": "Retrieve operator details for a specific address",
         "description": "Returns an operator record by address.",
@@ -4292,7 +4292,7 @@
       }
     },
     "/operators-all-address": {
-      "post": {
+      "get": {
         "operationId": "getOperatorAddresses",
         "summary": "Retrieve all operator addresses with basic metadata",
         "description": "Fetches a paginated list of operator addresses along with their names and logos.",
@@ -4463,7 +4463,7 @@
       }
     },
     "/operator-stakers": {
-      "post": {
+      "get": {
         "operationId": "getOperatorStakers",
         "summary": "Retrieve all stakers for a specific operator",
         "description": "Fetches a paginated list of stakers who have delegated to a specific operator, including their shares across different strategies.",
@@ -4690,7 +4690,7 @@
       }
     },
     "/operator-staker-history": {
-      "post": {
+      "get": {
         "operationId": "getOperatorStakerHistory",
         "summary": "Retrieve staking history for a specific operator",
         "description": "Fetches a paginated list of historical staking actions (restaking events) associated with a specific operator.",
@@ -4925,7 +4925,7 @@
       }
     },
     "/operator-avs-history": {
-      "post": {
+      "get": {
         "operationId": "getOperatorAvsHistory",
         "summary": "Retrieve AVS history for a specific operator",
         "description": "Fetches a paginated list of historical AVS-related events for a specific operator, ordered by block number in descending order.",
