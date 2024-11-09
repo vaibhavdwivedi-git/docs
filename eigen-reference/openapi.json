@@ -19,307 +19,6 @@
     }
   ],
   "paths": {
-    "/history-by-operator": {
-      "post": {
-        "operationId": "historyByOperator",
-        "summary": "Retrieve Operator Activity History",
-        "description": "Retrive if operator is registered, joined, or left AVS",
-        "tags": ["Operators"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "operatorAddress": {
-                    "type": "string",
-                    "description": "The operator's address",
-                    "example": "0x1234567890abcdef1234567890abcdef12345678"
-                  },
-                  "page": {
-                    "type": "number",
-                    "description": "The page number to retrieve",
-                    "example": 1,
-                    "default": 1
-                  },
-                  "limit": {
-                    "type": "number",
-                    "description": "The number of records per page",
-                    "example": 12,
-                    "default": 12
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "The list of operator activity history.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "description": "The HTTP status code",
-                      "example": 200
-                    },
-                    "body": {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "operatorAddress": {
-                                "type": "string",
-                                "description": "The operator's address",
-                                "example": "0x1234567890abcdef1234567890abcdef12345678"
-                              },
-                              "avsAddress": {
-                                "type": "string",
-                                "description": "The AVS's address",
-                                "example": "0x1234567890abcdef1234567890abcdef12345678"
-                              },
-                              "event": {
-                                "type": "string",
-                                "description": "The event type",
-                                "example": "registered"
-                              },
-                              "transactionHash": {
-                                "type": "string",
-                                "description": "The transaction hash",
-                                "example": "0x1234567890abcdef1234567890abcdef12345678"
-                              },
-                              "createdAt": {
-                                "type": "number",
-                                "description": "The timestamp of the event",
-                                "example": 1620000000
-                              },
-                              "createdAtBlock": {
-                                "type": "number",
-                                "description": "The block number of the event",
-                                "example": 12345678
-                              }
-                            }
-                          }
-                        },
-                        "meta": {
-                          "type": "object",
-                          "properties": {
-                            "total": {
-                              "type": "number",
-                              "description": "Total number of records in the database",
-                              "example": 30
-                            },
-                            "page": {
-                              "type": "number",
-                              "description": "The page number of the current query",
-                              "example": 1
-                            },
-                            "limit": {
-                              "type": "number",
-                              "description": "The number of records returned for this query",
-                              "example": 12
-                            }
-                          },
-                          "required": ["total", "page", "limit"]
-                        }
-                      },
-                      "required": ["data", "meta"]
-                    }
-                  },
-                  "required": ["status", "body"]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "422": {
-            "$ref": "#/components/responses/422"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/restake-history-by-operator": {
-      "post": {
-        "operationId": "restakeHistoryByOperator",
-        "summary": "Retrieve Restake History by Operator",
-        "description": "Retrive restake history by operator",
-        "tags": ["Operators"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "operatorAddress": {
-                    "type": "string",
-                    "description": "The operator's address",
-                    "example": "0x1234567890abcdef1234567890abcdef12345678"
-                  },
-                  "page": {
-                    "type": "number",
-                    "description": "The page number to retrieve",
-                    "example": 1,
-                    "default": 1
-                  },
-                  "limit": {
-                    "type": "number",
-                    "description": "The number of records per page",
-                    "example": 12,
-                    "default": 12
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "The list of restake history by operator.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "description": "The HTTP status code",
-                      "example": 200
-                    },
-                    "body": {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "operatorAddress": {
-                                "type": "string",
-                                "description": "The operator's address",
-                                "example": "0x1234567890abcdef1234567890abcdef12345678"
-                              },
-                              "stakerAddress": {
-                                "type": "string",
-                                "description": "The Stakers's address",
-                                "example": "0x1234567890abcdef1234567890abcdef12345678"
-                              },
-                              "action": {
-                                "type": "string",
-                                "description": "The event type",
-                                "example": "delegated"
-                              },
-                              "shares": {
-                                "type": "array",
-                                "items": {
-                                  "type": "object",
-                                  "properties": {
-                                    "strategy": {
-                                      "type": "string",
-                                      "description": "The strategy",
-                                      "example": "0x1234567890abcdef1234567890abcdef12345678"
-                                    },
-                                    "shares": {
-                                      "type": "string",
-                                      "description": "The shares",
-                                      "example": "100"
-                                    }
-                                  }
-                                }
-                              },
-                              "transactionHash": {
-                                "type": "string",
-                                "description": "The transaction hash",
-                                "example": "0x1234567890abcdef1234567890abcdef12345678"
-                              },
-                              "createdAt": {
-                                "type": "number",
-                                "description": "The timestamp of the event",
-                                "example": 1620000000
-                              },
-                              "createdAtBlock": {
-                                "type": "number",
-                                "description": "The block number of the event",
-                                "example": 12345678
-                              }
-                            }
-                          }
-                        },
-                        "meta": {
-                          "type": "object",
-                          "properties": {
-                            "total": {
-                              "type": "number",
-                              "description": "Total number of records in the database",
-                              "example": 30
-                            },
-                            "page": {
-                              "type": "number",
-                              "description": "The page number of the current query",
-                              "example": 1
-                            },
-                            "limit": {
-                              "type": "number",
-                              "description": "The number of records returned for this query",
-                              "example": 12
-                            }
-                          },
-                          "required": ["total", "page", "limit"]
-                        }
-                      }
-                    }
-                  },
-                  "required": ["status", "body"]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "422": {
-            "$ref": "#/components/responses/422"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
     "/metrics": {
       "post": {
         "operationId": "getAllMetrics",
@@ -2269,8 +1968,8 @@
     "/avs": {
       "post": {
         "operationId": "getAllAvs",
-        "summary": "Retrieve all AVS",
-        "description": "Returns all AVS records. This endpoint supports pagination.",
+        "summary": "Retrieve all registered AVS",
+        "description": "Returns all AVS records. Pagination Enabled.",
         "tags": ["AVS"],
         "parameters": [
           {
@@ -2527,7 +2226,7 @@
       "post": {
         "operationId": "getAllAvsAddresses",
         "summary": "Retrieve all AVS addresses",
-        "description": "Returns a list of all AVS addresses. This endpoint supports pagination.",
+        "description": "Returns a list of all AVS addresses. Pagination Enabled.",
         "tags": ["AVS"],
         "parameters": [
           {
@@ -2887,8 +2586,8 @@
     "/avs-its-stakers": {
       "post": {
         "operationId": "getAvsStakersByAddress",
-        "summary": "Retrieve all stakers for a given AVS address",
-        "description": "Returns all stakers for a given AVS address. This endpoint supports pagination.",
+        "summary": "Retrieve all stakers for a specific AVS address",
+        "description": "Returns all stakers for a specific AVS address. Pagination Enabled.",
         "tags": ["AVS"],
         "parameters": [
           {
@@ -3071,7 +2770,7 @@
       "post": {
         "operationId": "getAvsOperatorsByAddress",
         "summary": "Retrieve all operators for a given AVS address",
-        "description": "Returns all operators for a given AVS address. This endpoint supports pagination.",
+        "description": "Returns all operators for a given AVS address. Pagination Enabled.",
         "tags": ["AVS"],
         "parameters": [
           {

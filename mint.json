@@ -28,8 +28,7 @@
   "tabs": [
     {
       "name": "EigenLayer",
-      "url": "eigen-reference",
-      "openapi": "/eigen-reference/openapi.json"
+      "url": "eigen-reference"
     }
   ],
   "navigation": [
@@ -74,24 +73,12 @@
       ]
     },
     {
-      "group": "Deposits and withdrawals",
+      "group": "Deposits and Withdrawals",
       "pages": [
         "eigen-reference/deposits/index",
         "eigen-reference/withdrawals/index",
         "eigen-reference/withdrawals/withdrawal-by-root"
       ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "eigenda-reference/introduction",
-        "eigenda-reference/prerequisites",
-        "eigenda-reference/errors"
-      ]
-    },
-    {
-      "group": "EigenDA",
-      "pages": ["eigenda-reference/eigenda/operator"]
     }
   ],
   "footerSocials": {
