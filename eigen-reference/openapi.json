@@ -1973,17 +1973,6 @@
         "tags": ["AVS"],
         "parameters": [
           {
-            "name": "sortByTotalOperators",
-            "in": "query",
-            "description": "Sort results in asc or desc order of total AVS (only valid for AVS queries)",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum": ["asc", "desc"],
-              "example": "desc"
-            }
-          },
-          {
             "name": "page",
             "in": "query",
             "description": "The page number to retrieve",
