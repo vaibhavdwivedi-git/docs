@@ -81,6 +81,17 @@
       ]
     },
     {
+      "group": "Pods",
+      "pages": [
+        "eigen-reference/pods/index",
+        "eigen-reference/pods/pods-all-address",
+        "eigen-reference/pods/pod-by-address",
+        "eigen-reference/pods/pods-by-owner",
+        "eigen-reference/pods/pods-transaction",
+        "eigen-reference/pods/pod-transaction"
+      ]
+    },
+    {
       "group": "Deposits and Withdrawals",
       "pages": [
         "eigen-reference/withdrawals-deposits/deposits",
@@ -93,12 +104,5 @@
     "x": "https://x.com/blockflowLabs",
     "github": "https://github.com/blockflowlabs",
     "linkedin": "https://in.linkedin.com/company/blockflowlabs"
-  },
-  "openapi": [
-    "/eigen-reference/pods.json",
-    "/eigen-reference/avs/_openapi.json",
-    "/eigen-reference/operators/_openapi.json",
-    "/eigen-reference/stakers/_openapi.json",
-    "/eigen-reference/withdrawals-deposits/_openapi.json"
-  ]
+  }
 }
