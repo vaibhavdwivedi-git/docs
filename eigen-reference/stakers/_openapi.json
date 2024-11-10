@@ -1,0 +1,1633 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI Eigen Explorer",
+    "description": "Api reference for the Eigen Explorer",
+    "license": {
+      "name": "MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/stakers": {
+      "get": {
+        "operationId": "getAllStakers",
+        "summary": "Retrieve all stakers",
+        "description": "Fetches a paginated list of all stakers with their operator assignments and share distributions across strategies.",
+        "tags": ["Stakers"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "The page number to retrieve",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of records per page",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved list of stakers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code",
+                      "example": 200
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "address": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The staker's address",
+                                "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+                              },
+                              "operatorAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The operator's address that this staker is delegating to",
+                                "example": "0x09e6eb09213bdd3698bd8afb43ec3cb0ecff683a"
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the staker was created",
+                                "example": "2024-02-01T12:00:00.000Z"
+                              },
+                              "updatedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the staker was last updated",
+                                "example": "2024-02-01T12:00:00.000Z"
+                              },
+                              "createdAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the staker was created",
+                                "example": 19631203
+                              },
+                              "updatedAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the staker was last updated",
+                                "example": 19631205
+                              },
+                              "shares": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "strategyAddress": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "The strategy contract address",
+                                      "example": "0x93c4b944d05dfe6df7645a86cd2206016c51564d"
+                                    },
+                                    "shares": {
+                                      "type": "string",
+                                      "description": "Number of shares in the strategy",
+                                      "example": "135064894598947935263152"
+                                    }
+                                  },
+                                  "required": ["strategyAddress", "shares"]
+                                },
+                                "description": "Array of strategy shares held by the staker"
+                              }
+                            },
+                            "required": [
+                              "address",
+                              "operatorAddress",
+                              "createdAt",
+                              "updatedAt",
+                              "createdAtBlock",
+                              "updatedAtBlock",
+                              "shares"
+                            ]
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "Total number of stakers",
+                              "example": 30
+                            },
+                            "page": {
+                              "type": "number",
+                              "description": "Current page number",
+                              "example": 1
+                            },
+                            "limit": {
+                              "type": "number",
+                              "description": "Number of records per page",
+                              "example": 12
+                            }
+                          },
+                          "required": ["total", "page", "limit"]
+                        }
+                      },
+                      "required": ["data", "meta"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of validation errors",
+                          "example": [
+                            "Invalid page number",
+                            "Invalid limit value"
+                          ]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Error message",
+                          "example": ["Failed to fetch stakers list"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/staker-by-address": {
+      "get": {
+        "operationId": "getStakerByAddress",
+        "summary": "Retrieve staker details for a specific address",
+        "description": "Fetches detailed information about a specific staker including their operator assignment and share distributions across strategies.",
+        "tags": ["Stakers"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "description": "The staker's address",
+              "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved staker details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code",
+                      "example": 200
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "address": {
+                          "type": "string",
+                          "pattern": "^0x[a-fA-F0-9]{40}$",
+                          "description": "The staker's address",
+                          "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+                        },
+                        "operatorAddress": {
+                          "type": "string",
+                          "pattern": "^0x[a-fA-F0-9]{40}$",
+                          "description": "The operator's address that this staker is delegating to",
+                          "example": "0x09e6eb09213bdd3698bd8afb43ec3cb0ecff683a"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "Timestamp when the staker was created",
+                          "example": "2024-02-01T12:00:00.000Z"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "Timestamp when the staker was last updated",
+                          "example": "2024-02-01T12:00:00.000Z"
+                        },
+                        "createdAtBlock": {
+                          "type": "number",
+                          "description": "Block number when the staker was created",
+                          "example": 19631203
+                        },
+                        "updatedAtBlock": {
+                          "type": "number",
+                          "description": "Block number when the staker was last updated",
+                          "example": 19631205
+                        },
+                        "shares": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "strategyAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The strategy contract address",
+                                "example": "0x93c4b944d05dfe6df7645a86cd2206016c51564d"
+                              },
+                              "shares": {
+                                "type": "string",
+                                "description": "Number of shares in the strategy",
+                                "example": "135064894598947935263152"
+                              }
+                            },
+                            "required": ["strategyAddress", "shares"]
+                          },
+                          "description": "Array of strategy shares held by the staker"
+                        }
+                      },
+                      "required": [
+                        "address",
+                        "operatorAddress",
+                        "createdAt",
+                        "updatedAt",
+                        "createdAtBlock",
+                        "updatedAtBlock",
+                        "shares"
+                      ]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Missing address parameter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of validation errors",
+                          "example": ["Staker address is required"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Staker address does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 404
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Error message",
+                          "example": ["Staker not found"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Error message",
+                          "example": ["Failed to fetch staker details"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/staker-withdrawals-all": {
+      "get": {
+        "operationId": "getStakerWithdrawals",
+        "summary": "Retrieve all withdrawals for a specific staker",
+        "description": "Fetches a paginated list of withdrawal records for a specific staker, including completed and pending withdrawals.",
+        "tags": ["Stakers", "Withdrawals"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "description": "The staker's address",
+              "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved staker's withdrawals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code",
+                      "example": 200
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "withdrawalRoot": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{64}$",
+                                "description": "The unique identifier for this withdrawal",
+                                "example": "0x123...def"
+                              },
+                              "nonce": {
+                                "type": "number",
+                                "description": "Withdrawal nonce",
+                                "example": 1
+                              },
+                              "stakerAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address of the staker",
+                                "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+                              },
+                              "delegatedTo": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The operator address this withdrawal is delegated to",
+                                "example": "0x09e6eb09213bdd3698bd8afb43ec3cb0ecff683a"
+                              },
+                              "withdrawerAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address that can complete this withdrawal",
+                                "example": "0x5678eb09213bdd3698bd8afb43ec3cb0ecff1234"
+                              },
+                              "shares": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "strategy": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "Strategy contract address",
+                                      "example": "0x93c4b944d05dfe6df7645a86cd2206016c51564d"
+                                    },
+                                    "shares": {
+                                      "type": "string",
+                                      "description": "Number of shares being withdrawn",
+                                      "example": "135064894598947935263152"
+                                    }
+                                  },
+                                  "required": ["strategy", "shares"]
+                                },
+                                "description": "Array of strategy shares being withdrawn"
+                              },
+                              "isCompleted": {
+                                "type": "boolean",
+                                "description": "Whether the withdrawal has been completed",
+                                "example": false
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the withdrawal was created",
+                                "example": "2024-02-01T12:00:00.000Z"
+                              },
+                              "updatedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the withdrawal was last updated",
+                                "example": "2024-02-01T12:00:00.000Z"
+                              },
+                              "createdAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the withdrawal was created",
+                                "example": 19631203
+                              },
+                              "updatedAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the withdrawal was last updated",
+                                "example": 19631205
+                              }
+                            },
+                            "required": [
+                              "withdrawalRoot",
+                              "nonce",
+                              "stakerAddress",
+                              "delegatedTo",
+                              "withdrawerAddress",
+                              "shares",
+                              "isCompleted",
+                              "createdAt",
+                              "updatedAt",
+                              "createdAtBlock",
+                              "updatedAtBlock"
+                            ]
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "Total number of withdrawals",
+                              "example": 30
+                            },
+                            "skip": {
+                              "type": "number",
+                              "description": "Number of records skipped",
+                              "example": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "description": "Number of records per page",
+                              "example": 12
+                            }
+                          },
+                          "required": ["total", "skip", "limit"]
+                        }
+                      },
+                      "required": ["data", "meta"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters or missing staker address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of validation errors",
+                          "example": ["Staker address is required"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Error message",
+                          "example": ["Failed to fetch staker withdrawals"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/staker-withdrawal-completed": {
+      "get": {
+        "operationId": "getStakerCompletedWithdrawals",
+        "summary": "Retrieve completed withdrawals for a specific staker",
+        "description": "Fetches a paginated list of completed withdrawal records for a specific staker.",
+        "tags": ["Stakers", "Withdrawals"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "description": "The staker's address",
+              "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved staker's completed withdrawals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code",
+                      "example": 200
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "withdrawalRoot": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{64}$",
+                                "description": "The unique identifier for this withdrawal",
+                                "example": "0x123...def"
+                              },
+                              "nonce": {
+                                "type": "number",
+                                "description": "Withdrawal nonce",
+                                "example": 1
+                              },
+                              "stakerAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address of the staker",
+                                "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+                              },
+                              "delegatedTo": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The operator address this withdrawal was delegated to",
+                                "example": "0x09e6eb09213bdd3698bd8afb43ec3cb0ecff683a"
+                              },
+                              "withdrawerAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address that completed this withdrawal",
+                                "example": "0x5678eb09213bdd3698bd8afb43ec3cb0ecff1234"
+                              },
+                              "shares": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "strategy": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "Strategy contract address",
+                                      "example": "0x93c4b944d05dfe6df7645a86cd2206016c51564d"
+                                    },
+                                    "shares": {
+                                      "type": "string",
+                                      "description": "Number of shares withdrawn",
+                                      "example": "135064894598947935263152"
+                                    }
+                                  },
+                                  "required": ["strategy", "shares"]
+                                },
+                                "description": "Array of strategy shares that were withdrawn"
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the withdrawal was created",
+                                "example": "2024-02-01T12:00:00.000Z"
+                              },
+                              "updatedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the withdrawal was completed",
+                                "example": "2024-02-01T13:00:00.000Z"
+                              },
+                              "createdAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the withdrawal was created",
+                                "example": 19631203
+                              },
+                              "updatedAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the withdrawal was completed",
+                                "example": 19631205
+                              }
+                            },
+                            "required": [
+                              "withdrawalRoot",
+                              "nonce",
+                              "stakerAddress",
+                              "delegatedTo",
+                              "withdrawerAddress",
+                              "shares",
+                              "createdAt",
+                              "updatedAt",
+                              "createdAtBlock",
+                              "updatedAtBlock"
+                            ]
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "Total number of completed withdrawals",
+                              "example": 30
+                            },
+                            "skip": {
+                              "type": "number",
+                              "description": "Number of records skipped",
+                              "example": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "description": "Number of records per page",
+                              "example": 12
+                            }
+                          },
+                          "required": ["total", "skip", "limit"]
+                        }
+                      },
+                      "required": ["data", "meta"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters or missing staker address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of validation errors",
+                          "example": ["Staker address is required"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Error message",
+                          "example": [
+                            "Failed to fetch staker completed withdrawals"
+                          ]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/staker-deposits": {
+      "get": {
+        "operationId": "getStakerDeposits",
+        "summary": "Retrieve deposits for a specific staker",
+        "description": "Fetches a paginated list of deposit records for a specific staker.",
+        "tags": ["Stakers", "Deposits"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "description": "The staker's address",
+              "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved staker's deposits",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code",
+                      "example": 200
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "transactionHash": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{64}$",
+                                "description": "Hash of the deposit transaction",
+                                "example": "0x123...def"
+                              },
+                              "stakerAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address of the staker",
+                                "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+                              },
+                              "tokenAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address of the deposited token",
+                                "example": "0x6b175474e89094c44da98b954eedeac495271d0f"
+                              },
+                              "strategyAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address of the strategy contract",
+                                "example": "0x93c4b944d05dfe6df7645a86cd2206016c51564d"
+                              },
+                              "shares": {
+                                "type": "string",
+                                "description": "Number of shares received for the deposit",
+                                "example": "135064894598947935263152"
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the deposit was created",
+                                "example": "2024-02-01T12:00:00.000Z"
+                              },
+                              "createdAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the deposit was created",
+                                "example": 19631203
+                              }
+                            },
+                            "required": [
+                              "transactionHash",
+                              "stakerAddress",
+                              "tokenAddress",
+                              "strategyAddress",
+                              "shares",
+                              "createdAt",
+                              "createdAtBlock"
+                            ]
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "Total number of deposits",
+                              "example": 30
+                            },
+                            "skip": {
+                              "type": "number",
+                              "description": "Number of records skipped",
+                              "example": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "description": "Number of records per page",
+                              "example": 12
+                            }
+                          },
+                          "required": ["total", "skip", "limit"]
+                        }
+                      },
+                      "required": ["data", "meta"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters or missing staker address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of validation errors",
+                          "example": ["Staker address is required"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Error message",
+                          "example": ["Failed to fetch staker deposits"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/staker-withdrawals-queued": {
+      "get": {
+        "operationId": "getStakerQueuedWithdrawals",
+        "summary": "Retrieve queued withdrawals for a specific staker",
+        "description": "Fetches a paginated list of pending (non-completed) withdrawal records for a specific staker.",
+        "tags": ["Stakers", "Withdrawals"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "description": "The staker's address",
+              "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved staker's queued withdrawals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code",
+                      "example": 200
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "withdrawalRoot": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{64}$",
+                                "description": "The unique identifier for this withdrawal",
+                                "example": "0x123...def"
+                              },
+                              "nonce": {
+                                "type": "number",
+                                "description": "Withdrawal nonce",
+                                "example": 1
+                              },
+                              "stakerAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address of the staker",
+                                "example": "0x1234eb09213bdd3698bd8afb43ec3cb0ecff5678"
+                              },
+                              "delegatedTo": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The operator address this withdrawal is delegated to",
+                                "example": "0x09e6eb09213bdd3698bd8afb43ec3cb0ecff683a"
+                              },
+                              "withdrawerAddress": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$",
+                                "description": "The address that can complete this withdrawal",
+                                "example": "0x5678eb09213bdd3698bd8afb43ec3cb0ecff1234"
+                              },
+                              "shares": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "strategy": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "Strategy contract address",
+                                      "example": "0x93c4b944d05dfe6df7645a86cd2206016c51564d"
+                                    },
+                                    "shares": {
+                                      "type": "string",
+                                      "description": "Number of shares being withdrawn",
+                                      "example": "135064894598947935263152"
+                                    }
+                                  },
+                                  "required": ["strategy", "shares"]
+                                },
+                                "description": "Array of strategy shares being withdrawn"
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp when the withdrawal was created",
+                                "example": "2024-02-01T12:00:00.000Z"
+                              },
+                              "createdAtBlock": {
+                                "type": "number",
+                                "description": "Block number when the withdrawal was created",
+                                "example": 19631203
+                              }
+                            },
+                            "required": [
+                              "withdrawalRoot",
+                              "nonce",
+                              "stakerAddress",
+                              "delegatedTo",
+                              "withdrawerAddress",
+                              "shares",
+                              "createdAt",
+                              "createdAtBlock"
+                            ]
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "Total number of queued withdrawals",
+                              "example": 30
+                            },
+                            "skip": {
+                              "type": "number",
+                              "description": "Number of records skipped",
+                              "example": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "description": "Number of records per page",
+                              "example": 12
+                            }
+                          },
+                          "required": ["total", "skip", "limit"]
+                        }
+                      },
+                      "required": ["data", "meta"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters or missing staker address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of validation errors",
+                          "example": ["Staker address is required"]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Error message",
+                          "example": [
+                            "Failed to fetch staker queued withdrawals"
+                          ]
+                        }
+                      },
+                      "required": ["errors"]
+                    }
+                  },
+                  "required": ["status", "body"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "400": {
+        "description": "The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["bad_request"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "bad_request"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#bad_request"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["unauthorized"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "unauthorized"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#unauthorized"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client's identity is known to the server.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["forbidden"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "forbidden"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#forbidden"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "The server cannot find the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["not_found"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "not_found"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#not_found"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "The request was well-formed but was unable to be followed due to semantic errors.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["unprocessable_entity"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "unprocessable_entity"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#unprocessable_entity"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "429": {
+        "description": "The user has sent too many requests in a given amount of time (\"rate limiting\")",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["rate_limit_exceeded"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "rate_limit_exceeded"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#rate_limit_exceeded"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "The server has encountered a situation it does not know how to handle.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["internal_server_error"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "internal_server_error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#internal_server_error"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "x-api-key": "1mPU/TsWuVYqPx6fQNXbWQ==:T4fa4ltXa+LybOfCxz2eVhrZtLeqWz+0d4m691U+S4XPlpEKTJg5OM6Ok+ziqsjDOHadoeowzP+CJmwawtjSmw=="
+      }
+    }
+  }
+}

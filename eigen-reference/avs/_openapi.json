@@ -1,0 +1,1329 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI Eigen Explorer",
+    "description": "Api reference for the Eigen Explorer",
+    "license": {
+      "name": "MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/avs": {
+      "get": {
+        "operationId": "getAllAvs",
+        "summary": "Retrieve all registered AVS",
+        "description": "Returns all AVS records. Pagination Enabled.",
+        "tags": ["AVS"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to retrieve",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of records per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 12,
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of AVS records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "description": "The status of the request",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "address": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "AVS service manager contract address",
+                                    "example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+                                  },
+                                  "metadataName": {
+                                    "type": "string",
+                                    "description": "The name of the AVS",
+                                    "example": "Example AVS"
+                                  },
+                                  "metadataDescription": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "description": "The description of the AVS",
+                                    "example": "This is an example AVS"
+                                  },
+                                  "metadataDiscord": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's Discord server",
+                                    "example": "https://discord.com/invite/abcdefghij"
+                                  },
+                                  "metadataLogo": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's logo",
+                                    "example": "https://example.com/logo.png"
+                                  },
+                                  "metadataTelegram": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's Telegram channel",
+                                    "example": "https://t.me/acme"
+                                  },
+                                  "metadataWebsite": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's website",
+                                    "example": "https://acme.com"
+                                  },
+                                  "metadataX": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's X",
+                                    "example": "https://twitter.com/acme"
+                                  },
+                                  "metadataURI": {
+                                    "type": "string",
+                                    "description": "The URI of the AVS metadata",
+                                    "example": "https://example.com/metadata.json"
+                                  },
+                                  "isMetadataSynced": {
+                                    "type": "boolean",
+                                    "description": "Whether the metadata is synced",
+                                    "example": true
+                                  },
+                                  "totalStakers": {
+                                    "type": "integer",
+                                    "description": "The total number of stakers staking in the AVS",
+                                    "example": 10
+                                  },
+                                  "totalOperators": {
+                                    "type": "integer",
+                                    "description": "The total number of operators operating the AVS",
+                                    "example": 10
+                                  },
+                                  "createdAtBlock": {
+                                    "type": "integer",
+                                    "description": "The block number at which the AVS was created",
+                                    "example": 19631203
+                                  },
+                                  "updatedAtBlock": {
+                                    "type": "integer",
+                                    "description": "The block number at which the AVS was last updated",
+                                    "example": 19631203
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "The timestamp at which the AVS was created",
+                                    "example": "2024-11-05T06:47:47.000Z"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "The timestamp at which the AVS was last updated",
+                                    "example": "2024-11-05T06:47:47.000Z"
+                                  },
+                                  "shares": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "strategyAddress": {
+                                          "type": "string",
+                                          "pattern": "^0x[a-fA-F0-9]{40}$",
+                                          "description": "The contract address of the restaking strategy",
+                                          "example": "0xbeac0eeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeac0"
+                                        },
+                                        "shares": {
+                                          "type": "string",
+                                          "description": "The amount of shares held in the strategy",
+                                          "example": "1277920000000000000000000"
+                                        }
+                                      },
+                                      "required": ["strategyAddress", "shares"]
+                                    },
+                                    "description": "The strategy shares held in the AVS"
+                                  }
+                                },
+                                "required": [
+                                  "address",
+                                  "metadataName",
+                                  "metadataDescription",
+                                  "metadataLogo",
+                                  "metadataDiscord",
+                                  "metadataX",
+                                  "metadataWebsite",
+                                  "metadataTelegram",
+                                  "metadataURI",
+                                  "isMetadataSynced",
+                                  "totalStakers",
+                                  "totalOperators",
+                                  "createdAtBlock",
+                                  "updatedAtBlock",
+                                  "createdAt",
+                                  "updatedAt",
+                                  "shares"
+                                ]
+                              }
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "total": {
+                                  "type": "integer",
+                                  "description": "Total number of records in the database",
+                                  "example": 30
+                                },
+                                "page": {
+                                  "type": "integer",
+                                  "description": "The page number of the current query",
+                                  "example": 1
+                                },
+                                "limit": {
+                                  "type": "integer",
+                                  "description": "The number of records returned for this query",
+                                  "example": 12
+                                }
+                              },
+                              "required": ["total", "page", "limit"]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/avs-all-address": {
+      "get": {
+        "operationId": "getAllAvsAddresses",
+        "summary": "Retrieve all AVS addresses",
+        "description": "Returns a list of all AVS addresses. Pagination Enabled.",
+        "tags": ["AVS"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to retrieve",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of records per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 12,
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of AVS addresses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "address": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "AVS service manager contract address",
+                                    "example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "description": "The name of the AVS",
+                                    "example": "EigenDA"
+                                  },
+                                  "logo": {
+                                    "type": "string",
+                                    "description": "The logo of the AVS",
+                                    "example": "https://example.com/logo.png"
+                                  },
+                                  "uri": {
+                                    "type": "string",
+                                    "description": "The metadata URI of the AVS",
+                                    "example": "https://example.com/metadata.json"
+                                  }
+                                },
+                                "required": ["address", "name", "logo", "uri"]
+                              }
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "total": {
+                                  "type": "integer",
+                                  "description": "Total number of records in the database",
+                                  "example": 27
+                                },
+                                "page": {
+                                  "type": "integer",
+                                  "description": "The page number of the current query",
+                                  "example": 1
+                                },
+                                "limit": {
+                                  "type": "integer",
+                                  "description": "The number of records returned for this query",
+                                  "example": 12
+                                }
+                              },
+                              "required": ["total", "page", "limit"]
+                            }
+                          },
+                          "required": ["data", "meta"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/avs-by-address": {
+      "get": {
+        "operationId": "getAvsByAddress",
+        "summary": "Retrieve an AVS details for a specific address",
+        "description": "Returns a single AVS record by address.",
+        "tags": ["AVS"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "AVS service manager contract address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The AVS record found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "address": {
+                              "type": "string",
+                              "pattern": "^0x[a-fA-F0-9]{40}$",
+                              "description": "AVS service manager contract address",
+                              "example": "0x870679e138bcdf293b7ff14dd44b70fc97e12fc0"
+                            },
+                            "totalStakers": {
+                              "type": "integer",
+                              "description": "The total number of stakers staking in the AVS",
+                              "example": 153023
+                            },
+                            "totalActiveOperators": {
+                              "type": "integer",
+                              "description": "The total number of active operators in the AVS",
+                              "example": 219
+                            },
+                            "totalRegisteredOperators": {
+                              "type": "string",
+                              "description": "The total number of registered operators in the AVS",
+                              "example": "552"
+                            },
+                            "createdAtBlock": {
+                              "type": "string",
+                              "description": "The block number at which the AVS was created",
+                              "example": "19592323"
+                            },
+                            "updatedAtBlock": {
+                              "type": "string",
+                              "description": "The block number at which the AVS was last updated",
+                              "example": "19592323"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "description": "The timestamp at which the AVS was created",
+                              "example": "2024-04-05T21:49:59.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "description": "The timestamp at which the AVS was last updated",
+                              "example": "2024-04-05T21:49:59.000Z"
+                            },
+                            "curatedMetadata": {
+                              "type": "object",
+                              "properties": {
+                                "avsAddress": {
+                                  "type": "string",
+                                  "description": "The AVS address",
+                                  "example": "0x870679e138bcdf293b7ff14dd44b70fc97e12fc0"
+                                },
+                                "metadataName": {
+                                  "type": "string",
+                                  "description": "The name of the AVS",
+                                  "example": "EigenDA"
+                                },
+                                "metadataDescription": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The description of the AVS",
+                                  "example": "EigenDA is a data availability solution with 10 MiB/s of write throughput and the lowest cost in its class."
+                                },
+                                "metadataDiscord": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The URL of the AVS's Discord server",
+                                  "example": ""
+                                },
+                                "metadataLogo": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The URL of the AVS's logo",
+                                  "example": "https://mainnet-ethereum-avs-metadata.s3.amazonaws.com/markEigenDA.png"
+                                },
+                                "metadataTelegram": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The URL of the AVS's Telegram channel",
+                                  "example": ""
+                                },
+                                "metadataWebsite": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The URL of the AVS's website",
+                                  "example": "https://docs.eigenlayer.xyz/eigenda/overview/"
+                                },
+                                "metadataX": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The URL of the AVS's X (formerly Twitter) account",
+                                  "example": "https://twitter.com/eigen_da"
+                                },
+                                "metadataGithub": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The GitHub URL for the AVS",
+                                  "example": null
+                                },
+                                "metadataTokenAddress": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The token address associated with the AVS",
+                                  "example": null
+                                }
+                              },
+                              "required": [
+                                "avsAddress",
+                                "metadataName",
+                                "metadataDescription",
+                                "metadataLogo",
+                                "metadataWebsite"
+                              ]
+                            },
+                            "shares": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "strategyAddress": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The contract address of the restaking strategy",
+                                    "example": "0x01f3be8090c3f3a273c9cd598d8cfc94854a45dd"
+                                  },
+                                  "underlygingToken": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The underlying token address of the strategy",
+                                    "example": "0x853d955aCEf822Db058eb8505911ED77F175b99e"
+                                  },
+                                  "shares": {
+                                    "type": "string",
+                                    "description": "The amount of shares held in the strategy",
+                                    "example": "104.211865480443592701"
+                                  }
+                                },
+                                "required": [
+                                  "strategyAddress",
+                                  "underlygingToken",
+                                  "shares"
+                                ]
+                              },
+                              "description": "The strategy shares held in the AVS"
+                            }
+                          },
+                          "required": [
+                            "address",
+                            "totalStakers",
+                            "totalActiveOperators",
+                            "totalRegisteredOperators",
+                            "createdAtBlock",
+                            "updatedAtBlock",
+                            "createdAt",
+                            "updatedAt",
+                            "curatedMetadata",
+                            "shares"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/avs-its-stakers": {
+      "get": {
+        "operationId": "getAvsStakersByAddress",
+        "summary": "Retrieve all stakers for a specific AVS address",
+        "description": "Returns all stakers for a specific AVS address. Pagination Enabled.",
+        "tags": ["AVS"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "AVS service manager contract address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to retrieve",
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of records per page",
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The stakers record found for the AVS.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "address": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The contract address of the staker",
+                                    "example": "0x0000006c21964af0d420af8992851a30fa13a68b"
+                                  },
+                                  "operatorAddress": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The address of the operator",
+                                    "example": "0x71c6f7ed8c2d4925d0baf16f6a85bb1736d412eb"
+                                  },
+                                  "createdAtBlock": {
+                                    "type": "string",
+                                    "description": "The block number at which the Staker made first delegation",
+                                    "example": "19631203"
+                                  },
+                                  "updatedAtBlock": {
+                                    "type": "string",
+                                    "description": "The block number at which the Staker made last delegation",
+                                    "example": "20146916"
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "description": "The timestamp at which the Staker made first delegation",
+                                    "example": "2024-05-13T11:49:35.000Z"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "description": "The timestamp at which the Staker made last delegation",
+                                    "example": "2024-06-22T11:21:59.000Z"
+                                  },
+                                  "shares": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "strategy": {
+                                          "type": "string",
+                                          "pattern": "^0x[a-fA-F0-9]{40}$",
+                                          "description": "The contract address of the restaking strategy",
+                                          "example": "0xacb55c530acdb2849e6d4f36992cd8c9d50ed8f7"
+                                        },
+                                        "shares": {
+                                          "type": "string",
+                                          "description": "The amount of shares held in the strategy",
+                                          "example": "230909115959999994061"
+                                        }
+                                      },
+                                      "required": ["strategy", "shares"]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "address",
+                                  "operatorAddress",
+                                  "createdAtBlock",
+                                  "updatedAtBlock",
+                                  "createdAt",
+                                  "updatedAt",
+                                  "shares"
+                                ]
+                              }
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "total": {
+                                  "type": "number",
+                                  "description": "Total number of records in the database",
+                                  "example": 89954
+                                },
+                                "page": {
+                                  "type": "number",
+                                  "description": "The page number of the current query",
+                                  "example": 1
+                                },
+                                "limit": {
+                                  "type": "number",
+                                  "description": "The number of records returned for this query",
+                                  "example": 12
+                                }
+                              },
+                              "required": ["total", "page", "limit"]
+                            }
+                          },
+                          "required": ["data", "meta"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/avs-its-operators": {
+      "get": {
+        "operationId": "getAvsOperatorsByAddress",
+        "summary": "Retrieve all operators for a given AVS address",
+        "description": "Returns all operators for a given AVS address. Pagination Enabled.",
+        "tags": ["AVS"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "AVS service manager contract address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to retrieve",
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of records per page",
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operators record found for the AVS.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "address": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The contract address of the AVS operator",
+                                    "example": "0x09e6eb09213bdd3698bd8afb43ec3cb0ecff683a"
+                                  },
+                                  "metadataName": {
+                                    "type": "string",
+                                    "description": "The name of the AVS",
+                                    "example": "Google Cloud Web3"
+                                  },
+                                  "metadataDescription": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "description": "The description of the AVS",
+                                    "example": "Build and scale faster with simple, secure tools and infrastructure for Web3."
+                                  },
+                                  "metadataDiscord": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's Discord server",
+                                    "example": "https://discord.com/invite/abcdefghij"
+                                  },
+                                  "metadataLogo": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's logo",
+                                    "example": "https://example.com/logo.png"
+                                  },
+                                  "metadataTelegram": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's Telegram channel",
+                                    "example": "https://t.me/acme"
+                                  },
+                                  "metadataWebsite": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's website",
+                                    "example": "https://acme.com"
+                                  },
+                                  "metadataX": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uri",
+                                    "description": "The URL of the AVS's X",
+                                    "example": "https://twitter.com/acme"
+                                  },
+                                  "metadataURI": {
+                                    "type": "string",
+                                    "description": "The URI of the AVS metadata",
+                                    "example": "https://example.com/metadata.json"
+                                  },
+                                  "isMetadataSynced": {
+                                    "type": "boolean",
+                                    "description": "Whether the metadata is synced",
+                                    "example": true
+                                  },
+                                  "createdAtBlock": {
+                                    "type": "string",
+                                    "description": "The block number at which the AVS Operator was registered",
+                                    "example": "19631203"
+                                  },
+                                  "updatedAtBlock": {
+                                    "type": "string",
+                                    "description": "The block number at which the AVS Operator registration was last updated",
+                                    "example": "21094737"
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "description": "The timestamp at which the AVS Operator was registered",
+                                    "example": "2024-04-09T18:50:11.000Z"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "description": "The timestamp at which the AVS Operator registration was last updated",
+                                    "example": "2024-11-01T18:57:47.000Z"
+                                  },
+                                  "shares": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "strategy": {
+                                          "type": "string",
+                                          "pattern": "^0x[a-fA-F0-9]{40}$",
+                                          "description": "The contract address of the restaking strategy",
+                                          "example": "0x93c4b944d05dfe6df7645a86cd2206016c51564d"
+                                        },
+                                        "shares": {
+                                          "type": "string",
+                                          "description": "The amount of shares held in the strategy",
+                                          "example": "40074843548537495320"
+                                        }
+                                      },
+                                      "required": ["strategy", "shares"]
+                                    }
+                                  },
+                                  "restakedStrategies": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$"
+                                    },
+                                    "description": "The list of restaked strategies",
+                                    "example": [
+                                      "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+                                    ]
+                                  },
+                                  "totalStakers": {
+                                    "type": "number",
+                                    "description": "The total number of stakers who have delegated to this AVS operator",
+                                    "example": 50
+                                  }
+                                },
+                                "required": [
+                                  "address",
+                                  "metadataName",
+                                  "metadataDescription",
+                                  "metadataLogo",
+                                  "metadataDiscord",
+                                  "metadataX",
+                                  "metadataWebsite",
+                                  "metadataTelegram",
+                                  "metadataURI",
+                                  "isMetadataSynced",
+                                  "createdAtBlock",
+                                  "updatedAtBlock",
+                                  "createdAt",
+                                  "updatedAt",
+                                  "shares",
+                                  "restakedStrategies",
+                                  "totalStakers"
+                                ]
+                              }
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "total": {
+                                  "type": "number",
+                                  "description": "Total number of records in the database",
+                                  "example": 219
+                                },
+                                "page": {
+                                  "type": "number",
+                                  "description": "The page number of the current query",
+                                  "example": 1
+                                },
+                                "limit": {
+                                  "type": "number",
+                                  "description": "The number of records returned for this query",
+                                  "example": 12
+                                }
+                              },
+                              "required": ["total", "page", "limit"]
+                            }
+                          },
+                          "required": ["data", "meta"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "400": {
+        "description": "The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["bad_request"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "bad_request"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#bad_request"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["unauthorized"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "unauthorized"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#unauthorized"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client's identity is known to the server.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["forbidden"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "forbidden"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#forbidden"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "The server cannot find the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["not_found"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "not_found"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#not_found"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "The request was well-formed but was unable to be followed due to semantic errors.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["unprocessable_entity"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "unprocessable_entity"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#unprocessable_entity"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "429": {
+        "description": "The user has sent too many requests in a given amount of time (\"rate limiting\")",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["rate_limit_exceeded"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "rate_limit_exceeded"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#rate_limit_exceeded"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "The server has encountered a situation it does not know how to handle.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["internal_server_error"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "internal_server_error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#internal_server_error"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "x-api-key": "1mPU/TsWuVYqPx6fQNXbWQ==:T4fa4ltXa+LybOfCxz2eVhrZtLeqWz+0d4m691U+S4XPlpEKTJg5OM6Ok+ziqsjDOHadoeowzP+CJmwawtjSmw=="
+      }
+    }
+  }
+}

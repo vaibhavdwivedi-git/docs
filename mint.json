@@ -15,6 +15,14 @@
       "to": "#07C983"
     }
   },
+  "api": {
+    "auth": {
+      "method": "key",
+      "name": "x-api-key",
+      "inputPrefix": "1mPU/TsWuVYqPx6fQNXbWQ==:T4fa4ltXa+LybOfCxz2eVhrZtLeqWz+0d4m691U+S4XPlpEKTJg5OM6Ok+ziqsjDOHadoeowzP+CJmwawtjSmw=="
+    },
+    "baseUrl": "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba"
+  },
   "topbarLinks": [
     {
       "name": "Support",
@@ -75,9 +83,9 @@
     {
       "group": "Deposits and Withdrawals",
       "pages": [
-        "eigen-reference/deposits/index",
-        "eigen-reference/withdrawals/index",
-        "eigen-reference/withdrawals/withdrawal-by-root"
+        "eigen-reference/withdrawals-deposits/deposits",
+        "eigen-reference/withdrawals-deposits/withdrawals",
+        "eigen-reference/withdrawals-deposits/withdrawal-by-root"
       ]
     }
   ],
@@ -85,5 +93,12 @@
     "x": "https://x.com/blockflowLabs",
     "github": "https://github.com/blockflowlabs",
     "linkedin": "https://in.linkedin.com/company/blockflowlabs"
-  }
+  },
+  "openapi": [
+    "/eigen-reference/pods.json",
+    "/eigen-reference/avs/_openapi.json",
+    "/eigen-reference/operators/_openapi.json",
+    "/eigen-reference/stakers/_openapi.json",
+    "/eigen-reference/withdrawals-deposits/_openapi.json"
+  ]
 }

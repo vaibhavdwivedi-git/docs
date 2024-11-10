@@ -1,0 +1,873 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI Eigen Explorer",
+    "description": "Api reference for the Eigen Explorer",
+    "license": {
+      "name": "MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/metrics": {
+      "get": {
+        "operationId": "getAllMetrics",
+        "summary": "Retrieve summary metrics",
+        "description": "Returns summary metrics, including TVLs for both restaking strategies and the Beacon Chain ETH strategy, as well as the total number of AVS, operators, and stakers.",
+        "tags": ["Metrics"],
+        "responses": {
+          "200": {
+            "description": "The list of summary metrics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "tvlBeaconChain": {
+                              "type": "number",
+                              "description": "The total value locked (TVL) in ETH in the beacon chain ETH strategy",
+                              "example": 1000000
+                            },
+                            "tvlStrategies": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "number",
+                                "description": "The total value locked (TVL) in the strategy, denominated in the strategy's native token",
+                                "example": 1000000
+                              },
+                              "description": "The total value locked (TVL) in each restaking strategy, denominated in the strategy's native token",
+                              "example": {
+                                "cbETH": 1000000,
+                                "stETH": 2000000
+                              }
+                            },
+                            "totalAVS": {
+                              "type": "number",
+                              "description": "The total number of AVS",
+                              "example": 10
+                            },
+                            "totalOperators": {
+                              "type": "number",
+                              "description": "The total number of AVS operators",
+                              "example": 10
+                            },
+                            "totalStakers": {
+                              "type": "number",
+                              "description": "The total number of AVS stakers",
+                              "example": 10
+                            }
+                          },
+                          "required": [
+                            "tvlBeaconChain",
+                            "tvlStrategies",
+                            "totalAVS",
+                            "totalOperators",
+                            "totalStakers"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/metrics-tvl": {
+      "get": {
+        "operationId": "getTvlMetrics",
+        "summary": "Retrieve total TVL",
+        "description": "Returns the total value locked (TVL) in all restaking strategies and Beacon Chain restaking.",
+        "tags": ["Metrics"],
+        "responses": {
+          "200": {
+            "description": "The value of the combined TVL in ETH.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "tvlBeaconChain": {
+                              "type": "number",
+                              "description": "The total value locked (TVL) in ETH in the beacon chain ETH strategy",
+                              "example": 1000000
+                            },
+                            "tvlStrategies": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "number",
+                                "description": "The total value locked (TVL) in the strategy, denominated in the strategy's native token",
+                                "example": 1000000
+                              },
+                              "description": "The total value locked (TVL) in each restaking strategy, denominated in the strategy's native token",
+                              "example": {
+                                "cbETH": 1000000,
+                                "stETH": 2000000
+                              }
+                            }
+                          },
+                          "required": ["tvlBeaconChain", "tvlStrategies"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/metrics-tvl-strategy": {
+      "get": {
+        "operationId": "getTvlRestakingMetricByStrategy",
+        "summary": "Retrieve a strategy TVL by name",
+        "description": "Returns the total value locked (TVL) in a specific LST strategy.",
+        "tags": ["Metrics"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "strategyName": {
+                    "type": "string",
+                    "description": "The name of the restaking strategy",
+                    "example": "cbETH"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The value of combined restaking strategy TVL and a breakdown of the TVL for each individual strategy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "tvl": {
+                              "type": "number",
+                              "description": "The value of the restaking strategy TVL, denominated in the strategy's native token",
+                              "example": 1000000
+                            }
+                          },
+                          "required": ["tvl"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/total-avs": {
+      "get": {
+        "operationId": "getTotalAvsMetric",
+        "summary": "Retrieve total number of AVS",
+        "description": "Returns the total number of AVS registered.",
+        "tags": ["Metrics"],
+        "responses": {
+          "200": {
+            "description": "The total number of AVS registered.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "The total number of AVS registered",
+                              "example": 1000000
+                            }
+                          },
+                          "required": ["total"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/total-operators": {
+      "get": {
+        "operationId": "getTotalOperatorsMetric",
+        "summary": "Retrieve total number of AVS operators",
+        "description": "Returns the total number of AVS operators registered.",
+        "tags": ["Metrics"],
+        "responses": {
+          "200": {
+            "description": "The total number of AVS operators registered.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "The total number of AVS operators registered",
+                              "example": 1000000
+                            }
+                          },
+                          "required": ["total"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/total-stakers": {
+      "get": {
+        "operationId": "getTotalStakerssMetric",
+        "summary": "Retrieve total number of AVS stakers",
+        "description": "Returns the total number of AVS stakers registered.",
+        "tags": ["Metrics"],
+        "responses": {
+          "200": {
+            "description": "The total number of AVS stakers registered.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "The total number of AVS stakers registered",
+                              "example": 1000000
+                            }
+                          },
+                          "required": ["total"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/total-withdrawals": {
+      "get": {
+        "operationId": "getTotalWithdrawals",
+        "summary": "Retrieve total number of withdrawals ",
+        "description": "Returns the total number of withdrawals.",
+        "tags": ["Metrics"],
+        "responses": {
+          "200": {
+            "description": "The total number of withdrawals.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "The total number of withdrawals",
+                              "example": 1000000
+                            },
+                            "pending": {
+                              "type": "number",
+                              "description": "The  pending number of withdrawals",
+                              "example": 1000000
+                            },
+                            "completed": {
+                              "type": "number",
+                              "description": "The completed number of withdrawals",
+                              "example": 1000000
+                            }
+                          },
+                          "required": ["total", "pending", "completed"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/total-deposits": {
+      "get": {
+        "operationId": "getTotalDeposits",
+        "summary": "Retrieve total number of deposits",
+        "description": "Returns the total number of deposits.",
+        "tags": ["Metrics"],
+        "responses": {
+          "200": {
+            "description": "The total number of deposits.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "number",
+                          "description": "The HTTP status code",
+                          "example": 200
+                        },
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "description": "The total number of deposits",
+                              "example": 1000000
+                            }
+                          },
+                          "required": ["total"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "400": {
+        "description": "The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["bad_request"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "bad_request"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#bad_request"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["unauthorized"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "unauthorized"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#unauthorized"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client's identity is known to the server.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["forbidden"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "forbidden"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#forbidden"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "The server cannot find the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["not_found"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "not_found"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#not_found"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "The request was well-formed but was unable to be followed due to semantic errors.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["unprocessable_entity"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "unprocessable_entity"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#unprocessable_entity"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "429": {
+        "description": "The user has sent too many requests in a given amount of time (\"rate limiting\")",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["rate_limit_exceeded"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "rate_limit_exceeded"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#rate_limit_exceeded"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "The server has encountered a situation it does not know how to handle.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": ["internal_server_error"],
+                      "description": "A short code indicating the error code returned.",
+                      "example": "internal_server_error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human readable explanation of what went wrong.",
+                      "example": "The requested resource was not found."
+                    },
+                    "doc_url": {
+                      "type": "string",
+                      "description": "A link to our documentation with more details about this error code",
+                      "example": "https://docs.rescan.dev.com/api-reference/errors#internal_server_error"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "x-api-key": "1mPU/TsWuVYqPx6fQNXbWQ==:T4fa4ltXa+LybOfCxz2eVhrZtLeqWz+0d4m691U+S4XPlpEKTJg5OM6Ok+ziqsjDOHadoeowzP+CJmwawtjSmw=="
+      }
+    }
+  }
+}
