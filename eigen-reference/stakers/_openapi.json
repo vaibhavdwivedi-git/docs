@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Eigen Explorer",
-    "description": "Api reference for the Eigen Explorer",
+    "title": "OpenAPI Rescan Explorer",
+    "description": "Api reference for the Rescan Explorer",
     "license": {
       "name": "MIT"
     },
