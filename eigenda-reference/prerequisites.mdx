@@ -1,0 +1,36 @@
+---
+title: "Prerequisites"
+description: "Get Started with the Rescan API"
+icon: "bolt"
+---
+
+## API Key
+
+To use the Rescan API, you need to obtain an API key. Follow these steps to get your API key:
+
+1. **Login to Blockflow**:
+
+   - Go to [Blockflow](https://app.blockflow.network) and log in with your credentials.
+
+2. **Navigate to Project Details**:
+
+   - After logging in, navigate to the **Project Details** page.
+
+3. **Go to Key Management**:
+
+   - On the Project Details page, find the **Key Management** section.
+
+4. **Create API Key**:
+
+   - In the Key Management section, click on the **Create API Key** button to generate a new API key.
+
+5. **Use the API Key**:
+   - Use this API key to authenticate your requests by passing it in the headers as `x-api-key`.
+
+### Example
+
+Here is an example of how to include the `x-api-key` in your request headers:
+
+```bash
+curl -X GET "https://api.blockflow.network/rest/fec9c10b-69e4-4d1b-aee0-38ecdaac9e99" -H "x-api-key: YOUR_API_KEY"
+```

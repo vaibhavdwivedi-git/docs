@@ -1,0 +1,430 @@
+{
+  "paths": {
+    "/all-quorums": {
+      "get": {
+        "summary": "Fetch Quorums",
+        "description": "Retrieves basic information of all quorums.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "required": false,
+            "description": "The page number for pagination"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 12
+            },
+            "required": false,
+            "description": "The number of results to return per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "quorumNumber": {
+                            "type": "integer",
+                            "description": "The number of the quorum"
+                          },
+                          "memberCount": {
+                            "type": "integer",
+                            "description": "The number of members in the quorum"
+                          },
+                          "lastUpdateTime": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the last update to the quorum"
+                          },
+                          "latestBlock": {
+                            "type": "integer",
+                            "description": "The block number of the latest update to the quorum"
+                          },
+                          "lastAction": {
+                            "type": "string",
+                            "enum": [
+                              "OPERATORS_JOINED",
+                              "OPERATORS_LEFT",
+                              "NO_CHANGE"
+                            ],
+                            "description": "The latest action that occurred on the quorum"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of quorums"
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number"
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of results per page"
+                        },
+                        "lastUpdateTimestamp": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "The timestamp of the latest quorum update"
+                        },
+                        "latestBlock": {
+                          "type": "integer",
+                          "description": "The latest block number"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "activeQuorums": {
+                              "type": "integer",
+                              "description": "The number of active quorums"
+                            },
+                            "totalUniqueOperators": {
+                              "type": "integer",
+                              "description": "The total number of unique operators"
+                            },
+                            "averageQuorumSize": {
+                              "type": "number",
+                              "description": "The average size of the quorums"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/quorum-history": {
+      "get": {
+        "summary": "Quorum History",
+        "description": "Retrieves history of given quorum.",
+        "parameters": [
+          {
+            "name": "quorumNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of the quorum to fetch history for"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "The start time for the quorum history"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "The end time for the quorum history"
+          },
+          {
+            "name": "startBlock",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The start block number for the quorum history"
+          },
+          {
+            "name": "endBlock",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The end block number for the quorum history"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "The page number for pagination"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 12
+            },
+            "description": "The number of results to return per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "quorumNumber": {
+                            "type": "integer",
+                            "description": "The number of the quorum"
+                          },
+                          "memberCount": {
+                            "type": "integer",
+                            "description": "The number of members in the quorum"
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the quorum event"
+                          },
+                          "blockNumber": {
+                            "type": "integer",
+                            "description": "The block number of the quorum event"
+                          },
+                          "eventType": {
+                            "type": "string",
+                            "enum": [
+                              "OPERATORS_JOINED",
+                              "OPERATORS_LEFT",
+                              "NO_CHANGE"
+                            ],
+                            "description": "The type of event that occurred on the quorum"
+                          },
+                          "changes": {
+                            "type": "object",
+                            "properties": {
+                              "entrants": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "The operators that joined the quorum"
+                              },
+                              "departers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "The operators that left the quorum"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of quorum events"
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number"
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of results per page"
+                        },
+                        "quorumStats": {
+                          "type": "object",
+                          "properties": {
+                            "currentMemberCount": {
+                              "type": "integer",
+                              "description": "The current number of members in the quorum"
+                            },
+                            "totalJoins": {
+                              "type": "integer",
+                              "description": "The total number of operators that have joined the quorum"
+                            },
+                            "totalDepartures": {
+                              "type": "integer",
+                              "description": "The total number of operators that have left the quorum"
+                            },
+                            "timeRange": {
+                              "type": "object",
+                              "properties": {
+                                "startTime": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "The start time of the quorum history"
+                                },
+                                "endTime": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "The end time of the quorum history"
+                                },
+                                "startBlock": {
+                                  "type": "integer",
+                                  "description": "The start block number of the quorum history"
+                                },
+                                "endBlock": {
+                                  "type": "integer",
+                                  "description": "The end block number of the quorum history"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "filters": {
+                          "type": "object",
+                          "properties": {
+                            "timeRange": {
+                              "type": "object",
+                              "properties": {
+                                "startTime": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "The start time used in the filter"
+                                },
+                                "endTime": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "The end time used in the filter"
+                                }
+                              }
+                            },
+                            "blockRange": {
+                              "type": "object",
+                              "properties": {
+                                "startBlock": {
+                                  "type": "integer",
+                                  "description": "The start block number used in the filter"
+                                },
+                                "endBlock": {
+                                  "type": "integer",
+                                  "description": "The end block number used in the filter"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/quorum-operators": {
+      "get": {
+        "summary": "Quorum Operators",
+        "description": "Retrieves operators of given quorum.",
+        "parameters": [
+          {
+            "name": "quorumNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of the quorum to fetch history for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "quorumNumber": {
+                          "type": "integer",
+                          "description": "The number of the quorum"
+                        },
+                        "operatorsCount": {
+                          "type": "integer",
+                          "description": "The number of operators in the quorum"
+                        },
+                        "existingOperators": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "The list of existing operators in the quorum"
+                        },
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "The timestamp of the quorum event"
+                        },
+                        "blockNumber": {
+                          "type": "integer",
+                          "description": "The block number of the quorum event"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

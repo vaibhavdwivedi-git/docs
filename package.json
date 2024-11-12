@@ -1,0 +1,11 @@
+{
+  "name": "rescan-docs",
+  "version": "1.0.0",
+  "description": "Rescan API Documentation",
+  "scripts": {
+    "dev": "node generator.js && mintlify dev",
+    "prod": "node generator.js && git add . && git commit -m 'Updated Docs' && git push origin main"
+  },
+  "author": "blockflow-labs",
+  "license": "ISC"
+}

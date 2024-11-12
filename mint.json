@@ -37,6 +37,10 @@
     {
       "name": "EigenLayer",
       "url": "eigen-reference"
+    },
+    {
+      "name": "EigenDA",
+      "url": "eigenda-reference"
     }
   ],
   "navigation": [
@@ -97,6 +101,43 @@
         "eigen-reference/withdrawals-deposits/deposits",
         "eigen-reference/withdrawals-deposits/withdrawals",
         "eigen-reference/withdrawals-deposits/withdrawal-by-root"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "eigenda-reference/introduction",
+        "eigenda-reference/prerequisites",
+        "eigenda-reference/errors"
+      ]
+    },
+    {
+      "group": "Batches",
+      "pages": [
+        "eigenda-reference/batches/all",
+        "eigenda-reference/batches/batch",
+        "eigenda-reference/batches/batch-nonsigners",
+        "eigenda-reference/batches/batch-by-batchId",
+        "eigenda-reference/batches/batch-by-hash"
+      ]
+    },
+    {
+      "group": "Operators",
+      "pages": [
+        "eigenda-reference/operators/all",
+        "eigenda-reference/operators/operator",
+        "eigenda-reference/operators/operator-with-issues",
+        "eigenda-reference/operators/operator-nonsignings",
+        "eigenda-reference/operators/operator-by-operatorId",
+        "eigenda-reference/operators/operator-by-address"
+      ]
+    },
+    {
+      "group": "Quorums",
+      "pages": [
+        "eigenda-reference/quorums/all",
+        "eigenda-reference/quorums/quorum-history",
+        "eigenda-reference/quorums/quorum-operators"
       ]
     }
   ],

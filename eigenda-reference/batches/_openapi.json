@@ -1,0 +1,1359 @@
+{
+  "paths": {
+    "/all-batches": {
+      "get": {
+        "summary": "Fetch Batches",
+        "description": "Returns a list of batches with pagination",
+        "operationId": "getBatches",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 12,
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "batchHeaderHash": {
+                            "type": "string"
+                          },
+                          "batchId": {
+                            "type": "string"
+                          },
+                          "nonSignerCount": {
+                            "type": "integer"
+                          },
+                          "referenceBlockNumber": {
+                            "type": "integer"
+                          },
+                          "quorumNumbers": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer"
+                            }
+                          },
+                          "transactionHash": {
+                            "type": "string"
+                          },
+                          "blockTimestamp": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "blockNumber": {
+                            "type": "integer"
+                          },
+                          "gasUsed": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "lastUpdateTimestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "latestBlock": {
+                          "type": "integer"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalBatches": {
+                              "type": "integer"
+                            },
+                            "batchesWithNonSigners": {
+                              "type": "integer"
+                            },
+                            "nonSignerPercentage": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/batch-by-batchId": {
+      "get": {
+        "summary": "BatchInfo by ID",
+        "description": "Returns comprehensive details about a specific batch by batchId",
+        "operationId": "getBatchDetails",
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "batchInfo": {
+                          "type": "object",
+                          "properties": {
+                            "batchId": {
+                              "type": "string"
+                            },
+                            "batchHeaderHash": {
+                              "type": "string"
+                            },
+                            "blobsLength": {
+                              "type": "integer"
+                            },
+                            "quorumNumbers": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "blobHeadersRoot": {
+                              "type": "string"
+                            },
+                            "referenceBlockNumber": {
+                              "type": "integer"
+                            },
+                            "signedStakeForQuorums": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "transactionHash": {
+                              "type": "string"
+                            },
+                            "blockTimestamp": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "_blocknumber": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "apkG2": {
+                              "type": "string"
+                            },
+                            "sigma": {
+                              "type": "string"
+                            },
+                            "quorumApks": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "quorumApkIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerPubkeys": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "totalStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerQuorumBitmapIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "nonSigningInfo": {
+                          "type": "object",
+                          "properties": {
+                            "nonSigners": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "nonSignerCount": {
+                              "type": "integer"
+                            },
+                            "signatoryRecordHash": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "gasInfo": {
+                          "type": "object",
+                          "properties": {
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "gasPrice": {
+                              "type": "integer"
+                            },
+                            "transactionFee": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "blockInfo": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "integer"
+                            },
+                            "blockHash": {
+                              "type": "string"
+                            },
+                            "parentHash": {
+                              "type": "string"
+                            },
+                            "nonce": {
+                              "type": "string"
+                            },
+                            "sha3Uncles": {
+                              "type": "string"
+                            },
+                            "logsBloom": {
+                              "type": "string"
+                            },
+                            "transactionsRoot": {
+                              "type": "string"
+                            },
+                            "stateRoot": {
+                              "type": "string"
+                            },
+                            "receiptsRoot": {
+                              "type": "string"
+                            },
+                            "miner": {
+                              "type": "string"
+                            },
+                            "difficulty": {
+                              "type": "integer"
+                            },
+                            "totalDifficulty": {
+                              "type": "integer"
+                            },
+                            "size": {
+                              "type": "integer"
+                            },
+                            "extraData": {
+                              "type": "string"
+                            },
+                            "gasLimit": {
+                              "type": "integer"
+                            },
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "transactionCount": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "transactionHash": {
+                                "type": "string"
+                              },
+                              "transactionNonce": {
+                                "type": "integer"
+                              },
+                              "transactionIndex": {
+                                "type": "integer"
+                              },
+                              "transactionFromAddress": {
+                                "type": "string"
+                              },
+                              "transactionToAddress": {
+                                "type": "string"
+                              },
+                              "transactionValue": {
+                                "type": "string"
+                              },
+                              "transactionGas": {
+                                "type": "integer"
+                              },
+                              "transactionGasPrice": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptCumulativeGasUsed": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptGasUsed": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptStatus": {
+                                "type": "integer"
+                              },
+                              "receiptEffectiveGasPrice": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "logs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "logs": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "blobs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "blobKey": {
+                                "type": "string"
+                              },
+                              "fee": {
+                                "type": "integer"
+                              },
+                              "blobIndex": {
+                                "type": "integer"
+                              },
+                              "batchRoot": {
+                                "type": "string"
+                              },
+                              "blobStatus": {
+                                "type": "string"
+                              },
+                              "requestedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "blobCommitment": {
+                                "type": "string"
+                              },
+                              "blobInclusionProof": {
+                                "type": "string"
+                              },
+                              "signatoryRecordHash": {
+                                "type": "string"
+                              },
+                              "confirmationTxnHash": {
+                                "type": "string"
+                              },
+                              "referenceBlockNumber": {
+                                "type": "integer"
+                              },
+                              "confirmationBlockNumber": {
+                                "type": "integer"
+                              },
+                              "securityParams": {
+                                "type": "object"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/batch-by-hash": {
+      "get": {
+        "summary": "BatchInfo by Hash",
+        "description": "Returns comprehensive details about a specific batch by batchHeaderHash",
+        "operationId": "getBatchDetails",
+        "parameters": [
+          {
+            "name": "batchHeaderHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "batchInfo": {
+                          "type": "object",
+                          "properties": {
+                            "batchId": {
+                              "type": "string"
+                            },
+                            "batchHeaderHash": {
+                              "type": "string"
+                            },
+                            "blobsLength": {
+                              "type": "integer"
+                            },
+                            "quorumNumbers": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "blobHeadersRoot": {
+                              "type": "string"
+                            },
+                            "referenceBlockNumber": {
+                              "type": "integer"
+                            },
+                            "signedStakeForQuorums": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "transactionHash": {
+                              "type": "string"
+                            },
+                            "blockTimestamp": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "_blocknumber": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "apkG2": {
+                              "type": "string"
+                            },
+                            "sigma": {
+                              "type": "string"
+                            },
+                            "quorumApks": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "quorumApkIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerPubkeys": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "totalStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerQuorumBitmapIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "nonSigningInfo": {
+                          "type": "object",
+                          "properties": {
+                            "nonSigners": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "nonSignerCount": {
+                              "type": "integer"
+                            },
+                            "signatoryRecordHash": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "gasInfo": {
+                          "type": "object",
+                          "properties": {
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "gasPrice": {
+                              "type": "integer"
+                            },
+                            "transactionFee": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "blockInfo": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "integer"
+                            },
+                            "blockHash": {
+                              "type": "string"
+                            },
+                            "parentHash": {
+                              "type": "string"
+                            },
+                            "nonce": {
+                              "type": "string"
+                            },
+                            "sha3Uncles": {
+                              "type": "string"
+                            },
+                            "logsBloom": {
+                              "type": "string"
+                            },
+                            "transactionsRoot": {
+                              "type": "string"
+                            },
+                            "stateRoot": {
+                              "type": "string"
+                            },
+                            "receiptsRoot": {
+                              "type": "string"
+                            },
+                            "miner": {
+                              "type": "string"
+                            },
+                            "difficulty": {
+                              "type": "integer"
+                            },
+                            "totalDifficulty": {
+                              "type": "integer"
+                            },
+                            "size": {
+                              "type": "integer"
+                            },
+                            "extraData": {
+                              "type": "string"
+                            },
+                            "gasLimit": {
+                              "type": "integer"
+                            },
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "transactionCount": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "transactionHash": {
+                                "type": "string"
+                              },
+                              "transactionNonce": {
+                                "type": "integer"
+                              },
+                              "transactionIndex": {
+                                "type": "integer"
+                              },
+                              "transactionFromAddress": {
+                                "type": "string"
+                              },
+                              "transactionToAddress": {
+                                "type": "string"
+                              },
+                              "transactionValue": {
+                                "type": "string"
+                              },
+                              "transactionGas": {
+                                "type": "integer"
+                              },
+                              "transactionGasPrice": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptCumulativeGasUsed": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptGasUsed": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptStatus": {
+                                "type": "integer"
+                              },
+                              "receiptEffectiveGasPrice": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "logs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "logs": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "blobs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "blobKey": {
+                                "type": "string"
+                              },
+                              "fee": {
+                                "type": "integer"
+                              },
+                              "blobIndex": {
+                                "type": "integer"
+                              },
+                              "batchRoot": {
+                                "type": "string"
+                              },
+                              "blobStatus": {
+                                "type": "string"
+                              },
+                              "requestedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "blobCommitment": {
+                                "type": "string"
+                              },
+                              "blobInclusionProof": {
+                                "type": "string"
+                              },
+                              "signatoryRecordHash": {
+                                "type": "string"
+                              },
+                              "confirmationTxnHash": {
+                                "type": "string"
+                              },
+                              "referenceBlockNumber": {
+                                "type": "integer"
+                              },
+                              "confirmationBlockNumber": {
+                                "type": "integer"
+                              },
+                              "securityParams": {
+                                "type": "object"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/batch": {
+      "get": {
+        "summary": "Batch Information",
+        "description": "Returns batch details by either batchId or batchHeaderHash",
+        "operationId": "getBatchDetails",
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "batchHeaderHash",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "batchInfo": {
+                          "type": "object",
+                          "properties": {
+                            "batchId": {
+                              "type": "string"
+                            },
+                            "batchHeaderHash": {
+                              "type": "string"
+                            },
+                            "blobsLength": {
+                              "type": "integer"
+                            },
+                            "quorumNumbers": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "blobHeadersRoot": {
+                              "type": "string"
+                            },
+                            "referenceBlockNumber": {
+                              "type": "integer"
+                            },
+                            "signedStakeForQuorums": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "transactionHash": {
+                              "type": "string"
+                            },
+                            "blockTimestamp": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "_blocknumber": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "apkG2": {
+                              "type": "string"
+                            },
+                            "sigma": {
+                              "type": "string"
+                            },
+                            "quorumApks": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "quorumApkIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerPubkeys": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "totalStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerQuorumBitmapIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "nonSigningInfo": {
+                          "type": "object",
+                          "properties": {
+                            "nonSigners": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "nonSignerCount": {
+                              "type": "integer"
+                            },
+                            "signatoryRecordHash": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "gasInfo": {
+                          "type": "object",
+                          "properties": {
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "gasPrice": {
+                              "type": "integer"
+                            },
+                            "transactionFee": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "blockInfo": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "integer"
+                            },
+                            "blockHash": {
+                              "type": "string"
+                            },
+                            "parentHash": {
+                              "type": "string"
+                            },
+                            "nonce": {
+                              "type": "string"
+                            },
+                            "sha3Uncles": {
+                              "type": "string"
+                            },
+                            "logsBloom": {
+                              "type": "string"
+                            },
+                            "transactionsRoot": {
+                              "type": "string"
+                            },
+                            "stateRoot": {
+                              "type": "string"
+                            },
+                            "receiptsRoot": {
+                              "type": "string"
+                            },
+                            "miner": {
+                              "type": "string"
+                            },
+                            "difficulty": {
+                              "type": "integer"
+                            },
+                            "totalDifficulty": {
+                              "type": "integer"
+                            },
+                            "size": {
+                              "type": "integer"
+                            },
+                            "extraData": {
+                              "type": "string"
+                            },
+                            "gasLimit": {
+                              "type": "integer"
+                            },
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "transactionCount": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "transactionHash": {
+                                "type": "string"
+                              },
+                              "transactionNonce": {
+                                "type": "integer"
+                              },
+                              "transactionIndex": {
+                                "type": "integer"
+                              },
+                              "transactionFromAddress": {
+                                "type": "string"
+                              },
+                              "transactionToAddress": {
+                                "type": "string"
+                              },
+                              "transactionValue": {
+                                "type": "string"
+                              },
+                              "transactionGas": {
+                                "type": "integer"
+                              },
+                              "transactionGasPrice": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptCumulativeGasUsed": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptGasUsed": {
+                                "type": "integer"
+                              },
+                              "transactionReceiptStatus": {
+                                "type": "integer"
+                              },
+                              "receiptEffectiveGasPrice": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "logs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "logs": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "blobs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "blobKey": {
+                                "type": "string"
+                              },
+                              "fee": {
+                                "type": "integer"
+                              },
+                              "blobIndex": {
+                                "type": "integer"
+                              },
+                              "batchRoot": {
+                                "type": "string"
+                              },
+                              "blobStatus": {
+                                "type": "string"
+                              },
+                              "requestedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "blobCommitment": {
+                                "type": "string"
+                              },
+                              "blobInclusionProof": {
+                                "type": "string"
+                              },
+                              "signatoryRecordHash": {
+                                "type": "string"
+                              },
+                              "confirmationTxnHash": {
+                                "type": "string"
+                              },
+                              "referenceBlockNumber": {
+                                "type": "integer"
+                              },
+                              "confirmationBlockNumber": {
+                                "type": "integer"
+                              },
+                              "securityParams": {
+                                "type": "object"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        },
+                        "queryParam": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": ["batchId", "batchHeaderHash"]
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": ["bad_request"],
+                          "description": "A short code indicating the error code returned.",
+                          "example": "bad_request"
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "A human readable explanation of what went wrong."
+                        },
+                        "doc_url": {
+                          "type": "string",
+                          "description": "A link to our documentation with more details about this error code",
+                          "example": "https://docs.rescan.dev.com/api-reference/errors#bad_request"
+                        }
+                      },
+                      "required": ["code", "message"]
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The server cannot find the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": ["not_found"],
+                          "description": "A short code indicating the error code returned.",
+                          "example": "not_found"
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "A human readable explanation of what went wrong."
+                        },
+                        "doc_url": {
+                          "type": "string",
+                          "description": "A link to our documentation with more details about this error code",
+                          "example": "https://docs.rescan.dev.com/api-reference/errors#not_found"
+                        }
+                      },
+                      "required": ["code", "message"]
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": ["internal_server_error"],
+                          "description": "A short code indicating the error code returned.",
+                          "example": "internal_server_error"
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "A human readable explanation of what went wrong."
+                        },
+                        "doc_url": {
+                          "type": "string",
+                          "description": "A link to our documentation with more details about this error code",
+                          "example": "https://docs.rescan.dev.com/api-reference/errors#internal_server_error"
+                        }
+                      },
+                      "required": ["code", "message"]
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batch-nonsigners": {
+      "get": {
+        "summary": "Batch Non-Signers",
+        "description": "Returns non-signers details by batchId",
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the batch to fetch non-signer information for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The ID of the non-signing operator"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The name of the non-signing operator"
+                          },
+                          "socket": {
+                            "type": "string",
+                            "description": "The socket of the non-signing operator"
+                          },
+                          "status": {
+                            "type": "boolean",
+                            "description": "The status of the non-signing operator"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of non-signers for the batch"
+                        },
+                        "batchId": {
+                          "type": "string",
+                          "description": "The ID of the batch"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalNonSigners": {
+                              "type": "integer",
+                              "description": "The total number of non-signers"
+                            },
+                            "activeNonSigners": {
+                              "type": "integer",
+                              "description": "The number of active non-signers"
+                            },
+                            "inactiveNonSigners": {
+                              "type": "integer",
+                              "description": "The number of inactive non-signers"
+                            },
+                            "activePercentage": {
+                              "type": "number",
+                              "description": "The percentage of active non-signers"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

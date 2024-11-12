@@ -12,9 +12,18 @@ async function combineOpenApiFiles(paths) {
     const combinedApi = {
       openapi: "3.0.1",
       info: {
-        title: "Combined OpenAPI Specification",
+        title: "OpenAPI Rescan Explorer",
+        description: "Api reference for the Rescan Explorer",
+        license: {
+          name: "MIT",
+        },
         version: "1.0.0",
       },
+      servers: [
+        {
+          url: "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba",
+        },
+      ],
       paths: {},
       components: {
         schemas: {},
@@ -82,12 +91,16 @@ async function combineOpenApiFiles(paths) {
 // Example usage
 async function processJsonFiles() {
   const filePaths = [
+    path.join(__dirname, "default_openapi.json"),
     path.join(__dirname, "eigen-reference/avs/_openapi.json"),
     path.join(__dirname, "eigen-reference/metrics/_openapi.json"),
     path.join(__dirname, "eigen-reference/operators/_openapi.json"),
     path.join(__dirname, "eigen-reference/pods/_openapi.json"),
     path.join(__dirname, "eigen-reference/stakers/_openapi.json"),
     path.join(__dirname, "eigen-reference/withdrawals-deposits/_openapi.json"),
+    path.join(__dirname, "eigenda-reference/batches/_openapi.json"),
+    path.join(__dirname, "eigenda-reference/operators/_openapi.json"),
+    path.join(__dirname, "eigenda-reference/quorums/_openapi.json"),
   ];
 
   try {
