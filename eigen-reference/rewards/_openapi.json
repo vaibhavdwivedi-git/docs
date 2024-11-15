@@ -1,0 +1,1194 @@
+{
+  "paths": {
+    "/all-distribution-roots": {
+      "get": {
+        "operationId": "getAllDistributionRoots",
+        "summary": "Retrieve all distribution roots",
+        "description": "Fetches all distribution root records with pagination support. Returns the most recent root for each rootIndex.",
+        "tags": ["Distribution Roots"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of distribution root records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rootIndex": {
+                            "type": "number",
+                            "description": "The index of the distribution root",
+                            "example": 1
+                          },
+                          "root": {
+                            "type": "string",
+                            "description": "The Merkle root hash",
+                            "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                          },
+                          "rewardsCalculationEndTimestamp": {
+                            "type": "number",
+                            "description": "The timestamp when rewards calculation ended",
+                            "example": 1727836560
+                          },
+                          "activatedAt": {
+                            "type": "number",
+                            "description": "The timestamp when the root was activated",
+                            "example": 1727836560
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The current status of the distribution root",
+                            "example": "active"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "The timestamp when the record was created",
+                            "example": 1727836560
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "The timestamp when the record was last updated",
+                            "example": 1727836560
+                          }
+                        },
+                        "required": [
+                          "rootIndex",
+                          "root",
+                          "rewardsCalculationEndTimestamp",
+                          "activatedAt",
+                          "status",
+                          "createdAt",
+                          "updatedAt"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "number",
+                          "description": "Total number of records in the database",
+                          "example": 30
+                        },
+                        "page": {
+                          "type": "number",
+                          "description": "The page number of the current response",
+                          "example": 1
+                        },
+                        "limit": {
+                          "type": "number",
+                          "description": "The number of records returned for this query",
+                          "example": 12
+                        }
+                      },
+                      "required": ["total", "page", "limit"]
+                    }
+                  },
+                  "required": ["data", "meta"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/distribution-roots-by-status": {
+      "get": {
+        "operationId": "getAllDistributionRootsByStatus",
+        "summary": "Retrieve all distribution roots by status",
+        "description": "Fetches all distribution root records by status with pagination support. Returns the most recent root for each rootIndex.",
+        "tags": ["Distribution Roots"],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The status of distribution roots to filter by",
+              "example": "disabled"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of distribution root records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rootIndex": {
+                            "type": "number",
+                            "description": "The index of the distribution root",
+                            "example": 1
+                          },
+                          "root": {
+                            "type": "string",
+                            "description": "The Merkle root hash",
+                            "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                          },
+                          "rewardsCalculationEndTimestamp": {
+                            "type": "number",
+                            "description": "The timestamp when rewards calculation ended",
+                            "example": 1727836560
+                          },
+                          "activatedAt": {
+                            "type": "number",
+                            "description": "The timestamp when the root was activated",
+                            "example": 1727836560
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The current status of the distribution root",
+                            "example": "active"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "The timestamp when the record was created",
+                            "example": 1727836560
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "The timestamp when the record was last updated",
+                            "example": 1727836560
+                          }
+                        },
+                        "required": [
+                          "rootIndex",
+                          "root",
+                          "rewardsCalculationEndTimestamp",
+                          "activatedAt",
+                          "status",
+                          "createdAt",
+                          "updatedAt"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "number",
+                          "description": "Total number of records in the database",
+                          "example": 30
+                        },
+                        "page": {
+                          "type": "number",
+                          "description": "The page number of the current response",
+                          "example": 1
+                        },
+                        "limit": {
+                          "type": "number",
+                          "description": "The number of records returned for this query",
+                          "example": 12
+                        }
+                      },
+                      "required": ["total", "page", "limit"]
+                    }
+                  },
+                  "required": ["data", "meta"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/all-rewards-claim": {
+      "get": {
+        "operationId": "getAllRewardClaims",
+        "summary": "Retrieve all reward claims with statistics",
+        "description": "Fetches reward claims with pagination support, filtering options, and comprehensive statistics about the claims.",
+        "tags": ["Reward Claims"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          },
+          {
+            "name": "earner",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Address of the reward earner to filter by",
+              "example": "0x1234567890abcdef1234567890abcdef12345678"
+            }
+          },
+          {
+            "name": "claimer",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Address of the claimer to filter by",
+              "example": "0x1234567890abcdef1234567890abcdef12345678"
+            }
+          },
+          {
+            "name": "recipient",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Address of the recipient to filter by",
+              "example": "0x1234567890abcdef1234567890abcdef12345678"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Address of the token to filter by",
+              "example": "0x1234567890abcdef1234567890abcdef12345678"
+            }
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Merkle root hash to filter by",
+              "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of reward claims with statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "root": {
+                            "type": "string",
+                            "description": "The Merkle root hash",
+                            "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                          },
+                          "earner": {
+                            "type": "string",
+                            "description": "Address of the reward earner",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "claimer": {
+                            "type": "string",
+                            "description": "Address of the claimer",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "recipient": {
+                            "type": "string",
+                            "description": "Address of the recipient",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "Address of the token",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "claimedAmount": {
+                            "type": "string",
+                            "description": "Amount of tokens claimed",
+                            "example": "1000000000000000000"
+                          },
+                          "claimedAt": {
+                            "type": "number",
+                            "description": "Timestamp of when the claim was made",
+                            "example": 1727836560
+                          }
+                        },
+                        "required": [
+                          "root",
+                          "earner",
+                          "claimer",
+                          "recipient",
+                          "token",
+                          "claimedAmount",
+                          "claimedAt"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "number",
+                          "description": "Total number of records in the database",
+                          "example": 30
+                        },
+                        "page": {
+                          "type": "number",
+                          "description": "The page number of the current response",
+                          "example": 1
+                        },
+                        "limit": {
+                          "type": "number",
+                          "description": "The number of records returned for this query",
+                          "example": 12
+                        }
+                      },
+                      "required": ["total", "page", "limit"]
+                    },
+                    "statistics": {
+                      "type": "object",
+                      "properties": {
+                        "distinctRoots": {
+                          "type": "number",
+                          "description": "Number of unique Merkle roots",
+                          "example": 5
+                        },
+                        "distinctClaimers": {
+                          "type": "number",
+                          "description": "Number of unique claimers",
+                          "example": 100
+                        },
+                        "distinctEarners": {
+                          "type": "number",
+                          "description": "Number of unique earners",
+                          "example": 95
+                        },
+                        "distinctRecipients": {
+                          "type": "number",
+                          "description": "Number of unique recipients",
+                          "example": 98
+                        },
+                        "distinctTokens": {
+                          "type": "number",
+                          "description": "Number of unique tokens",
+                          "example": 3
+                        },
+                        "totalClaimedAmount": {
+                          "type": "string",
+                          "description": "Total amount claimed across all tokens",
+                          "example": "1000000000000000000000"
+                        },
+                        "firstClaimDate": {
+                          "type": "number",
+                          "description": "Timestamp of the first claim",
+                          "example": 1727836560,
+                          "nullable": true
+                        },
+                        "lastClaimDate": {
+                          "type": "number",
+                          "description": "Timestamp of the last claim",
+                          "example": 1727836560,
+                          "nullable": true
+                        },
+                        "tokensSummary": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "totalAmount": {
+                                "type": "string",
+                                "description": "Total amount claimed for this token",
+                                "example": "500000000000000000000"
+                              },
+                              "claimsCount": {
+                                "type": "number",
+                                "description": "Number of claims for this token",
+                                "example": 50
+                              }
+                            },
+                            "required": ["totalAmount", "claimsCount"]
+                          },
+                          "description": "Summary of claims grouped by token"
+                        }
+                      },
+                      "required": [
+                        "distinctRoots",
+                        "distinctClaimers",
+                        "distinctEarners",
+                        "distinctRecipients",
+                        "distinctTokens",
+                        "totalClaimedAmount",
+                        "firstClaimDate",
+                        "lastClaimDate",
+                        "tokensSummary"
+                      ]
+                    }
+                  },
+                  "required": ["data", "meta", "statistics"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/all-avs-rewards-submission": {
+      "get": {
+        "operationId": "getAVSRewardsSubmissions",
+        "summary": "Retrieve all AVS rewards submissions",
+        "description": "Fetches AVS rewards submissions with pagination support and strategy information.",
+        "tags": ["AVS Rewards"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of AVS rewards submissions with pagination metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS identifier",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "submissionNonce": {
+                            "type": "string",
+                            "description": "The nonce of the submission",
+                            "example": "1"
+                          },
+                          "rewardsSubmissionHash": {
+                            "type": "string",
+                            "description": "Hash of the rewards submission",
+                            "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                          },
+                          "tokenUsed": {
+                            "type": "string",
+                            "description": "Address of the token used for rewards",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "tokenAmount": {
+                            "type": "string",
+                            "description": "Amount of tokens for rewards",
+                            "example": "1000000000000000000"
+                          },
+                          "startTimestamp": {
+                            "type": "number",
+                            "description": "Start timestamp of the rewards period",
+                            "example": 1727836560
+                          },
+                          "duration": {
+                            "type": "number",
+                            "description": "Duration of the rewards period in seconds",
+                            "example": 604800
+                          },
+                          "strategies": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "List of strategy addresses",
+                            "example": [
+                              "0x1234567890abcdef1234567890abcdef12345678",
+                              "0x9876543210abcdef1234567890abcdef12345678"
+                            ]
+                          },
+                          "blockTimestamp": {
+                            "type": "number",
+                            "description": "Timestamp of the block when submission was made",
+                            "example": 1727836560
+                          }
+                        },
+                        "required": [
+                          "avs",
+                          "submissionNonce",
+                          "rewardsSubmissionHash",
+                          "tokenUsed",
+                          "tokenAmount",
+                          "startTimestamp",
+                          "duration",
+                          "strategies",
+                          "blockTimestamp"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "number",
+                          "description": "Total number of records in the database",
+                          "example": 30
+                        },
+                        "page": {
+                          "type": "number",
+                          "description": "The current page number",
+                          "example": 1
+                        },
+                        "limit": {
+                          "type": "number",
+                          "description": "The number of records per page",
+                          "example": 12
+                        }
+                      },
+                      "required": ["total", "page", "limit"]
+                    }
+                  },
+                  "required": ["data", "meta"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/avs-rewards-submission-by-avs": {
+      "get": {
+        "operationId": "getAVSRewardsSubmissionsByAVS",
+        "summary": "Retrieve all AVS rewards submissions of an AVS",
+        "description": "Fetches AVS rewards submissions of an AVS with pagination support and strategy information.",
+        "tags": ["AVS Rewards"],
+        "parameters": [
+          {
+            "name": "avs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The address of AVS to filter by",
+              "example": "0x870679e138bcdf293b7ff14dd44b70fc97e12fc0"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of AVS rewards submissions with pagination metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS identifier",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "submissionNonce": {
+                            "type": "string",
+                            "description": "The nonce of the submission",
+                            "example": "1"
+                          },
+                          "rewardsSubmissionHash": {
+                            "type": "string",
+                            "description": "Hash of the rewards submission",
+                            "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                          },
+                          "tokenUsed": {
+                            "type": "string",
+                            "description": "Address of the token used for rewards",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "tokenAmount": {
+                            "type": "string",
+                            "description": "Amount of tokens for rewards",
+                            "example": "1000000000000000000"
+                          },
+                          "startTimestamp": {
+                            "type": "number",
+                            "description": "Start timestamp of the rewards period",
+                            "example": 1727836560
+                          },
+                          "duration": {
+                            "type": "number",
+                            "description": "Duration of the rewards period in seconds",
+                            "example": 604800
+                          },
+                          "strategies": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "List of strategy addresses",
+                            "example": [
+                              "0x1234567890abcdef1234567890abcdef12345678",
+                              "0x9876543210abcdef1234567890abcdef12345678"
+                            ]
+                          },
+                          "blockTimestamp": {
+                            "type": "number",
+                            "description": "Timestamp of the block when submission was made",
+                            "example": 1727836560
+                          }
+                        },
+                        "required": [
+                          "avs",
+                          "submissionNonce",
+                          "rewardsSubmissionHash",
+                          "tokenUsed",
+                          "tokenAmount",
+                          "startTimestamp",
+                          "duration",
+                          "strategies",
+                          "blockTimestamp"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "number",
+                          "description": "Total number of records in the database",
+                          "example": 30
+                        },
+                        "page": {
+                          "type": "number",
+                          "description": "The current page number",
+                          "example": 1
+                        },
+                        "limit": {
+                          "type": "number",
+                          "description": "The number of records per page",
+                          "example": 12
+                        }
+                      },
+                      "required": ["total", "page", "limit"]
+                    }
+                  },
+                  "required": ["data", "meta"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/avs-rewards-submission-by-tokenUsed": {
+      "get": {
+        "operationId": "getAVSRewardsSubmissionsByTokenUsed",
+        "summary": "Retrieve all AVS rewards submissions of given Token",
+        "description": "Fetches AVS rewards submissions of an Token with pagination support and strategy information.",
+        "tags": ["AVS Rewards"],
+        "parameters": [
+          {
+            "name": "tokenUsed",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The address of Token to filter by",
+              "example": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "description": "The page number to retrieve",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 12,
+              "description": "The number of records per page",
+              "example": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of AVS rewards submissions with pagination metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS identifier",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "submissionNonce": {
+                            "type": "string",
+                            "description": "The nonce of the submission",
+                            "example": "1"
+                          },
+                          "rewardsSubmissionHash": {
+                            "type": "string",
+                            "description": "Hash of the rewards submission",
+                            "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                          },
+                          "tokenUsed": {
+                            "type": "string",
+                            "description": "Address of the token used for rewards",
+                            "example": "0x1234567890abcdef1234567890abcdef12345678"
+                          },
+                          "tokenAmount": {
+                            "type": "string",
+                            "description": "Amount of tokens for rewards",
+                            "example": "1000000000000000000"
+                          },
+                          "startTimestamp": {
+                            "type": "number",
+                            "description": "Start timestamp of the rewards period",
+                            "example": 1727836560
+                          },
+                          "duration": {
+                            "type": "number",
+                            "description": "Duration of the rewards period in seconds",
+                            "example": 604800
+                          },
+                          "strategies": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "List of strategy addresses",
+                            "example": [
+                              "0x1234567890abcdef1234567890abcdef12345678",
+                              "0x9876543210abcdef1234567890abcdef12345678"
+                            ]
+                          },
+                          "blockTimestamp": {
+                            "type": "number",
+                            "description": "Timestamp of the block when submission was made",
+                            "example": 1727836560
+                          }
+                        },
+                        "required": [
+                          "avs",
+                          "submissionNonce",
+                          "rewardsSubmissionHash",
+                          "tokenUsed",
+                          "tokenAmount",
+                          "startTimestamp",
+                          "duration",
+                          "strategies",
+                          "blockTimestamp"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "number",
+                          "description": "Total number of records in the database",
+                          "example": 30
+                        },
+                        "page": {
+                          "type": "number",
+                          "description": "The current page number",
+                          "example": 1
+                        },
+                        "limit": {
+                          "type": "number",
+                          "description": "The number of records per page",
+                          "example": 12
+                        }
+                      },
+                      "required": ["total", "page", "limit"]
+                    }
+                  },
+                  "required": ["data", "meta"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/avs-rewards-submission-by-hash": {
+      "get": {
+        "operationId": "getAVSRewardsSubmissionByHash",
+        "summary": "Retrieve AVS rewards submission by hash",
+        "description": "Fetches detailed information about a specific AVS rewards submission using its hash.",
+        "tags": ["AVS Rewards"],
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The rewards submission hash to look up",
+              "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The detailed information about the AVS rewards submission.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "avs": {
+                          "type": "string",
+                          "description": "The AVS identifier",
+                          "example": "0x1234567890abcdef1234567890abcdef12345678"
+                        },
+                        "submissionNonce": {
+                          "type": "string",
+                          "description": "The nonce of the submission",
+                          "example": "1"
+                        },
+                        "rewardsSubmissionHash": {
+                          "type": "string",
+                          "description": "Hash of the rewards submission",
+                          "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                        },
+                        "tokenUsed": {
+                          "type": "string",
+                          "description": "Address of the token used for rewards",
+                          "example": "0x1234567890abcdef1234567890abcdef12345678"
+                        },
+                        "tokenAmount": {
+                          "type": "string",
+                          "description": "Amount of tokens for rewards",
+                          "example": "1000000000000000000"
+                        },
+                        "startTimestamp": {
+                          "type": "number",
+                          "description": "Start timestamp of the rewards period",
+                          "example": 1727836560
+                        },
+                        "duration": {
+                          "type": "number",
+                          "description": "Duration of the rewards period in seconds",
+                          "example": 604800
+                        },
+                        "strategyAndMultipliers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "strategy": {
+                                "type": "string",
+                                "description": "Address of the strategy",
+                                "example": "0x1234567890abcdef1234567890abcdef12345678"
+                              },
+                              "multiplier": {
+                                "type": "number",
+                                "description": "Strategy multiplier value (normalized to 18 decimals)",
+                                "example": 1.5
+                              }
+                            },
+                            "required": ["strategy", "multiplier"]
+                          },
+                          "description": "Array of strategy addresses and their corresponding multipliers"
+                        },
+                        "blockTimestamp": {
+                          "type": "number",
+                          "description": "Timestamp of the block when submission was made",
+                          "example": 1727836560
+                        }
+                      },
+                      "required": [
+                        "avs",
+                        "submissionNonce",
+                        "rewardsSubmissionHash",
+                        "tokenUsed",
+                        "tokenAmount",
+                        "startTimestamp",
+                        "duration",
+                        "strategyAndMultipliers",
+                        "blockTimestamp"
+                      ]
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

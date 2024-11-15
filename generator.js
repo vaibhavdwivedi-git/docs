@@ -98,6 +98,7 @@ async function processJsonFiles() {
     path.join(__dirname, "eigen-reference/pods/_openapi.json"),
     path.join(__dirname, "eigen-reference/stakers/_openapi.json"),
     path.join(__dirname, "eigen-reference/withdrawals-deposits/_openapi.json"),
+    path.join(__dirname, "eigen-reference/rewards/_openapi.json"),
     path.join(__dirname, "eigenda-reference/batches/_openapi.json"),
     path.join(__dirname, "eigenda-reference/operators/_openapi.json"),
     path.join(__dirname, "eigenda-reference/quorums/_openapi.json"),
