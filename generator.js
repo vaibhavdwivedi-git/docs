@@ -21,7 +21,7 @@ async function combineOpenApiFiles(paths) {
       },
       servers: [
         {
-          url: "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba",
+          url: "https://api.blockflow.network/rest",
         },
       ],
       paths: {},
@@ -91,7 +91,7 @@ async function combineOpenApiFiles(paths) {
 // Example usage
 async function processJsonFiles() {
   const filePaths = [
-    path.join(__dirname, "default_openapi.json"),
+    path.join(__dirname, "component_openapi.json"),
     path.join(__dirname, "eigen-reference/avs/_openapi.json"),
     path.join(__dirname, "eigen-reference/metrics/_openapi.json"),
     path.join(__dirname, "eigen-reference/operators/_openapi.json"),

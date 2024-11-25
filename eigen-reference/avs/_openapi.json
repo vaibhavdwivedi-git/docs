@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/avs": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs": {
       "get": {
         "operationId": "getAllAvs",
         "summary": "Retrieve all registered AVS",
@@ -246,7 +246,7 @@
         }
       }
     },
-    "/avs-all-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-all-address": {
       "get": {
         "operationId": "getAllAvsAddresses",
         "summary": "Retrieve all AVS addresses",
@@ -381,7 +381,7 @@
         }
       }
     },
-    "/avs-by-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-by-address": {
       "get": {
         "operationId": "getAvsByAddress",
         "summary": "Retrieve an AVS details for a specific address",
@@ -607,7 +607,7 @@
         }
       }
     },
-    "/avs-its-stakers": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-stakers": {
       "get": {
         "operationId": "getAvsStakersByAddress",
         "summary": "Retrieve all stakers for a specific AVS address",
@@ -790,7 +790,7 @@
         }
       }
     },
-    "/avs-its-operators": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-operators": {
       "get": {
         "operationId": "getAvsOperatorsByAddress",
         "summary": "Retrieve all operators for a given AVS address",

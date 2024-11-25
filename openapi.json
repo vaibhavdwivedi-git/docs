@@ -10,11 +10,11 @@
   },
   "servers": [
     {
-      "url": "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba"
+      "url": "https://api.blockflow.network/rest"
     }
   ],
   "paths": {
-    "/avs": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs": {
       "get": {
         "operationId": "getAllAvs",
         "summary": "Retrieve all registered AVS",
@@ -271,7 +271,7 @@
         }
       }
     },
-    "/avs-all-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-all-address": {
       "get": {
         "operationId": "getAllAvsAddresses",
         "summary": "Retrieve all AVS addresses",
@@ -422,7 +422,7 @@
         }
       }
     },
-    "/avs-by-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-by-address": {
       "get": {
         "operationId": "getAvsByAddress",
         "summary": "Retrieve an AVS details for a specific address",
@@ -652,7 +652,7 @@
         }
       }
     },
-    "/avs-its-stakers": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-stakers": {
       "get": {
         "operationId": "getAvsStakersByAddress",
         "summary": "Retrieve all stakers for a specific AVS address",
@@ -849,7 +849,7 @@
         }
       }
     },
-    "/avs-its-operators": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-operators": {
       "get": {
         "operationId": "getAvsOperatorsByAddress",
         "summary": "Retrieve all operators for a given AVS address",
@@ -1122,7 +1122,7 @@
         }
       }
     },
-    "/metrics": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics": {
       "get": {
         "operationId": "getAllMetrics",
         "summary": "Retrieve summary metrics",
@@ -1225,7 +1225,7 @@
         }
       }
     },
-    "/metrics-tvl": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics-tvl": {
       "get": {
         "operationId": "getTvlMetrics",
         "summary": "Retrieve total TVL",
@@ -1310,7 +1310,7 @@
         }
       }
     },
-    "/metrics-tvl-strategy": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics-tvl-strategy": {
       "get": {
         "operationId": "getTvlRestakingMetricByStrategy",
         "summary": "Retrieve a strategy TVL by name",
@@ -1397,7 +1397,7 @@
         }
       }
     },
-    "/total-avs": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-avs": {
       "get": {
         "operationId": "getTotalAvsMetric",
         "summary": "Retrieve total number of AVS",
@@ -1468,7 +1468,7 @@
         }
       }
     },
-    "/total-operators": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-operators": {
       "get": {
         "operationId": "getTotalOperatorsMetric",
         "summary": "Retrieve total number of AVS operators",
@@ -1539,7 +1539,7 @@
         }
       }
     },
-    "/total-stakers": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-stakers": {
       "get": {
         "operationId": "getTotalStakerssMetric",
         "summary": "Retrieve total number of AVS stakers",
@@ -1610,7 +1610,7 @@
         }
       }
     },
-    "/total-withdrawals": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-withdrawals": {
       "get": {
         "operationId": "getTotalWithdrawals",
         "summary": "Retrieve total number of withdrawals ",
@@ -1693,7 +1693,7 @@
         }
       }
     },
-    "/total-deposits": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-deposits": {
       "get": {
         "operationId": "getTotalDeposits",
         "summary": "Retrieve total number of deposits",
@@ -1764,7 +1764,7 @@
         }
       }
     },
-    "/operators": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operators": {
       "get": {
         "operationId": "getAllOperators",
         "summary": "Retrieve all operators",
@@ -2110,7 +2110,7 @@
         }
       }
     },
-    "/operator-by-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-by-address": {
       "get": {
         "operationId": "getOperatorByAddress",
         "summary": "Retrieve operator details for a specific address",
@@ -2387,7 +2387,7 @@
         }
       }
     },
-    "/operators-all-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operators-all-address": {
       "get": {
         "operationId": "getOperatorAddresses",
         "summary": "Retrieve all operator addresses with basic metadata",
@@ -2585,7 +2585,7 @@
         }
       }
     },
-    "/operator-stakers": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-stakers": {
       "get": {
         "operationId": "getOperatorStakers",
         "summary": "Retrieve all stakers for a specific operator",
@@ -2838,7 +2838,7 @@
         }
       }
     },
-    "/operator-staker-history": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-staker-history": {
       "get": {
         "operationId": "getOperatorStakerHistory",
         "summary": "Retrieve staking history for a specific operator",
@@ -3102,7 +3102,7 @@
         }
       }
     },
-    "/operator-avs-history": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-avs-history": {
       "get": {
         "operationId": "getOperatorAvsHistory",
         "summary": "Retrieve AVS history for a specific operator",
@@ -3330,7 +3330,7 @@
         }
       }
     },
-    "/pods": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods": {
       "get": {
         "operationId": "getPods",
         "summary": "Retrieve all EigenPods",
@@ -3529,7 +3529,7 @@
         }
       }
     },
-    "/pods-all-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods-all-address": {
       "get": {
         "operationId": "getPodsAllAddresses",
         "summary": "Retrieve EigenPods Addresses List",
@@ -3671,7 +3671,7 @@
         }
       }
     },
-    "/pod-by-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pod-by-address": {
       "get": {
         "operationId": "getPodByAddress",
         "summary": "Retrieve an EigenPod by address",
@@ -3887,7 +3887,7 @@
         }
       }
     },
-    "/pods-by-owner": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods-by-owner": {
       "get": {
         "operationId": "getPodsByOwner",
         "summary": "Retrieve EigenPods by owner address",
@@ -4097,7 +4097,7 @@
         }
       }
     },
-    "/pods-transaction": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods-transaction": {
       "get": {
         "operationId": "getPodsTransactions",
         "summary": "Retrieve all EigenPod Transactions",
@@ -4247,7 +4247,7 @@
         }
       }
     },
-    "/pod-transaction": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pod-transaction": {
       "get": {
         "operationId": "getPodTransactions",
         "summary": "Retrieve transactions for a specific EigenPod",
@@ -4407,7 +4407,7 @@
         }
       }
     },
-    "/stakers": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/stakers": {
       "get": {
         "operationId": "getAllStakers",
         "summary": "Retrieve all stakers",
@@ -4646,7 +4646,7 @@
         }
       }
     },
-    "/staker-by-address": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-by-address": {
       "get": {
         "operationId": "getStakerByAddress",
         "summary": "Retrieve staker details for a specific address",
@@ -4878,7 +4878,7 @@
         }
       }
     },
-    "/staker-withdrawals-all": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawals-all": {
       "get": {
         "operationId": "getStakerWithdrawals",
         "summary": "Retrieve all withdrawals for a specific staker",
@@ -5158,7 +5158,7 @@
         }
       }
     },
-    "/staker-withdrawal-completed": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawal-completed": {
       "get": {
         "operationId": "getStakerCompletedWithdrawals",
         "summary": "Retrieve completed withdrawals for a specific staker",
@@ -5432,7 +5432,7 @@
         }
       }
     },
-    "/staker-deposits": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-deposits": {
       "get": {
         "operationId": "getStakerDeposits",
         "summary": "Retrieve deposits for a specific staker",
@@ -5668,7 +5668,7 @@
         }
       }
     },
-    "/staker-withdrawals-queued": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawals-queued": {
       "get": {
         "operationId": "getStakerQueuedWithdrawals",
         "summary": "Retrieve queued withdrawals for a specific staker",
@@ -5929,7 +5929,7 @@
         }
       }
     },
-    "/deposits": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/deposits": {
       "get": {
         "operationId": "getAllDeposits",
         "summary": "Retrieve all deposits",
@@ -6154,7 +6154,7 @@
         }
       }
     },
-    "/withdrawals": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/withdrawals": {
       "get": {
         "operationId": "getAllWithdrawals",
         "summary": "Retrieve all withdrawals",
@@ -6421,7 +6421,7 @@
         }
       }
     },
-    "/withdrawals-by-withdrawal-root": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/withdrawals-by-withdrawal-root": {
       "get": {
         "operationId": "getWithdrawalByRoot",
         "summary": "Retrieve withdrawal details by withdrawal root",
@@ -6679,7 +6679,7 @@
         }
       }
     },
-    "/all-distribution-roots": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-distribution-roots": {
       "get": {
         "operationId": "getAllDistributionRoots",
         "summary": "Retrieve all distribution roots",
@@ -6829,7 +6829,7 @@
         }
       }
     },
-    "/distribution-roots-by-status": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/distribution-roots-by-status": {
       "get": {
         "operationId": "getAllDistributionRootsByStatus",
         "summary": "Retrieve all distribution roots by status",
@@ -6989,7 +6989,7 @@
         }
       }
     },
-    "/all-rewards-claim": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-rewards-claim": {
       "get": {
         "operationId": "getAllRewardClaims",
         "summary": "Retrieve all reward claims with statistics",
@@ -7271,7 +7271,7 @@
         }
       }
     },
-    "/all-avs-rewards-submission": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-avs-rewards-submission": {
       "get": {
         "operationId": "getAVSRewardsSubmissions",
         "summary": "Retrieve all AVS rewards submissions",
@@ -7439,7 +7439,7 @@
         }
       }
     },
-    "/avs-rewards-submission-by-avs": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-avs": {
       "get": {
         "operationId": "getAVSRewardsSubmissionsByAVS",
         "summary": "Retrieve all AVS rewards submissions of an AVS",
@@ -7617,7 +7617,7 @@
         }
       }
     },
-    "/avs-rewards-submission-by-tokenUsed": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-tokenUsed": {
       "get": {
         "operationId": "getAVSRewardsSubmissionsByTokenUsed",
         "summary": "Retrieve all AVS rewards submissions of given Token",
@@ -7795,7 +7795,7 @@
         }
       }
     },
-    "/avs-rewards-submission-by-hash": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-hash": {
       "get": {
         "operationId": "getAVSRewardsSubmissionByHash",
         "summary": "Retrieve AVS rewards submission by hash",
@@ -7934,11 +7934,10 @@
         }
       }
     },
-    "/all-batches": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-batches": {
       "get": {
-        "summary": "Fetch Batches",
-        "description": "Returns a list of batches with pagination",
-        "operationId": "getBatches",
+        "summary": "Fetch detailed batch information",
+        "operationId": "getBatchData",
         "parameters": [
           {
             "name": "page",
@@ -7946,8 +7945,8 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "example": 1,
-              "default": 1
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
             }
           },
           {
@@ -7956,14 +7955,14 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "example": 12,
-              "default": 12
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response with batch data",
             "content": {
               "application/json": {
                 "schema": {
@@ -7974,36 +7973,67 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "batchHeaderHash": {
-                            "type": "string"
-                          },
                           "batchId": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The unique identifier for the batch."
                           },
-                          "nonSignerCount": {
-                            "type": "integer"
+                          "batchHeaderHash": {
+                            "type": "string",
+                            "description": "The hash of the batch header."
                           },
-                          "referenceBlockNumber": {
-                            "type": "integer"
+                          "blobsLength": {
+                            "type": "integer",
+                            "description": "The length of the blobs in the batch."
                           },
                           "quorumNumbers": {
                             "type": "array",
                             "items": {
-                              "type": "integer"
-                            }
+                              "type": "string",
+                              "description": "The quorum numbers associated with the batch."
+                            },
+                            "description": "List of quorum numbers."
+                          },
+                          "blobHeadersRoot": {
+                            "type": "string",
+                            "description": "The root of the blob headers."
+                          },
+                          "referenceBlockNumber": {
+                            "type": "integer",
+                            "description": "The reference block number."
+                          },
+                          "signedStakeForQuorums": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number for which the stake is signed."
+                                },
+                                "stakeAmount": {
+                                  "type": "integer",
+                                  "description": "The amount of signed stake for the quorum."
+                                }
+                              }
+                            },
+                            "description": "Signed stake for each quorum."
                           },
                           "transactionHash": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The transaction hash associated with the batch."
                           },
                           "blockTimestamp": {
                             "type": "string",
-                            "format": "date-time"
+                            "format": "date-time",
+                            "description": "The timestamp of the block."
                           },
                           "blockNumber": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "The block number for the batch."
                           },
-                          "gasUsed": {
-                            "type": "integer"
+                          "nonSignersCount": {
+                            "type": "integer",
+                            "description": "The number of non-signers in the batch."
                           }
                         }
                       }
@@ -8012,32 +8042,41 @@
                       "type": "object",
                       "properties": {
                         "total": {
-                          "type": "integer"
+                          "type": "integer",
+                          "description": "Total number of batches."
                         },
                         "page": {
-                          "type": "integer"
+                          "type": "integer",
+                          "description": "The current page number."
                         },
                         "limit": {
-                          "type": "integer"
+                          "type": "integer",
+                          "description": "The number of items per page."
                         },
                         "lastUpdateTimestamp": {
                           "type": "string",
-                          "format": "date-time"
+                          "format": "date-time",
+                          "description": "The timestamp of the latest update."
                         },
                         "latestBlock": {
-                          "type": "integer"
+                          "type": "integer",
+                          "description": "The latest block number."
                         },
                         "statistics": {
                           "type": "object",
                           "properties": {
                             "totalBatches": {
-                              "type": "integer"
+                              "type": "integer",
+                              "description": "Total number of batches."
                             },
                             "batchesWithNonSigners": {
-                              "type": "integer"
+                              "type": "integer",
+                              "description": "Number of batches with non-signers."
                             },
-                            "nonSignerPercentage": {
-                              "type": "number"
+                            "batchesWithNonSignersPercentage": {
+                              "type": "number",
+                              "format": "float",
+                              "description": "Percentage of batches with non-signers."
                             }
                           }
                         }
@@ -8072,352 +8111,16 @@
         }
       }
     },
-    "/batch-by-batchId": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-info": {
       "get": {
-        "summary": "BatchInfo by ID",
-        "description": "Returns comprehensive details about a specific batch by batchId",
-        "operationId": "getBatchDetails",
-        "parameters": [
-          {
-            "name": "batchId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "batchInfo": {
-                          "type": "object",
-                          "properties": {
-                            "batchId": {
-                              "type": "string"
-                            },
-                            "batchHeaderHash": {
-                              "type": "string"
-                            },
-                            "blobsLength": {
-                              "type": "integer"
-                            },
-                            "quorumNumbers": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "blobHeadersRoot": {
-                              "type": "string"
-                            },
-                            "referenceBlockNumber": {
-                              "type": "integer"
-                            },
-                            "signedStakeForQuorums": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "transactionHash": {
-                              "type": "string"
-                            },
-                            "blockTimestamp": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "_blocknumber": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "metadata": {
-                          "type": "object",
-                          "properties": {
-                            "apkG2": {
-                              "type": "string"
-                            },
-                            "sigma": {
-                              "type": "string"
-                            },
-                            "quorumApks": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "quorumApkIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "nonSignerPubkeys": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "totalStakeIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "nonSignerStakeIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "nonSignerQuorumBitmapIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            }
-                          }
-                        },
-                        "nonSigningInfo": {
-                          "type": "object",
-                          "properties": {
-                            "nonSigners": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "nonSignerCount": {
-                              "type": "integer"
-                            },
-                            "signatoryRecordHash": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "gasInfo": {
-                          "type": "object",
-                          "properties": {
-                            "gasUsed": {
-                              "type": "integer"
-                            },
-                            "gasPrice": {
-                              "type": "integer"
-                            },
-                            "transactionFee": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "blockInfo": {
-                          "type": "object",
-                          "properties": {
-                            "blockNumber": {
-                              "type": "integer"
-                            },
-                            "blockHash": {
-                              "type": "string"
-                            },
-                            "parentHash": {
-                              "type": "string"
-                            },
-                            "nonce": {
-                              "type": "string"
-                            },
-                            "sha3Uncles": {
-                              "type": "string"
-                            },
-                            "logsBloom": {
-                              "type": "string"
-                            },
-                            "transactionsRoot": {
-                              "type": "string"
-                            },
-                            "stateRoot": {
-                              "type": "string"
-                            },
-                            "receiptsRoot": {
-                              "type": "string"
-                            },
-                            "miner": {
-                              "type": "string"
-                            },
-                            "difficulty": {
-                              "type": "integer"
-                            },
-                            "totalDifficulty": {
-                              "type": "integer"
-                            },
-                            "size": {
-                              "type": "integer"
-                            },
-                            "extraData": {
-                              "type": "string"
-                            },
-                            "gasLimit": {
-                              "type": "integer"
-                            },
-                            "gasUsed": {
-                              "type": "integer"
-                            },
-                            "transactionCount": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "transactions": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "transactionHash": {
-                                "type": "string"
-                              },
-                              "transactionNonce": {
-                                "type": "integer"
-                              },
-                              "transactionIndex": {
-                                "type": "integer"
-                              },
-                              "transactionFromAddress": {
-                                "type": "string"
-                              },
-                              "transactionToAddress": {
-                                "type": "string"
-                              },
-                              "transactionValue": {
-                                "type": "string"
-                              },
-                              "transactionGas": {
-                                "type": "integer"
-                              },
-                              "transactionGasPrice": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptCumulativeGasUsed": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptGasUsed": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptStatus": {
-                                "type": "integer"
-                              },
-                              "receiptEffectiveGasPrice": {
-                                "type": "integer"
-                              }
-                            }
-                          }
-                        },
-                        "logs": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "logs": {
-                                "type": "array",
-                                "items": {
-                                  "type": "object"
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "blobs": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "blobKey": {
-                                "type": "string"
-                              },
-                              "fee": {
-                                "type": "integer"
-                              },
-                              "blobIndex": {
-                                "type": "integer"
-                              },
-                              "batchRoot": {
-                                "type": "string"
-                              },
-                              "blobStatus": {
-                                "type": "string"
-                              },
-                              "requestedAt": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "blobCommitment": {
-                                "type": "string"
-                              },
-                              "blobInclusionProof": {
-                                "type": "string"
-                              },
-                              "signatoryRecordHash": {
-                                "type": "string"
-                              },
-                              "confirmationTxnHash": {
-                                "type": "string"
-                              },
-                              "referenceBlockNumber": {
-                                "type": "integer"
-                              },
-                              "confirmationBlockNumber": {
-                                "type": "integer"
-                              },
-                              "securityParams": {
-                                "type": "object"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "timestamp": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "blockNumber": {
-                          "type": "integer"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/batch-by-hash": {
-      "get": {
-        "summary": "BatchInfo by Hash",
-        "description": "Returns comprehensive details about a specific batch by batchHeaderHash",
-        "operationId": "getBatchDetails",
+        "summary": "Get Batch Data by batchHeaderHash",
+        "operationId": "getBatchData",
         "parameters": [
           {
             "name": "batchHeaderHash",
             "in": "query",
             "required": true,
+            "description": "The batch header hash to identify the batch data",
             "schema": {
               "type": "string"
             }
@@ -8425,7 +8128,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successfully fetched batch data",
             "content": {
               "application/json": {
                 "schema": {
@@ -8434,49 +8137,44 @@
                     "data": {
                       "type": "object",
                       "properties": {
-                        "batchInfo": {
-                          "type": "object",
-                          "properties": {
-                            "batchId": {
-                              "type": "string"
-                            },
-                            "batchHeaderHash": {
-                              "type": "string"
-                            },
-                            "blobsLength": {
-                              "type": "integer"
-                            },
-                            "quorumNumbers": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "blobHeadersRoot": {
-                              "type": "string"
-                            },
-                            "referenceBlockNumber": {
-                              "type": "integer"
-                            },
-                            "signedStakeForQuorums": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "transactionHash": {
-                              "type": "string"
-                            },
-                            "blockTimestamp": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "_blocknumber": {
-                              "type": "integer"
-                            }
+                        "batchId": {
+                          "type": "string"
+                        },
+                        "batchHeaderHash": {
+                          "type": "string"
+                        },
+                        "blobsLength": {
+                          "type": "integer"
+                        },
+                        "quorumNumbers": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
                           }
                         },
-                        "metadata": {
+                        "blobHeadersRoot": {
+                          "type": "string"
+                        },
+                        "referenceBlockNumber": {
+                          "type": "integer"
+                        },
+                        "signedStakeForQuorums": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          }
+                        },
+                        "transactionHash": {
+                          "type": "string"
+                        },
+                        "blockTimestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        },
+                        "batchMetadata": {
                           "type": "object",
                           "properties": {
                             "apkG2": {
@@ -8523,38 +8221,92 @@
                             }
                           }
                         },
-                        "nonSigningInfo": {
-                          "type": "object",
-                          "properties": {
-                            "nonSigners": {
-                              "type": "array",
-                              "items": {
+                        "nonSignersCount": {
+                          "type": "integer"
+                        },
+                        "nonSigners": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "signatoryRecordHash": {
+                          "type": "string"
+                        },
+                        "logs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "logIndex": {
+                                "type": "string"
+                              },
+                              "logTransactionHash": {
+                                "type": "string"
+                              },
+                              "logTransactionIndex": {
+                                "type": "string"
+                              },
+                              "logAddress": {
+                                "type": "string"
+                              },
+                              "logData": {
+                                "type": "string"
+                              },
+                              "topics": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "transactionHash": {
+                                "type": "string"
+                              },
+                              "nonce": {
+                                "type": "integer"
+                              },
+                              "index": {
+                                "type": "integer"
+                              },
+                              "fromAddress": {
+                                "type": "string"
+                              },
+                              "toAddress": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              },
+                              "gas": {
+                                "type": "integer"
+                              },
+                              "gasPrice": {
+                                "type": "string"
+                              },
+                              "receiptCumulativeGasUsed": {
+                                "type": "integer"
+                              },
+                              "receiptGasUsed": {
+                                "type": "integer"
+                              },
+                              "receiptStatus": {
+                                "type": "string"
+                              },
+                              "effectiveGasPrice": {
                                 "type": "string"
                               }
-                            },
-                            "nonSignerCount": {
-                              "type": "integer"
-                            },
-                            "signatoryRecordHash": {
-                              "type": "string"
                             }
                           }
                         },
-                        "gasInfo": {
-                          "type": "object",
-                          "properties": {
-                            "gasUsed": {
-                              "type": "integer"
-                            },
-                            "gasPrice": {
-                              "type": "integer"
-                            },
-                            "transactionFee": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "blockInfo": {
+                        "block": {
                           "type": "object",
                           "properties": {
                             "blockNumber": {
@@ -8609,481 +8361,21 @@
                               "type": "integer"
                             }
                           }
-                        },
-                        "transactions": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "transactionHash": {
-                                "type": "string"
-                              },
-                              "transactionNonce": {
-                                "type": "integer"
-                              },
-                              "transactionIndex": {
-                                "type": "integer"
-                              },
-                              "transactionFromAddress": {
-                                "type": "string"
-                              },
-                              "transactionToAddress": {
-                                "type": "string"
-                              },
-                              "transactionValue": {
-                                "type": "string"
-                              },
-                              "transactionGas": {
-                                "type": "integer"
-                              },
-                              "transactionGasPrice": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptCumulativeGasUsed": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptGasUsed": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptStatus": {
-                                "type": "integer"
-                              },
-                              "receiptEffectiveGasPrice": {
-                                "type": "integer"
-                              }
-                            }
-                          }
-                        },
-                        "logs": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "logs": {
-                                "type": "array",
-                                "items": {
-                                  "type": "object"
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "blobs": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "blobKey": {
-                                "type": "string"
-                              },
-                              "fee": {
-                                "type": "integer"
-                              },
-                              "blobIndex": {
-                                "type": "integer"
-                              },
-                              "batchRoot": {
-                                "type": "string"
-                              },
-                              "blobStatus": {
-                                "type": "string"
-                              },
-                              "requestedAt": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "blobCommitment": {
-                                "type": "string"
-                              },
-                              "blobInclusionProof": {
-                                "type": "string"
-                              },
-                              "signatoryRecordHash": {
-                                "type": "string"
-                              },
-                              "confirmationTxnHash": {
-                                "type": "string"
-                              },
-                              "referenceBlockNumber": {
-                                "type": "integer"
-                              },
-                              "confirmationBlockNumber": {
-                                "type": "integer"
-                              },
-                              "securityParams": {
-                                "type": "object"
-                              }
-                            }
-                          }
                         }
                       }
                     },
-                    "meta": {
+                    "metadata": {
                       "type": "object",
                       "properties": {
-                        "timestamp": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "blockNumber": {
-                          "type": "integer"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/batch": {
-      "get": {
-        "summary": "Batch Information",
-        "description": "Returns batch details by either batchId or batchHeaderHash",
-        "operationId": "getBatchDetails",
-        "parameters": [
-          {
-            "name": "batchId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "batchHeaderHash",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "batchInfo": {
-                          "type": "object",
-                          "properties": {
-                            "batchId": {
-                              "type": "string"
-                            },
-                            "batchHeaderHash": {
-                              "type": "string"
-                            },
-                            "blobsLength": {
-                              "type": "integer"
-                            },
-                            "quorumNumbers": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "blobHeadersRoot": {
-                              "type": "string"
-                            },
-                            "referenceBlockNumber": {
-                              "type": "integer"
-                            },
-                            "signedStakeForQuorums": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "transactionHash": {
-                              "type": "string"
-                            },
-                            "blockTimestamp": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "_blocknumber": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "metadata": {
-                          "type": "object",
-                          "properties": {
-                            "apkG2": {
-                              "type": "string"
-                            },
-                            "sigma": {
-                              "type": "string"
-                            },
-                            "quorumApks": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "quorumApkIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "nonSignerPubkeys": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "totalStakeIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "nonSignerStakeIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            },
-                            "nonSignerQuorumBitmapIndices": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            }
-                          }
-                        },
-                        "nonSigningInfo": {
-                          "type": "object",
-                          "properties": {
-                            "nonSigners": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "nonSignerCount": {
-                              "type": "integer"
-                            },
-                            "signatoryRecordHash": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "gasInfo": {
-                          "type": "object",
-                          "properties": {
-                            "gasUsed": {
-                              "type": "integer"
-                            },
-                            "gasPrice": {
-                              "type": "integer"
-                            },
-                            "transactionFee": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "blockInfo": {
-                          "type": "object",
-                          "properties": {
-                            "blockNumber": {
-                              "type": "integer"
-                            },
-                            "blockHash": {
-                              "type": "string"
-                            },
-                            "parentHash": {
-                              "type": "string"
-                            },
-                            "nonce": {
-                              "type": "string"
-                            },
-                            "sha3Uncles": {
-                              "type": "string"
-                            },
-                            "logsBloom": {
-                              "type": "string"
-                            },
-                            "transactionsRoot": {
-                              "type": "string"
-                            },
-                            "stateRoot": {
-                              "type": "string"
-                            },
-                            "receiptsRoot": {
-                              "type": "string"
-                            },
-                            "miner": {
-                              "type": "string"
-                            },
-                            "difficulty": {
-                              "type": "integer"
-                            },
-                            "totalDifficulty": {
-                              "type": "integer"
-                            },
-                            "size": {
-                              "type": "integer"
-                            },
-                            "extraData": {
-                              "type": "string"
-                            },
-                            "gasLimit": {
-                              "type": "integer"
-                            },
-                            "gasUsed": {
-                              "type": "integer"
-                            },
-                            "transactionCount": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "transactions": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "transactionHash": {
-                                "type": "string"
-                              },
-                              "transactionNonce": {
-                                "type": "integer"
-                              },
-                              "transactionIndex": {
-                                "type": "integer"
-                              },
-                              "transactionFromAddress": {
-                                "type": "string"
-                              },
-                              "transactionToAddress": {
-                                "type": "string"
-                              },
-                              "transactionValue": {
-                                "type": "string"
-                              },
-                              "transactionGas": {
-                                "type": "integer"
-                              },
-                              "transactionGasPrice": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptCumulativeGasUsed": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptGasUsed": {
-                                "type": "integer"
-                              },
-                              "transactionReceiptStatus": {
-                                "type": "integer"
-                              },
-                              "receiptEffectiveGasPrice": {
-                                "type": "integer"
-                              }
-                            }
-                          }
-                        },
-                        "logs": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "logs": {
-                                "type": "array",
-                                "items": {
-                                  "type": "object"
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "blobs": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "blobKey": {
-                                "type": "string"
-                              },
-                              "fee": {
-                                "type": "integer"
-                              },
-                              "blobIndex": {
-                                "type": "integer"
-                              },
-                              "batchRoot": {
-                                "type": "string"
-                              },
-                              "blobStatus": {
-                                "type": "string"
-                              },
-                              "requestedAt": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "blobCommitment": {
-                                "type": "string"
-                              },
-                              "blobInclusionProof": {
-                                "type": "string"
-                              },
-                              "signatoryRecordHash": {
-                                "type": "string"
-                              },
-                              "confirmationTxnHash": {
-                                "type": "string"
-                              },
-                              "referenceBlockNumber": {
-                                "type": "integer"
-                              },
-                              "confirmationBlockNumber": {
-                                "type": "integer"
-                              },
-                              "securityParams": {
-                                "type": "object"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "timestamp": {
-                          "type": "string",
-                          "format": "date-time"
+                        "batchId": {
+                          "type": "string"
                         },
                         "blockNumber": {
                           "type": "integer"
                         },
-                        "queryParam": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "batchId",
-                                "batchHeaderHash"
-                              ]
-                            },
-                            "value": {
-                              "type": "string"
-                            }
-                          }
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
                         }
                       }
                     }
@@ -9093,149 +8385,468 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "string",
-                          "enum": [
-                            "bad_request"
-                          ],
-                          "description": "A short code indicating the error code returned.",
-                          "example": "bad_request"
-                        },
-                        "message": {
-                          "type": "string",
-                          "description": "A human readable explanation of what went wrong."
-                        },
-                        "doc_url": {
-                          "type": "string",
-                          "description": "A link to our documentation with more details about this error code",
-                          "example": "https://docs.rescan.dev.com/api-reference/errors#bad_request"
-                        }
-                      },
-                      "required": [
-                        "code",
-                        "message"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           },
           "404": {
-            "description": "The server cannot find the requested resource.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "string",
-                          "enum": [
-                            "not_found"
-                          ],
-                          "description": "A short code indicating the error code returned.",
-                          "example": "not_found"
-                        },
-                        "message": {
-                          "type": "string",
-                          "description": "A human readable explanation of what went wrong."
-                        },
-                        "doc_url": {
-                          "type": "string",
-                          "description": "A link to our documentation with more details about this error code",
-                          "example": "https://docs.rescan.dev.com/api-reference/errors#not_found"
-                        }
-                      },
-                      "required": [
-                        "code",
-                        "message"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
           },
           "500": {
-            "description": "The server has encountered a situation it does not know how to handle.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "string",
-                          "enum": [
-                            "internal_server_error"
-                          ],
-                          "description": "A short code indicating the error code returned.",
-                          "example": "internal_server_error"
-                        },
-                        "message": {
-                          "type": "string",
-                          "description": "A human readable explanation of what went wrong."
-                        },
-                        "doc_url": {
-                          "type": "string",
-                          "description": "A link to our documentation with more details about this error code",
-                          "example": "https://docs.rescan.dev.com/api-reference/errors#internal_server_error"
-                        }
-                      },
-                      "required": [
-                        "code",
-                        "message"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/500"
           }
         }
       }
     },
-    "/batch-nonsigners": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-by-hash": {
       "get": {
-        "summary": "Batch Non-Signers",
-        "description": "Returns non-signers details by batchId",
+        "summary": "Get Batch Data by batchHeaderHash",
+        "operationId": "getBatchData",
         "parameters": [
           {
-            "name": "batchId",
+            "name": "batchHeaderHash",
             "in": "query",
+            "required": true,
+            "description": "The batch header hash to identify the batch data",
             "schema": {
               "type": "string"
-            },
-            "required": true,
-            "description": "The ID of the batch to fetch non-signer information for"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successfully fetched batch data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "batchId": {
+                          "type": "string"
+                        },
+                        "batchHeaderHash": {
+                          "type": "string"
+                        },
+                        "blobsLength": {
+                          "type": "integer"
+                        },
+                        "quorumNumbers": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          }
+                        },
+                        "blobHeadersRoot": {
+                          "type": "string"
+                        },
+                        "referenceBlockNumber": {
+                          "type": "integer"
+                        },
+                        "signedStakeForQuorums": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          }
+                        },
+                        "transactionHash": {
+                          "type": "string"
+                        },
+                        "blockTimestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        },
+                        "batchMetadata": {
+                          "type": "object",
+                          "properties": {
+                            "apkG2": {
+                              "type": "string"
+                            },
+                            "sigma": {
+                              "type": "string"
+                            },
+                            "quorumApks": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "quorumApkIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerPubkeys": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "totalStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerQuorumBitmapIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "nonSignersCount": {
+                          "type": "integer"
+                        },
+                        "nonSigners": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "signatoryRecordHash": {
+                          "type": "string"
+                        },
+                        "logs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "logIndex": {
+                                "type": "string"
+                              },
+                              "logTransactionHash": {
+                                "type": "string"
+                              },
+                              "logTransactionIndex": {
+                                "type": "string"
+                              },
+                              "logAddress": {
+                                "type": "string"
+                              },
+                              "logData": {
+                                "type": "string"
+                              },
+                              "topics": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "transactionHash": {
+                                "type": "string"
+                              },
+                              "nonce": {
+                                "type": "integer"
+                              },
+                              "index": {
+                                "type": "integer"
+                              },
+                              "fromAddress": {
+                                "type": "string"
+                              },
+                              "toAddress": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              },
+                              "gas": {
+                                "type": "integer"
+                              },
+                              "gasPrice": {
+                                "type": "string"
+                              },
+                              "receiptCumulativeGasUsed": {
+                                "type": "integer"
+                              },
+                              "receiptGasUsed": {
+                                "type": "integer"
+                              },
+                              "receiptStatus": {
+                                "type": "string"
+                              },
+                              "effectiveGasPrice": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "block": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "integer"
+                            },
+                            "blockHash": {
+                              "type": "string"
+                            },
+                            "parentHash": {
+                              "type": "string"
+                            },
+                            "nonce": {
+                              "type": "string"
+                            },
+                            "sha3Uncles": {
+                              "type": "string"
+                            },
+                            "logsBloom": {
+                              "type": "string"
+                            },
+                            "transactionsRoot": {
+                              "type": "string"
+                            },
+                            "stateRoot": {
+                              "type": "string"
+                            },
+                            "receiptsRoot": {
+                              "type": "string"
+                            },
+                            "miner": {
+                              "type": "string"
+                            },
+                            "difficulty": {
+                              "type": "integer"
+                            },
+                            "totalDifficulty": {
+                              "type": "integer"
+                            },
+                            "size": {
+                              "type": "integer"
+                            },
+                            "extraData": {
+                              "type": "string"
+                            },
+                            "gasLimit": {
+                              "type": "integer"
+                            },
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "transactionCount": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "batchId": {
+                          "type": "string"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        },
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-by-id": {
+      "get": {
+        "summary": "Get batch details by batchId",
+        "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
+        "operationId": "getBatchDetails",
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier for the batch."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched batch details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": {
+                    "batchId": "1234",
+                    "batchHeaderHash": "abcd1234",
+                    "blobsLength": 256,
+                    "quorumNumbers": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "blobHeadersRoot": "rootHash",
+                    "referenceBlockNumber": 1000,
+                    "signedStakeForQuorums": [
+                      100,
+                      200
+                    ],
+                    "transactionHash": "txHash",
+                    "blockTimestamp": "2024-11-25T12:00:00Z",
+                    "blockNumber": 1001,
+                    "batchMetadata": {
+                      "apkG2": "someValue",
+                      "sigma": "value",
+                      "quorumApks": [
+                        "apk1",
+                        "apk2"
+                      ],
+                      "quorumApkIndices": [
+                        0,
+                        1
+                      ],
+                      "nonSignerPubkeys": [
+                        "pubKey1",
+                        "pubKey2"
+                      ],
+                      "totalStakeIndices": [
+                        0,
+                        1
+                      ],
+                      "nonSignerStakeIndices": [
+                        0
+                      ],
+                      "nonSignerQuorumBitmapIndices": [
+                        0
+                      ]
+                    },
+                    "nonSignersCount": 5,
+                    "nonSigners": [],
+                    "signatoryRecordHash": "signatoryHash",
+                    "logs": [],
+                    "transactions": [],
+                    "block": {
+                      "blockNumber": 1001,
+                      "blockHash": "blockHash123",
+                      "parentHash": "parentHash123",
+                      "nonce": "00000001",
+                      "sha3Uncles": "sha3Hash",
+                      "logsBloom": "logsBloomHash",
+                      "transactionsRoot": "transactionsRootHash",
+                      "stateRoot": "stateRootHash",
+                      "receiptsRoot": "receiptsRootHash",
+                      "miner": "minerAddress",
+                      "difficulty": 100000,
+                      "totalDifficulty": 200000,
+                      "size": 1000,
+                      "extraData": "extraData",
+                      "gasLimit": 1000000,
+                      "gasUsed": 500000,
+                      "transactionCount": 10
+                    }
+                  },
+                  "metadata": {
+                    "batchId": "1234",
+                    "blockNumber": 1001,
+                    "timestamp": "2024-11-25T12:00:00Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-nonsigners": {
+      "get": {
+        "summary": "Fetch Non-Signers Information for a Batch",
+        "operationId": "getNonSignersByBatchId",
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the batch for which non-signer information is being requested."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved non-signer data.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9248,19 +8859,23 @@
                         "properties": {
                           "operatorId": {
                             "type": "string",
-                            "description": "The ID of the non-signing operator"
+                            "description": "The unique ID of the operator."
                           },
                           "operator": {
                             "type": "string",
-                            "description": "The name of the non-signing operator"
+                            "description": "The name or identifier of the operator."
                           },
                           "socket": {
                             "type": "string",
-                            "description": "The socket of the non-signing operator"
+                            "description": "The socket associated with the operator."
                           },
                           "status": {
                             "type": "boolean",
-                            "description": "The status of the non-signing operator"
+                            "description": "The status of the operator (active/inactive)."
+                          },
+                          "ejected": {
+                            "type": "boolean",
+                            "description": "Whether the operator has been ejected from the batch."
                           }
                         }
                       }
@@ -9270,30 +8885,38 @@
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "The total number of non-signers for the batch"
+                          "description": "The total number of non-signers for the given batch."
                         },
                         "batchId": {
                           "type": "string",
-                          "description": "The ID of the batch"
+                          "description": "The ID of the batch."
                         },
                         "statistics": {
                           "type": "object",
                           "properties": {
                             "totalNonSigners": {
                               "type": "integer",
-                              "description": "The total number of non-signers"
+                              "description": "Total number of non-signers."
                             },
                             "activeNonSigners": {
                               "type": "integer",
-                              "description": "The number of active non-signers"
+                              "description": "Number of active non-signers."
                             },
                             "inactiveNonSigners": {
                               "type": "integer",
-                              "description": "The number of inactive non-signers"
+                              "description": "Number of inactive non-signers."
                             },
                             "activePercentage": {
                               "type": "number",
-                              "description": "The percentage of active non-signers"
+                              "description": "Percentage of active non-signers."
+                            },
+                            "ejectedNonSigners": {
+                              "type": "integer",
+                              "description": "Number of ejected non-signers."
+                            },
+                            "ejectedPercentage": {
+                              "type": "number",
+                              "description": "Percentage of ejected non-signers."
                             }
                           }
                         }
@@ -9304,8 +8927,23 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
           "404": {
             "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -9313,35 +8951,37 @@
         }
       }
     },
-    "/eigenda-all-operators": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-operators": {
       "get": {
-        "summary": "Fetch Operators",
-        "description": "Returns a paginated list of all operators with their latest data",
+        "summary": "Fetch Operators with Quorum Stakes",
+        "description": "Retrieves a paginated list of operators along with their latest quorum stakes, metadata, and statistics about the operators.",
         "parameters": [
           {
             "name": "page",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 1,
               "minimum": 1
             },
-            "description": "The page number for pagination"
+            "description": "The page number for pagination."
           },
           {
             "name": "limit",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 12,
               "minimum": 1
             },
-            "description": "The number of results to return per page"
+            "description": "The number of operators per page."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operator data, metadata, and statistics.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9354,203 +8994,100 @@
                         "properties": {
                           "operatorId": {
                             "type": "string",
-                            "description": "The unique identifier of the operator"
+                            "description": "The unique ID of the operator."
                           },
                           "operator": {
                             "type": "string",
-                            "description": "The operator address"
+                            "description": "The operator's name or identifier."
                           },
                           "socket": {
                             "type": "string",
-                            "description": "The socket information for the operator"
+                            "description": "The socket associated with the operator."
+                          },
+                          "status": {
+                            "type": "boolean",
+                            "description": "The status of the operator (active or not)."
+                          },
+                          "ejected": {
+                            "type": "boolean",
+                            "description": "Indicates if the operator has been ejected."
+                          },
+                          "quorumStakes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number."
+                                },
+                                "stake": {
+                                  "type": "string",
+                                  "description": "The stake amount for the operator in the quorum."
+                                }
+                              }
+                            },
+                            "description": "An array of quorum stakes for the operator."
+                          },
+                          "totalStake": {
+                            "type": "number",
+                            "description": "The total stake of the operator across all quorums."
                           }
                         }
-                      }
+                      },
+                      "description": "A list of operators with their respective details and quorum stakes."
                     },
                     "meta": {
                       "type": "object",
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "The total number of operators"
+                          "description": "The total number of operators."
                         },
                         "page": {
                           "type": "integer",
-                          "description": "The current page number"
+                          "description": "The current page number."
                         },
                         "limit": {
                           "type": "integer",
-                          "description": "The number of results per page"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "422": {
-            "$ref": "#/components/responses/422"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/eigenda-operator": {
-      "get": {
-        "summary": "Operator Information",
-        "description": "Returns detailed information about a specific operator including their movements history",
-        "parameters": [
-          {
-            "name": "operatorId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "The unique identifier of the operator"
-          },
-          {
-            "name": "operator",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "The operator's address"
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter movements after this timestamp"
-          },
-          {
-            "name": "endTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter movements before this timestamp"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "operator": {
+                          "description": "The number of operators per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages for the query."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
                           "type": "object",
                           "properties": {
-                            "operatorId": {
-                              "type": "string",
-                              "description": "The unique identifier of the operator"
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators in the system."
                             },
-                            "operator": {
-                              "type": "string",
-                              "description": "The operator's address"
+                            "activeOperators": {
+                              "type": "integer",
+                              "description": "The number of active operators."
                             },
-                            "socket": {
-                              "type": "string",
-                              "description": "The socket information for the operator"
+                            "ejectedOperators": {
+                              "type": "integer",
+                              "description": "The number of ejected operators."
                             },
-                            "status": {
-                              "type": "string",
-                              "description": "Current status of the operator"
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake across all operators."
                             },
-                            "activeBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of active batch IDs"
-                            },
-                            "entryBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of entry batch IDs"
-                            },
-                            "exitBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of exit batch IDs"
-                            },
-                            "entryTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of entry timestamps"
-                            },
-                            "exitTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of exit timestamps"
-                            },
-                            "nonSignings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of non-signing batches"
+                            "averageStake": {
+                              "type": "number",
+                              "description": "The average stake per operator."
                             }
-                          }
-                        },
-                        "movements": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "quorumNumber": {
-                                "type": "integer",
-                                "description": "The quorum number associated with the movement"
-                              },
-                              "movement": {
-                                "type": "string",
-                                "description": "Type of movement (e.g., entry, exit)"
-                              },
-                              "timestamp": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "Timestamp of the movement"
-                              }
-                            }
-                          }
+                          },
+                          "description": "Summary statistics about the operators and their stakes."
                         }
-                      }
+                      },
+                      "description": "Metadata about the paginated response and additional statistics."
                     }
                   }
                 }
@@ -9581,10 +9118,10 @@
         }
       }
     },
-    "/eigenda-operator-by-operatorId": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-info": {
       "get": {
-        "summary": "OperatorInfo by ID",
-        "description": "Returns detailed information about a specific operator and their movement history using operator ID",
+        "summary": "Fetch Details for a Specific Operator",
+        "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
         "parameters": [
           {
             "name": "operatorId",
@@ -9593,12 +9130,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "The unique identifier of the operator"
+            "description": "The unique ID of the operator to fetch details for."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operator details and statistics.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9607,244 +9144,109 @@
                     "data": {
                       "type": "object",
                       "properties": {
-                        "operator": {
-                          "type": "object",
-                          "properties": {
-                            "operatorId": {
-                              "type": "string",
-                              "description": "The unique identifier of the operator"
-                            },
-                            "operator": {
-                              "type": "string",
-                              "description": "The operator's address"
-                            },
-                            "socket": {
-                              "type": "string",
-                              "description": "The socket information for the operator"
-                            },
-                            "status": {
-                              "type": "string",
-                              "description": "Current status of the operator"
-                            },
-                            "activeBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of active batch IDs"
-                            },
-                            "entryBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of entry batch IDs"
-                            },
-                            "exitBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of exit batch IDs"
-                            },
-                            "entryTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of entry timestamps"
-                            },
-                            "exitTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of exit timestamps"
-                            },
-                            "nonSignings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of non-signing batches"
-                            }
-                          }
+                        "operatorId": {
+                          "type": "string",
+                          "description": "The unique ID of the operator."
                         },
-                        "movements": {
+                        "operator": {
+                          "type": "string",
+                          "description": "The operator's name or identifier."
+                        },
+                        "socket": {
+                          "type": "string",
+                          "description": "The socket associated with the operator."
+                        },
+                        "status": {
+                          "type": "boolean",
+                          "description": "The status of the operator (active or not)."
+                        },
+                        "ejected": {
+                          "type": "boolean",
+                          "description": "Indicates if the operator has been ejected."
+                        },
+                        "blockNumber": {
+                          "type": "integer",
+                          "description": "The block number of the operator's latest state."
+                        },
+                        "quorums": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
                               "quorumNumber": {
-                                "type": "integer",
-                                "description": "The quorum number associated with the movement"
-                              },
-                              "movement": {
                                 "type": "string",
-                                "enum": [
-                                  "ENTRY",
-                                  "EXIT"
-                                ],
-                                "description": "Type of movement"
+                                "description": "The quorum number associated with the operator."
                               },
-                              "timestamp": {
+                              "operatorIndex": {
                                 "type": "string",
-                                "format": "date-time",
-                                "description": "Timestamp of the movement"
+                                "description": "The index of the operator in the quorum."
+                              },
+                              "stake": {
+                                "type": "string",
+                                "description": "The stake amount of the operator in the quorum."
+                              },
+                              "activeBatchIds": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "List of active batch IDs for the operator in the quorum."
+                              },
+                              "entryBatchIds": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "List of entry batch IDs for the operator in the quorum."
+                              },
+                              "exitBatchIds": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "List of exit batch IDs for the operator in the quorum."
+                              },
+                              "entryTimestamps": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "description": "List of entry timestamps for the operator in the quorum."
+                              },
+                              "exitTimestamps": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "description": "List of exit timestamps for the operator in the quorum."
                               }
                             }
                           },
-                          "description": "List of operator movements ordered by timestamp descending"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "422": {
-            "$ref": "#/components/responses/422"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/eigenda-operator-by-address": {
-      "get": {
-        "summary": "OperatorInfo by Address",
-        "description": "Returns detailed information about a specific operator and their movement history using operator address",
-        "parameters": [
-          {
-            "name": "address",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "The unique identifier of the operator"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "operator": {
+                          "description": "A list of quorum-related details for the operator."
+                        },
+                        "statistics": {
                           "type": "object",
                           "properties": {
-                            "operatorId": {
-                              "type": "string",
-                              "description": "The unique identifier of the operator"
+                            "totalQuorums": {
+                              "type": "integer",
+                              "description": "The total number of quorums the operator is part of."
                             },
-                            "operator": {
-                              "type": "string",
-                              "description": "The operator's address"
+                            "activeQuorums": {
+                              "type": "integer",
+                              "description": "The number of active quorums for the operator."
                             },
-                            "socket": {
-                              "type": "string",
-                              "description": "The socket information for the operator"
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake of the operator across all quorums."
                             },
-                            "status": {
-                              "type": "string",
-                              "description": "Current status of the operator"
-                            },
-                            "activeBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of active batch IDs"
-                            },
-                            "entryBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of entry batch IDs"
-                            },
-                            "exitBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of exit batch IDs"
-                            },
-                            "entryTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of entry timestamps"
-                            },
-                            "exitTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of exit timestamps"
-                            },
-                            "nonSignings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of non-signing batches"
-                            }
-                          }
-                        },
-                        "movements": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "quorumNumber": {
-                                "type": "integer",
-                                "description": "The quorum number associated with the movement"
-                              },
-                              "movement": {
-                                "type": "string",
-                                "enum": [
-                                  "ENTRY",
-                                  "EXIT"
-                                ],
-                                "description": "Type of movement"
-                              },
-                              "timestamp": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "Timestamp of the movement"
-                              }
+                            "isActive": {
+                              "type": "boolean",
+                              "description": "Indicates if the operator is active and not ejected."
                             }
                           },
-                          "description": "List of operator movements ordered by timestamp descending"
+                          "description": "Calculated statistics about the operator."
                         }
                       }
                     }
@@ -9877,80 +9279,428 @@
         }
       }
     },
-    "/eigenda-operator-nonsignings": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-status": {
       "get": {
-        "summary": "Operator Non-Signings",
-        "description": "Returns a paginated list of batches where the specified operator did not sign, including temporal metrics and statistics",
+        "summary": "Fetch Operators by Status with Pagination",
+        "description": "Retrieves a list of operators filtered by their status, with pagination and aggregated statistics.",
         "parameters": [
           {
-            "name": "operatorId",
+            "name": "status",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "description": "The unique identifier of the operator"
+            "description": "The status of the operators to filter by."
           },
           {
             "name": "page",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 1,
               "minimum": 1
             },
-            "description": "The page number for pagination"
+            "description": "The page number for pagination."
           },
           {
             "name": "limit",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 12,
               "minimum": 1
             },
-            "description": "The number of results to return per page"
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter results from this timestamp onwards"
-          },
-          {
-            "name": "endTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter results up to this timestamp"
-          },
-          {
-            "name": "startBlock",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "description": "Filter results from this block number onwards"
-          },
-          {
-            "name": "endBlock",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "description": "Filter results up to this block number"
+            "description": "The number of items per page for pagination."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operators data with metadata and statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The unique ID of the operator."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator's name or identifier."
+                          },
+                          "socket": {
+                            "type": "string",
+                            "description": "The socket associated with the operator."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The status of the operator."
+                          },
+                          "ejected": {
+                            "type": "boolean",
+                            "description": "Indicates if the operator has been ejected."
+                          },
+                          "quorumStakes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number associated with the operator."
+                                },
+                                "stake": {
+                                  "type": "string",
+                                  "description": "The stake amount of the operator in the quorum."
+                                }
+                              }
+                            },
+                            "description": "A list of quorum-related stakes for the operator."
+                          },
+                          "totalStake": {
+                            "type": "number",
+                            "description": "The total stake of the operator across all quorums."
+                          }
+                        }
+                      },
+                      "description": "The list of operators matching the query parameters."
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of operators matching the status."
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "The status filter applied to the operators."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages available."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators."
+                            },
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake across all operators."
+                            },
+                            "averageStake": {
+                              "type": "number",
+                              "description": "The average stake per operator."
+                            }
+                          },
+                          "description": "Aggregated statistics for the operators."
+                        }
+                      },
+                      "description": "Metadata and statistics about the query result."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-ejection": {
+      "get": {
+        "summary": "Fetch Operators by Ejection Status with Pagination",
+        "description": "Retrieves a list of operators filtered by their ejection status, with pagination and aggregated statistics.",
+        "parameters": [
+          {
+            "name": "ejected",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "The ejection status of the operators to filter by. `true` for ejected operators, `false` for non-ejected."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number for pagination."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "minimum": 1
+            },
+            "description": "The number of items per page for pagination."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing operators data with metadata and statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The unique ID of the operator."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator's name or identifier."
+                          },
+                          "socket": {
+                            "type": "string",
+                            "description": "The socket associated with the operator."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The status of the operator."
+                          },
+                          "ejected": {
+                            "type": "boolean",
+                            "description": "Indicates if the operator has been ejected."
+                          },
+                          "quorumStakes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number associated with the operator."
+                                },
+                                "stake": {
+                                  "type": "string",
+                                  "description": "The stake amount of the operator in the quorum."
+                                }
+                              }
+                            },
+                            "description": "A list of quorum-related stakes for the operator."
+                          },
+                          "totalStake": {
+                            "type": "number",
+                            "description": "The total stake of the operator across all quorums."
+                          }
+                        }
+                      },
+                      "description": "The list of operators matching the query parameters."
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of operators matching the ejection status."
+                        },
+                        "status": {
+                          "type": "boolean",
+                          "description": "The ejection status filter applied to the operators."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages available."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators."
+                            },
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake across all operators."
+                            },
+                            "averageStake": {
+                              "type": "number",
+                              "description": "The average stake per operator."
+                            }
+                          },
+                          "description": "Aggregated statistics for the operators."
+                        }
+                      },
+                      "description": "Metadata and statistics about the query result."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-nonsignings": {
+      "get": {
+        "summary": "Retrieve Distinct Non-Signed Batches by Operator and Filters",
+        "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
+        "parameters": [
+          {
+            "name": "operatorId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique ID of the operator to filter batches for."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number for pagination."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "minimum": 1
+            },
+            "description": "The number of items per page for pagination."
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "The start timestamp for filtering batches."
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "The end timestamp for filtering batches."
+          },
+          {
+            "name": "startBlock",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The starting block number for filtering batches."
+          },
+          {
+            "name": "endBlock",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ending block number for filtering batches."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing distinct batch data with metadata.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9963,53 +9713,39 @@
                         "properties": {
                           "batchId": {
                             "type": "string",
-                            "description": "The unique identifier of the batch"
-                          },
-                          "batchHeaderHash": {
-                            "type": "string",
-                            "description": "The hash of the batch header"
+                            "description": "The unique ID of the batch."
                           },
                           "blockTimestamp": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "The timestamp of the block"
-                          },
-                          "quorumNumbers": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            },
-                            "description": "Array of quorum numbers involved"
+                            "description": "The timestamp when the block was created."
                           },
                           "blockNumber": {
                             "type": "integer",
-                            "description": "The block number"
-                          },
-                          "nonSignerCount": {
-                            "type": "integer",
-                            "description": "Number of non-signers for this batch"
+                            "description": "The block number associated with the batch."
                           }
                         }
-                      }
+                      },
+                      "description": "The list of distinct batches matching the query parameters."
                     },
                     "meta": {
                       "type": "object",
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "Total number of records matching the query"
+                          "description": "The total number of distinct batches matching the filters."
                         },
                         "page": {
                           "type": "integer",
-                          "description": "Current page number"
+                          "description": "The current page number."
                         },
                         "limit": {
                           "type": "integer",
-                          "description": "Number of results per page"
+                          "description": "The number of items per page."
                         },
                         "operatorId": {
                           "type": "string",
-                          "description": "The operator ID used in the query"
+                          "description": "The operator ID filter applied to the query."
                         },
                         "timeRange": {
                           "type": "object",
@@ -10017,56 +9753,29 @@
                             "start": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "Start timestamp of the result set"
+                              "description": "The earliest timestamp in the result set."
                             },
                             "end": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "End timestamp of the result set"
+                              "description": "The latest timestamp in the result set."
                             }
-                          }
+                          },
+                          "description": "The range of timestamps covered in the result set."
                         },
                         "blockRange": {
                           "type": "object",
                           "properties": {
                             "start": {
                               "type": "integer",
-                              "description": "Start block number of the result set"
+                              "description": "The lowest block number in the result set."
                             },
                             "end": {
                               "type": "integer",
-                              "description": "End block number of the result set"
+                              "description": "The highest block number in the result set."
                             }
-                          }
-                        },
-                        "statistics": {
-                          "type": "object",
-                          "properties": {
-                            "totalNonSignings": {
-                              "type": "integer",
-                              "description": "Total number of non-signing events"
-                            },
-                            "totalNonSigners": {
-                              "type": "integer",
-                              "description": "Total count of non-signers across all batches"
-                            },
-                            "averageNonSignersPerBatch": {
-                              "type": "number",
-                              "format": "float",
-                              "description": "Average number of non-signers per batch"
-                            },
-                            "uniqueQuorumsCount": {
-                              "type": "integer",
-                              "description": "Number of unique quorums involved"
-                            },
-                            "uniqueQuorums": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of unique quorum numbers"
-                            }
-                          }
+                          },
+                          "description": "The range of block numbers covered in the result set."
                         },
                         "filters": {
                           "type": "object",
@@ -10074,24 +9783,26 @@
                             "startTime": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "Applied start time filter"
+                              "description": "The start timestamp filter applied."
                             },
                             "endTime": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "Applied end time filter"
+                              "description": "The end timestamp filter applied."
                             },
                             "startBlock": {
                               "type": "integer",
-                              "description": "Applied start block filter"
+                              "description": "The starting block filter applied."
                             },
                             "endBlock": {
                               "type": "integer",
-                              "description": "Applied end block filter"
+                              "description": "The ending block filter applied."
                             }
-                          }
+                          },
+                          "description": "The filters applied to the query."
                         }
-                      }
+                      },
+                      "description": "Metadata about the query result and applied filters."
                     }
                   }
                 }
@@ -10122,61 +9833,63 @@
         }
       }
     },
-    "/eigenda-operator-with-issues": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-with-issues": {
       "get": {
-        "summary": "Operators with Issues",
-        "description": "Returns a list of all operators who have missed signing batches, with their non-signing statistics and history",
+        "summary": "Fetch Non-Signing Operators",
+        "description": "Retrieves a list of operators who have been non-signers with optional time and block-based filtering",
         "parameters": [
           {
             "name": "startTime",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
               "format": "date-time"
             },
-            "description": "Filter results from this timestamp onwards"
+            "description": "Start time for filtering non-signing events"
           },
           {
             "name": "endTime",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
               "format": "date-time"
             },
-            "description": "Filter results up to this timestamp"
+            "description": "End time for filtering non-signing events"
           },
           {
             "name": "startBlock",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "integer",
-              "minimum": 0
+              "type": "integer"
             },
-            "description": "Filter results from this block number onwards"
+            "description": "Starting block number for filtering non-signing events"
           },
           {
             "name": "endBlock",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "integer",
-              "minimum": 0
+              "type": "integer"
             },
-            "description": "Filter results up to this block number"
+            "description": "Ending block number for filtering non-signing events"
           },
           {
             "name": "lastNBatches",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1
+              "type": "string",
+              "default": "10"
             },
-            "description": "Limit results to the last N batches (only applies when no other filters are used)"
+            "description": "Number of most recent batches to retrieve if no other filters are applied"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response with non-signing operators data",
             "content": {
               "application/json": {
                 "schema": {
@@ -10189,26 +9902,26 @@
                         "properties": {
                           "operatorId": {
                             "type": "string",
-                            "description": "The unique identifier of the operator"
+                            "description": "Unique identifier for the operator"
                           },
                           "operator": {
                             "type": "string",
-                            "description": "The operator address"
+                            "description": "Operator name or address"
                           },
                           "socket": {
                             "type": "string",
-                            "description": "The socket information for the operator"
+                            "description": "Socket information for the operator"
                           },
                           "missedBatchCount": {
                             "type": "integer",
-                            "description": "Total number of batches missed by this operator"
+                            "description": "Number of batches missed by the operator"
                           },
                           "missedBatches": {
                             "type": "array",
                             "items": {
                               "type": "string"
                             },
-                            "description": "Array of batch IDs that were missed"
+                            "description": "List of missed batch IDs"
                           },
                           "firstMissedAt": {
                             "type": "string",
@@ -10218,15 +9931,15 @@
                           "lastMissedAt": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "Timestamp of the most recent missed batch"
+                            "description": "Timestamp of the last missed batch"
                           },
                           "firstMissedBlock": {
                             "type": "integer",
-                            "description": "Block number of the first missed batch"
+                            "description": "First block number where a batch was missed"
                           },
                           "lastMissedBlock": {
                             "type": "integer",
-                            "description": "Block number of the most recent missed batch"
+                            "description": "Last block number where a batch was missed"
                           }
                         }
                       }
@@ -10243,13 +9956,11 @@
                           "properties": {
                             "start": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "Start timestamp of the result set"
+                              "format": "date-time"
                             },
                             "end": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "End timestamp of the result set"
+                              "format": "date-time"
                             }
                           }
                         },
@@ -10257,42 +9968,39 @@
                           "type": "object",
                           "properties": {
                             "start": {
-                              "type": "integer",
-                              "description": "Start block number of the result set"
+                              "type": "integer"
                             },
                             "end": {
-                              "type": "integer",
-                              "description": "End block number of the result set"
+                              "type": "integer"
                             }
                           }
                         },
                         "filteredBatchCount": {
                           "type": "integer",
-                          "description": "Total number of batches in the filtered period"
+                          "description": "Number of batches considered in the query"
                         },
                         "statistics": {
                           "type": "object",
                           "properties": {
                             "totalOperators": {
                               "type": "integer",
-                              "description": "Total number of operators who missed signing"
+                              "description": "Total number of operators with missed batches"
                             },
                             "totalMissedBatches": {
                               "type": "integer",
-                              "description": "Total number of missed batch signings across all operators"
+                              "description": "Total number of missed batches"
                             },
                             "averageMissedBatchesPerOperator": {
                               "type": "number",
-                              "format": "float",
                               "description": "Average number of missed batches per operator"
                             },
                             "mostMissedBatches": {
                               "type": "integer",
-                              "description": "Highest number of missed batches by any operator"
+                              "description": "Highest number of missed batches by a single operator"
                             },
                             "leastMissedBatches": {
                               "type": "integer",
-                              "description": "Lowest number of missed batches by any operator"
+                              "description": "Lowest number of missed batches by a single operator"
                             }
                           }
                         },
@@ -10301,25 +10009,20 @@
                           "properties": {
                             "startTime": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "Applied start time filter"
+                              "format": "date-time"
                             },
                             "endTime": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "Applied end time filter"
+                              "format": "date-time"
                             },
                             "startBlock": {
-                              "type": "integer",
-                              "description": "Applied start block filter"
+                              "type": "integer"
                             },
                             "endBlock": {
-                              "type": "integer",
-                              "description": "Applied end block filter"
+                              "type": "integer"
                             },
                             "lastNBatches": {
-                              "type": "integer",
-                              "description": "Number of last batches filtered (only present when no other filters are used)"
+                              "type": "string"
                             }
                           }
                         }
@@ -10354,10 +10057,159 @@
         }
       }
     },
-    "/all-quorums": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-activity": {
+      "get": {
+        "summary": "Fetch operator activities",
+        "operationId": "getOperatorActivities",
+        "parameters": [
+          {
+            "name": "operatorId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the operator."
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The action performed by the operator (e.g., 'sign', 'missed')."
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "1",
+              "description": "Page number for pagination."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "20",
+              "description": "Number of records per page."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator activity data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The operator's unique identifier."
+                          },
+                          "quorumNumber": {
+                            "type": "string",
+                            "description": "The quorum number associated with the action."
+                          },
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed by the operator."
+                          },
+                          "batchId": {
+                            "type": "string",
+                            "description": "The batch identifier associated with the action."
+                          },
+                          "transactionHash": {
+                            "type": "string",
+                            "description": "The transaction hash of the action."
+                          },
+                          "blockTimestamp": {
+                            "type": "string",
+                            "description": "The timestamp of the block in which the action occurred."
+                          },
+                          "blockNumber": {
+                            "type": "integer",
+                            "description": "The block number in which the action occurred."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of activities matching the filters."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of records per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages based on the provided limit."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are more results available on the next page."
+                        }
+                      }
+                    },
+                    "summary": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer",
+                        "description": "The count of activities per action type."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-quorums": {
       "get": {
         "summary": "Fetch Quorums",
-        "description": "Retrieves basic information of all quorums.",
+        "description": "Retrieves the latest information about all quorums with pagination and metadata, including statistics.",
         "parameters": [
           {
             "name": "page",
@@ -10367,7 +10219,7 @@
               "default": 1
             },
             "required": false,
-            "description": "The page number for pagination"
+            "description": "The page number for pagination."
           },
           {
             "name": "limit",
@@ -10377,12 +10229,12 @@
               "default": 12
             },
             "required": false,
-            "description": "The number of results to return per page"
+            "description": "The number of results to return per page."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing quorums data and metadata.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10395,29 +10247,51 @@
                         "properties": {
                           "quorumNumber": {
                             "type": "integer",
-                            "description": "The number of the quorum"
+                            "description": "The unique number of the quorum."
                           },
-                          "memberCount": {
+                          "strategiesCount": {
                             "type": "integer",
-                            "description": "The number of members in the quorum"
+                            "description": "The count of strategies for the quorum."
                           },
-                          "lastUpdateTime": {
-                            "type": "string",
-                            "format": "date-time",
-                            "description": "The timestamp of the last update to the quorum"
+                          "minimumStake": {
+                            "type": "number",
+                            "description": "The minimum stake required for the quorum."
                           },
-                          "latestBlock": {
-                            "type": "integer",
-                            "description": "The block number of the latest update to the quorum"
+                          "createdAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "integer",
+                                "description": "The block number when the quorum was created."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The block timestamp of quorum creation."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash of quorum creation."
+                              }
+                            }
                           },
-                          "lastAction": {
-                            "type": "string",
-                            "enum": [
-                              "OPERATORS_JOINED",
-                              "OPERATORS_LEFT",
-                              "NO_CHANGE"
-                            ],
-                            "description": "The latest action that occurred on the quorum"
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "integer",
+                                "description": "The block number when the quorum was last updated."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The block timestamp of the last update."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash of the last update."
+                              }
+                            }
                           }
                         }
                       }
@@ -10427,39 +10301,34 @@
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "The total number of quorums"
+                          "description": "The total number of quorums."
                         },
                         "page": {
                           "type": "integer",
-                          "description": "The current page number"
+                          "description": "The current page number."
                         },
                         "limit": {
                           "type": "integer",
-                          "description": "The number of results per page"
+                          "description": "The number of results per page."
                         },
-                        "lastUpdateTimestamp": {
-                          "type": "string",
-                          "format": "date-time",
-                          "description": "The timestamp of the latest quorum update"
-                        },
-                        "latestBlock": {
+                        "totalPages": {
                           "type": "integer",
-                          "description": "The latest block number"
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether there are more results beyond the current page."
                         },
                         "statistics": {
                           "type": "object",
                           "properties": {
-                            "activeQuorums": {
+                            "totalQuorums": {
                               "type": "integer",
-                              "description": "The number of active quorums"
+                              "description": "The total number of quorums retrieved."
                             },
-                            "totalUniqueOperators": {
-                              "type": "integer",
-                              "description": "The total number of unique operators"
-                            },
-                            "averageQuorumSize": {
+                            "averageStrategiesPerQuorum": {
                               "type": "number",
-                              "description": "The average size of the quorums"
+                              "description": "The average number of strategies per quorum."
                             }
                           }
                         }
@@ -10479,76 +10348,130 @@
         }
       }
     },
-    "/quorum-history": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/quorum-info": {
       "get": {
-        "summary": "Quorum History",
-        "description": "Retrieves history of given quorum.",
+        "summary": "Fetch Quorum Details",
+        "description": "Retrieves detailed information about a specific quorum, including strategies, stake, and member counts.",
         "parameters": [
           {
             "name": "quorumNumber",
             "in": "query",
+            "schema": {
+              "type": "integer"
+            },
             "required": true,
+            "description": "The unique number of the quorum to retrieve details for."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing quorum details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "quorumNumber": {
+                      "type": "integer",
+                      "description": "The unique number of the quorum."
+                    },
+                    "strategies": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The strategies associated with the quorum."
+                    },
+                    "minimumStake": {
+                      "type": "number",
+                      "description": "The minimum stake required for the quorum."
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the quorum was created."
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp of the last update to the quorum."
+                    },
+                    "registeredMembersCount": {
+                      "type": "integer",
+                      "description": "The total number of registered members in the quorum."
+                    },
+                    "activeMembersCount": {
+                      "type": "integer",
+                      "description": "The total number of active members in the quorum."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/quorum-operators": {
+      "get": {
+        "summary": "Fetch Operators of a Quorum",
+        "description": "Retrieves a paginated list of operators in a specified quorum, along with metadata and additional statistics.",
+        "parameters": [
+          {
+            "name": "quorumNumber",
+            "in": "query",
             "schema": {
               "type": "integer"
             },
-            "description": "The number of the quorum to fetch history for"
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "The start time for the quorum history"
-          },
-          {
-            "name": "endTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "The end time for the quorum history"
-          },
-          {
-            "name": "startBlock",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            },
-            "description": "The start block number for the quorum history"
-          },
-          {
-            "name": "endBlock",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            },
-            "description": "The end block number for the quorum history"
+            "required": true,
+            "description": "The unique number of the quorum to retrieve operators for."
           },
           {
             "name": "page",
             "in": "query",
             "schema": {
               "type": "integer",
-              "default": 1
+              "default": 1,
+              "minimum": 1
             },
-            "description": "The page number for pagination"
+            "required": false,
+            "description": "The page number for pagination."
           },
           {
             "name": "limit",
             "in": "query",
             "schema": {
               "type": "integer",
-              "default": 12
+              "default": 12,
+              "minimum": 1
             },
-            "description": "The number of results to return per page"
+            "required": false,
+            "description": "The number of operators per page."
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "default": "false"
+            },
+            "required": false,
+            "description": "Filter to include only active operators (stake > 0) if set to `true`."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operators and metadata.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10559,143 +10482,65 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "quorumNumber": {
-                            "type": "integer",
-                            "description": "The number of the quorum"
-                          },
-                          "memberCount": {
-                            "type": "integer",
-                            "description": "The number of members in the quorum"
-                          },
-                          "timestamp": {
+                          "operatorId": {
                             "type": "string",
-                            "format": "date-time",
-                            "description": "The timestamp of the quorum event"
+                            "description": "The unique identifier of the operator."
                           },
-                          "blockNumber": {
-                            "type": "integer",
-                            "description": "The block number of the quorum event"
-                          },
-                          "eventType": {
+                          "stake": {
                             "type": "string",
-                            "enum": [
-                              "OPERATORS_JOINED",
-                              "OPERATORS_LEFT",
-                              "NO_CHANGE"
-                            ],
-                            "description": "The type of event that occurred on the quorum"
-                          },
-                          "changes": {
-                            "type": "object",
-                            "properties": {
-                              "entrants": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                },
-                                "description": "The operators that joined the quorum"
-                              },
-                              "departers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                },
-                                "description": "The operators that left the quorum"
-                              }
-                            }
+                            "description": "The stake amount of the operator."
                           }
                         }
-                      }
+                      },
+                      "description": "A list of operators for the requested quorum and page."
                     },
                     "meta": {
                       "type": "object",
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "The total number of quorum events"
+                          "description": "The total number of operators for the quorum."
                         },
                         "page": {
                           "type": "integer",
-                          "description": "The current page number"
+                          "description": "The current page number."
                         },
                         "limit": {
                           "type": "integer",
-                          "description": "The number of results per page"
+                          "description": "The number of operators per page."
                         },
-                        "quorumStats": {
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more pages to retrieve."
+                        },
+                        "statistics": {
                           "type": "object",
                           "properties": {
-                            "currentMemberCount": {
+                            "totalOperators": {
                               "type": "integer",
-                              "description": "The current number of members in the quorum"
+                              "description": "The total number of operators in the quorum."
                             },
-                            "totalJoins": {
+                            "currentPageActiveOperators": {
                               "type": "integer",
-                              "description": "The total number of operators that have joined the quorum"
+                              "description": "The number of active operators on the current page."
                             },
-                            "totalDepartures": {
-                              "type": "integer",
-                              "description": "The total number of operators that have left the quorum"
+                            "currentPageTotalStake": {
+                              "type": "number",
+                              "description": "The total stake of operators on the current page."
                             },
-                            "timeRange": {
-                              "type": "object",
-                              "properties": {
-                                "startTime": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "The start time of the quorum history"
-                                },
-                                "endTime": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "The end time of the quorum history"
-                                },
-                                "startBlock": {
-                                  "type": "integer",
-                                  "description": "The start block number of the quorum history"
-                                },
-                                "endBlock": {
-                                  "type": "integer",
-                                  "description": "The end block number of the quorum history"
-                                }
-                              }
+                            "currentPageAverageStake": {
+                              "type": "number",
+                              "description": "The average stake of operators on the current page."
                             }
-                          }
-                        },
-                        "filters": {
-                          "type": "object",
-                          "properties": {
-                            "timeRange": {
-                              "type": "object",
-                              "properties": {
-                                "startTime": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "The start time used in the filter"
-                                },
-                                "endTime": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "The end time used in the filter"
-                                }
-                              }
-                            },
-                            "blockRange": {
-                              "type": "object",
-                              "properties": {
-                                "startBlock": {
-                                  "type": "integer",
-                                  "description": "The start block number used in the filter"
-                                },
-                                "endBlock": {
-                                  "type": "integer",
-                                  "description": "The end block number used in the filter"
-                                }
-                              }
-                            }
-                          }
+                          },
+                          "description": "Additional statistics for the current page."
                         }
-                      }
+                      },
+                      "description": "Metadata about the paginated response."
                     }
                   }
                 }
@@ -10711,57 +10556,148 @@
         }
       }
     },
-    "/quorum-operators": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/quorum-activity": {
       "get": {
-        "summary": "Quorum Operators",
-        "description": "Retrieves operators of given quorum.",
+        "summary": "Fetch Operator Activities",
+        "description": "Retrieves a paginated list of operator activities for a specified quorum, filtered by optional parameters such as `operatorId` and `action`. The response also includes metadata and a summary of actions.",
         "parameters": [
           {
             "name": "quorumNumber",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             },
-            "description": "The number of the quorum to fetch history for"
+            "description": "The unique quorum number for which activities are retrieved."
+          },
+          {
+            "name": "operatorId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of a specific operator to filter activities."
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "A specific action type to filter activities (e.g., 'join', 'leave')."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number for pagination."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "minimum": 1
+            },
+            "description": "The number of activities per page."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operator activities, metadata, and a summary.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The unique ID of the operator."
+                          },
+                          "quorumNumber": {
+                            "type": "string",
+                            "description": "The unique number of the quorum."
+                          },
+                          "action": {
+                            "type": "string",
+                            "description": "The type of action performed by the operator."
+                          },
+                          "batchId": {
+                            "type": "string",
+                            "description": "The batch ID associated with the action."
+                          },
+                          "transactionHash": {
+                            "type": "string",
+                            "description": "The transaction hash for the activity."
+                          },
+                          "blockTimestamp": {
+                            "type": "string",
+                            "description": "The timestamp of the block when the action occurred."
+                          },
+                          "blockNumber": {
+                            "type": "integer",
+                            "description": "The block number associated with the action."
+                          }
+                        }
+                      },
+                      "description": "A list of operator activities for the given quorum."
+                    },
+                    "meta": {
                       "type": "object",
                       "properties": {
-                        "quorumNumber": {
+                        "total": {
                           "type": "integer",
-                          "description": "The number of the quorum"
+                          "description": "The total number of activities for the query."
                         },
-                        "operatorsCount": {
+                        "page": {
                           "type": "integer",
-                          "description": "The number of operators in the quorum"
+                          "description": "The current page number."
                         },
-                        "existingOperators": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          },
-                          "description": "The list of existing operators in the quorum"
-                        },
-                        "timestamp": {
-                          "type": "string",
-                          "format": "date-time",
-                          "description": "The timestamp of the quorum event"
-                        },
-                        "blockNumber": {
+                        "limit": {
                           "type": "integer",
-                          "description": "The block number of the quorum event"
+                          "description": "The number of activities per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages for the query."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
                         }
-                      }
+                      },
+                      "description": "Metadata about the paginated response."
+                    },
+                    "summary": {
+                      "type": "object",
+                      "properties": {
+                        "actionCounts": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer"
+                          },
+                          "description": "A summary of action types and their respective counts."
+                        },
+                        "uniqueOperators": {
+                          "type": "integer",
+                          "description": "The number of unique operators involved in the activities."
+                        }
+                      },
+                      "description": "Summary information about the queried activities."
                     }
                   }
                 }
@@ -10770,9 +10706,6 @@
           },
           "400": {
             "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           },
           "500": {
             "$ref": "#/components/responses/500"

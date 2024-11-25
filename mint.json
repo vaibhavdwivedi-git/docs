@@ -21,7 +21,7 @@
       "name": "x-api-key",
       "inputPrefix": "1mPU/TsWuVYqPx6fQNXbWQ==:T4fa4ltXa+LybOfCxz2eVhrZtLeqWz+0d4m691U+S4XPlpEKTJg5OM6Ok+ziqsjDOHadoeowzP+CJmwawtjSmw=="
     },
-    "baseUrl": "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba"
+    "baseUrl": "https://api.blockflow.network/rest"
   },
   "topbarLinks": [
     {
@@ -127,7 +127,7 @@
       "group": "Batches",
       "pages": [
         "eigenda-reference/batches/all",
-        "eigenda-reference/batches/batch",
+        "eigenda-reference/batches/batch-info",
         "eigenda-reference/batches/batch-nonsigners",
         "eigenda-reference/batches/batch-by-batchId",
         "eigenda-reference/batches/batch-by-hash"
@@ -137,19 +137,21 @@
       "group": "Operators",
       "pages": [
         "eigenda-reference/operators/all",
-        "eigenda-reference/operators/operator",
+        "eigenda-reference/operators/operator-info",
+        "eigenda-reference/operators/operators-by-status",
+        "eigenda-reference/operators/operators-by-ejection",
+        "eigenda-reference/operators/operator-activity",
         "eigenda-reference/operators/operator-with-issues",
-        "eigenda-reference/operators/operator-nonsignings",
-        "eigenda-reference/operators/operator-by-operatorId",
-        "eigenda-reference/operators/operator-by-address"
+        "eigenda-reference/operators/operator-nonsignings"
       ]
     },
     {
       "group": "Quorums",
       "pages": [
         "eigenda-reference/quorums/all",
-        "eigenda-reference/quorums/quorum-history",
-        "eigenda-reference/quorums/quorum-operators"
+        "eigenda-reference/quorums/quorum-info",
+        "eigenda-reference/quorums/quorum-operators",
+        "eigenda-reference/quorums/quorum-activity"
       ]
     }
   ],

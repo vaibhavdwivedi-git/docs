@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/all-distribution-roots": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-distribution-roots": {
       "get": {
         "operationId": "getAllDistributionRoots",
         "summary": "Retrieve all distribution roots",
@@ -141,7 +141,7 @@
         }
       }
     },
-    "/distribution-roots-by-status": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/distribution-roots-by-status": {
       "get": {
         "operationId": "getAllDistributionRootsByStatus",
         "summary": "Retrieve all distribution roots by status",
@@ -292,7 +292,7 @@
         }
       }
     },
-    "/all-rewards-claim": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-rewards-claim": {
       "get": {
         "operationId": "getAllRewardClaims",
         "summary": "Retrieve all reward claims with statistics",
@@ -561,7 +561,7 @@
         }
       }
     },
-    "/all-avs-rewards-submission": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-avs-rewards-submission": {
       "get": {
         "operationId": "getAVSRewardsSubmissions",
         "summary": "Retrieve all AVS rewards submissions",
@@ -720,7 +720,7 @@
         }
       }
     },
-    "/avs-rewards-submission-by-avs": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-avs": {
       "get": {
         "operationId": "getAVSRewardsSubmissionsByAVS",
         "summary": "Retrieve all AVS rewards submissions of an AVS",
@@ -889,7 +889,7 @@
         }
       }
     },
-    "/avs-rewards-submission-by-tokenUsed": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-tokenUsed": {
       "get": {
         "operationId": "getAVSRewardsSubmissionsByTokenUsed",
         "summary": "Retrieve all AVS rewards submissions of given Token",
@@ -1058,7 +1058,7 @@
         }
       }
     },
-    "/avs-rewards-submission-by-hash": {
+    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-hash": {
       "get": {
         "operationId": "getAVSRewardsSubmissionByHash",
         "summary": "Retrieve AVS rewards submission by hash",

@@ -1,23 +1,4 @@
 {
-  "openapi": "3.0.1",
-  "info": {
-    "title": "OpenAPI Rescan Explorer",
-    "description": "Api reference for the Rescan Explorer",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "https://api.blockflow.network/rest/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba"
-    }
-  ],
-  "security": [
-    {
-      "ApiKeyAuth": []
-    }
-  ],
   "components": {
     "responses": {
       "400": {

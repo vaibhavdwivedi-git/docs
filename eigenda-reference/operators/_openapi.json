@@ -1,34 +1,36 @@
 {
   "paths": {
-    "/eigenda-all-operators": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-operators": {
       "get": {
-        "summary": "Fetch Operators",
-        "description": "Returns a paginated list of all operators with their latest data",
+        "summary": "Fetch Operators with Quorum Stakes",
+        "description": "Retrieves a paginated list of operators along with their latest quorum stakes, metadata, and statistics about the operators.",
         "parameters": [
           {
             "name": "page",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 1,
               "minimum": 1
             },
-            "description": "The page number for pagination"
+            "description": "The page number for pagination."
           },
           {
             "name": "limit",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 12,
               "minimum": 1
             },
-            "description": "The number of results to return per page"
+            "description": "The number of operators per page."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operator data, metadata, and statistics.",
             "content": {
               "application/json": {
                 "schema": {
@@ -41,203 +43,100 @@
                         "properties": {
                           "operatorId": {
                             "type": "string",
-                            "description": "The unique identifier of the operator"
+                            "description": "The unique ID of the operator."
                           },
                           "operator": {
                             "type": "string",
-                            "description": "The operator address"
+                            "description": "The operator's name or identifier."
                           },
                           "socket": {
                             "type": "string",
-                            "description": "The socket information for the operator"
+                            "description": "The socket associated with the operator."
+                          },
+                          "status": {
+                            "type": "boolean",
+                            "description": "The status of the operator (active or not)."
+                          },
+                          "ejected": {
+                            "type": "boolean",
+                            "description": "Indicates if the operator has been ejected."
+                          },
+                          "quorumStakes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number."
+                                },
+                                "stake": {
+                                  "type": "string",
+                                  "description": "The stake amount for the operator in the quorum."
+                                }
+                              }
+                            },
+                            "description": "An array of quorum stakes for the operator."
+                          },
+                          "totalStake": {
+                            "type": "number",
+                            "description": "The total stake of the operator across all quorums."
                           }
                         }
-                      }
+                      },
+                      "description": "A list of operators with their respective details and quorum stakes."
                     },
                     "meta": {
                       "type": "object",
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "The total number of operators"
+                          "description": "The total number of operators."
                         },
                         "page": {
                           "type": "integer",
-                          "description": "The current page number"
+                          "description": "The current page number."
                         },
                         "limit": {
                           "type": "integer",
-                          "description": "The number of results per page"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "422": {
-            "$ref": "#/components/responses/422"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/eigenda-operator": {
-      "get": {
-        "summary": "Operator Information",
-        "description": "Returns detailed information about a specific operator including their movements history",
-        "parameters": [
-          {
-            "name": "operatorId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "The unique identifier of the operator"
-          },
-          {
-            "name": "operator",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "The operator's address"
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter movements after this timestamp"
-          },
-          {
-            "name": "endTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter movements before this timestamp"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "operator": {
+                          "description": "The number of operators per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages for the query."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
                           "type": "object",
                           "properties": {
-                            "operatorId": {
-                              "type": "string",
-                              "description": "The unique identifier of the operator"
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators in the system."
                             },
-                            "operator": {
-                              "type": "string",
-                              "description": "The operator's address"
+                            "activeOperators": {
+                              "type": "integer",
+                              "description": "The number of active operators."
                             },
-                            "socket": {
-                              "type": "string",
-                              "description": "The socket information for the operator"
+                            "ejectedOperators": {
+                              "type": "integer",
+                              "description": "The number of ejected operators."
                             },
-                            "status": {
-                              "type": "string",
-                              "description": "Current status of the operator"
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake across all operators."
                             },
-                            "activeBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of active batch IDs"
-                            },
-                            "entryBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of entry batch IDs"
-                            },
-                            "exitBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of exit batch IDs"
-                            },
-                            "entryTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of entry timestamps"
-                            },
-                            "exitTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of exit timestamps"
-                            },
-                            "nonSignings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of non-signing batches"
+                            "averageStake": {
+                              "type": "number",
+                              "description": "The average stake per operator."
                             }
-                          }
-                        },
-                        "movements": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "quorumNumber": {
-                                "type": "integer",
-                                "description": "The quorum number associated with the movement"
-                              },
-                              "movement": {
-                                "type": "string",
-                                "description": "Type of movement (e.g., entry, exit)"
-                              },
-                              "timestamp": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "Timestamp of the movement"
-                              }
-                            }
-                          }
+                          },
+                          "description": "Summary statistics about the operators and their stakes."
                         }
-                      }
+                      },
+                      "description": "Metadata about the paginated response and additional statistics."
                     }
                   }
                 }
@@ -268,10 +167,10 @@
         }
       }
     },
-    "/eigenda-operator-by-operatorId": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-info": {
       "get": {
-        "summary": "OperatorInfo by ID",
-        "description": "Returns detailed information about a specific operator and their movement history using operator ID",
+        "summary": "Fetch Details for a Specific Operator",
+        "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
         "parameters": [
           {
             "name": "operatorId",
@@ -280,12 +179,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "The unique identifier of the operator"
+            "description": "The unique ID of the operator to fetch details for."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operator details and statistics.",
             "content": {
               "application/json": {
                 "schema": {
@@ -294,238 +193,109 @@
                     "data": {
                       "type": "object",
                       "properties": {
-                        "operator": {
-                          "type": "object",
-                          "properties": {
-                            "operatorId": {
-                              "type": "string",
-                              "description": "The unique identifier of the operator"
-                            },
-                            "operator": {
-                              "type": "string",
-                              "description": "The operator's address"
-                            },
-                            "socket": {
-                              "type": "string",
-                              "description": "The socket information for the operator"
-                            },
-                            "status": {
-                              "type": "string",
-                              "description": "Current status of the operator"
-                            },
-                            "activeBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of active batch IDs"
-                            },
-                            "entryBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of entry batch IDs"
-                            },
-                            "exitBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of exit batch IDs"
-                            },
-                            "entryTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of entry timestamps"
-                            },
-                            "exitTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of exit timestamps"
-                            },
-                            "nonSignings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of non-signing batches"
-                            }
-                          }
+                        "operatorId": {
+                          "type": "string",
+                          "description": "The unique ID of the operator."
                         },
-                        "movements": {
+                        "operator": {
+                          "type": "string",
+                          "description": "The operator's name or identifier."
+                        },
+                        "socket": {
+                          "type": "string",
+                          "description": "The socket associated with the operator."
+                        },
+                        "status": {
+                          "type": "boolean",
+                          "description": "The status of the operator (active or not)."
+                        },
+                        "ejected": {
+                          "type": "boolean",
+                          "description": "Indicates if the operator has been ejected."
+                        },
+                        "blockNumber": {
+                          "type": "integer",
+                          "description": "The block number of the operator's latest state."
+                        },
+                        "quorums": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
                               "quorumNumber": {
-                                "type": "integer",
-                                "description": "The quorum number associated with the movement"
-                              },
-                              "movement": {
                                 "type": "string",
-                                "enum": ["ENTRY", "EXIT"],
-                                "description": "Type of movement"
+                                "description": "The quorum number associated with the operator."
                               },
-                              "timestamp": {
+                              "operatorIndex": {
                                 "type": "string",
-                                "format": "date-time",
-                                "description": "Timestamp of the movement"
+                                "description": "The index of the operator in the quorum."
+                              },
+                              "stake": {
+                                "type": "string",
+                                "description": "The stake amount of the operator in the quorum."
+                              },
+                              "activeBatchIds": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "List of active batch IDs for the operator in the quorum."
+                              },
+                              "entryBatchIds": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "List of entry batch IDs for the operator in the quorum."
+                              },
+                              "exitBatchIds": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "List of exit batch IDs for the operator in the quorum."
+                              },
+                              "entryTimestamps": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "description": "List of entry timestamps for the operator in the quorum."
+                              },
+                              "exitTimestamps": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "description": "List of exit timestamps for the operator in the quorum."
                               }
                             }
                           },
-                          "description": "List of operator movements ordered by timestamp descending"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "422": {
-            "$ref": "#/components/responses/422"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/eigenda-operator-by-address": {
-      "get": {
-        "summary": "OperatorInfo by Address",
-        "description": "Returns detailed information about a specific operator and their movement history using operator address",
-        "parameters": [
-          {
-            "name": "address",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "The unique identifier of the operator"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "operator": {
+                          "description": "A list of quorum-related details for the operator."
+                        },
+                        "statistics": {
                           "type": "object",
                           "properties": {
-                            "operatorId": {
-                              "type": "string",
-                              "description": "The unique identifier of the operator"
+                            "totalQuorums": {
+                              "type": "integer",
+                              "description": "The total number of quorums the operator is part of."
                             },
-                            "operator": {
-                              "type": "string",
-                              "description": "The operator's address"
+                            "activeQuorums": {
+                              "type": "integer",
+                              "description": "The number of active quorums for the operator."
                             },
-                            "socket": {
-                              "type": "string",
-                              "description": "The socket information for the operator"
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake of the operator across all quorums."
                             },
-                            "status": {
-                              "type": "string",
-                              "description": "Current status of the operator"
-                            },
-                            "activeBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of active batch IDs"
-                            },
-                            "entryBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of entry batch IDs"
-                            },
-                            "exitBatchIds": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of exit batch IDs"
-                            },
-                            "entryTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of entry timestamps"
-                            },
-                            "exitTimestamps": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "description": "List of exit timestamps"
-                            },
-                            "nonSignings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of non-signing batches"
-                            }
-                          }
-                        },
-                        "movements": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "quorumNumber": {
-                                "type": "integer",
-                                "description": "The quorum number associated with the movement"
-                              },
-                              "movement": {
-                                "type": "string",
-                                "enum": ["ENTRY", "EXIT"],
-                                "description": "Type of movement"
-                              },
-                              "timestamp": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "Timestamp of the movement"
-                              }
+                            "isActive": {
+                              "type": "boolean",
+                              "description": "Indicates if the operator is active and not ejected."
                             }
                           },
-                          "description": "List of operator movements ordered by timestamp descending"
+                          "description": "Calculated statistics about the operator."
                         }
                       }
                     }
@@ -558,80 +328,428 @@
         }
       }
     },
-    "/eigenda-operator-nonsignings": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-status": {
       "get": {
-        "summary": "Operator Non-Signings",
-        "description": "Returns a paginated list of batches where the specified operator did not sign, including temporal metrics and statistics",
+        "summary": "Fetch Operators by Status with Pagination",
+        "description": "Retrieves a list of operators filtered by their status, with pagination and aggregated statistics.",
         "parameters": [
           {
-            "name": "operatorId",
+            "name": "status",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "description": "The unique identifier of the operator"
+            "description": "The status of the operators to filter by."
           },
           {
             "name": "page",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 1,
               "minimum": 1
             },
-            "description": "The page number for pagination"
+            "description": "The page number for pagination."
           },
           {
             "name": "limit",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
               "default": 12,
               "minimum": 1
             },
-            "description": "The number of results to return per page"
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter results from this timestamp onwards"
-          },
-          {
-            "name": "endTime",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Filter results up to this timestamp"
-          },
-          {
-            "name": "startBlock",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "description": "Filter results from this block number onwards"
-          },
-          {
-            "name": "endBlock",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "description": "Filter results up to this block number"
+            "description": "The number of items per page for pagination."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response containing operators data with metadata and statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The unique ID of the operator."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator's name or identifier."
+                          },
+                          "socket": {
+                            "type": "string",
+                            "description": "The socket associated with the operator."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The status of the operator."
+                          },
+                          "ejected": {
+                            "type": "boolean",
+                            "description": "Indicates if the operator has been ejected."
+                          },
+                          "quorumStakes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number associated with the operator."
+                                },
+                                "stake": {
+                                  "type": "string",
+                                  "description": "The stake amount of the operator in the quorum."
+                                }
+                              }
+                            },
+                            "description": "A list of quorum-related stakes for the operator."
+                          },
+                          "totalStake": {
+                            "type": "number",
+                            "description": "The total stake of the operator across all quorums."
+                          }
+                        }
+                      },
+                      "description": "The list of operators matching the query parameters."
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of operators matching the status."
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "The status filter applied to the operators."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages available."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators."
+                            },
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake across all operators."
+                            },
+                            "averageStake": {
+                              "type": "number",
+                              "description": "The average stake per operator."
+                            }
+                          },
+                          "description": "Aggregated statistics for the operators."
+                        }
+                      },
+                      "description": "Metadata and statistics about the query result."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-ejection": {
+      "get": {
+        "summary": "Fetch Operators by Ejection Status with Pagination",
+        "description": "Retrieves a list of operators filtered by their ejection status, with pagination and aggregated statistics.",
+        "parameters": [
+          {
+            "name": "ejected",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "The ejection status of the operators to filter by. `true` for ejected operators, `false` for non-ejected."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number for pagination."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "minimum": 1
+            },
+            "description": "The number of items per page for pagination."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing operators data with metadata and statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The unique ID of the operator."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator's name or identifier."
+                          },
+                          "socket": {
+                            "type": "string",
+                            "description": "The socket associated with the operator."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The status of the operator."
+                          },
+                          "ejected": {
+                            "type": "boolean",
+                            "description": "Indicates if the operator has been ejected."
+                          },
+                          "quorumStakes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number associated with the operator."
+                                },
+                                "stake": {
+                                  "type": "string",
+                                  "description": "The stake amount of the operator in the quorum."
+                                }
+                              }
+                            },
+                            "description": "A list of quorum-related stakes for the operator."
+                          },
+                          "totalStake": {
+                            "type": "number",
+                            "description": "The total stake of the operator across all quorums."
+                          }
+                        }
+                      },
+                      "description": "The list of operators matching the query parameters."
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of operators matching the ejection status."
+                        },
+                        "status": {
+                          "type": "boolean",
+                          "description": "The ejection status filter applied to the operators."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages available."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators."
+                            },
+                            "totalStake": {
+                              "type": "number",
+                              "description": "The total stake across all operators."
+                            },
+                            "averageStake": {
+                              "type": "number",
+                              "description": "The average stake per operator."
+                            }
+                          },
+                          "description": "Aggregated statistics for the operators."
+                        }
+                      },
+                      "description": "Metadata and statistics about the query result."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-nonsignings": {
+      "get": {
+        "summary": "Retrieve Distinct Non-Signed Batches by Operator and Filters",
+        "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
+        "parameters": [
+          {
+            "name": "operatorId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique ID of the operator to filter batches for."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number for pagination."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "minimum": 1
+            },
+            "description": "The number of items per page for pagination."
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "The start timestamp for filtering batches."
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "The end timestamp for filtering batches."
+          },
+          {
+            "name": "startBlock",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The starting block number for filtering batches."
+          },
+          {
+            "name": "endBlock",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ending block number for filtering batches."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing distinct batch data with metadata.",
             "content": {
               "application/json": {
                 "schema": {
@@ -644,53 +762,39 @@
                         "properties": {
                           "batchId": {
                             "type": "string",
-                            "description": "The unique identifier of the batch"
-                          },
-                          "batchHeaderHash": {
-                            "type": "string",
-                            "description": "The hash of the batch header"
+                            "description": "The unique ID of the batch."
                           },
                           "blockTimestamp": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "The timestamp of the block"
-                          },
-                          "quorumNumbers": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            },
-                            "description": "Array of quorum numbers involved"
+                            "description": "The timestamp when the block was created."
                           },
                           "blockNumber": {
                             "type": "integer",
-                            "description": "The block number"
-                          },
-                          "nonSignerCount": {
-                            "type": "integer",
-                            "description": "Number of non-signers for this batch"
+                            "description": "The block number associated with the batch."
                           }
                         }
-                      }
+                      },
+                      "description": "The list of distinct batches matching the query parameters."
                     },
                     "meta": {
                       "type": "object",
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "Total number of records matching the query"
+                          "description": "The total number of distinct batches matching the filters."
                         },
                         "page": {
                           "type": "integer",
-                          "description": "Current page number"
+                          "description": "The current page number."
                         },
                         "limit": {
                           "type": "integer",
-                          "description": "Number of results per page"
+                          "description": "The number of items per page."
                         },
                         "operatorId": {
                           "type": "string",
-                          "description": "The operator ID used in the query"
+                          "description": "The operator ID filter applied to the query."
                         },
                         "timeRange": {
                           "type": "object",
@@ -698,56 +802,29 @@
                             "start": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "Start timestamp of the result set"
+                              "description": "The earliest timestamp in the result set."
                             },
                             "end": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "End timestamp of the result set"
+                              "description": "The latest timestamp in the result set."
                             }
-                          }
+                          },
+                          "description": "The range of timestamps covered in the result set."
                         },
                         "blockRange": {
                           "type": "object",
                           "properties": {
                             "start": {
                               "type": "integer",
-                              "description": "Start block number of the result set"
+                              "description": "The lowest block number in the result set."
                             },
                             "end": {
                               "type": "integer",
-                              "description": "End block number of the result set"
+                              "description": "The highest block number in the result set."
                             }
-                          }
-                        },
-                        "statistics": {
-                          "type": "object",
-                          "properties": {
-                            "totalNonSignings": {
-                              "type": "integer",
-                              "description": "Total number of non-signing events"
-                            },
-                            "totalNonSigners": {
-                              "type": "integer",
-                              "description": "Total count of non-signers across all batches"
-                            },
-                            "averageNonSignersPerBatch": {
-                              "type": "number",
-                              "format": "float",
-                              "description": "Average number of non-signers per batch"
-                            },
-                            "uniqueQuorumsCount": {
-                              "type": "integer",
-                              "description": "Number of unique quorums involved"
-                            },
-                            "uniqueQuorums": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "List of unique quorum numbers"
-                            }
-                          }
+                          },
+                          "description": "The range of block numbers covered in the result set."
                         },
                         "filters": {
                           "type": "object",
@@ -755,24 +832,26 @@
                             "startTime": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "Applied start time filter"
+                              "description": "The start timestamp filter applied."
                             },
                             "endTime": {
                               "type": "string",
                               "format": "date-time",
-                              "description": "Applied end time filter"
+                              "description": "The end timestamp filter applied."
                             },
                             "startBlock": {
                               "type": "integer",
-                              "description": "Applied start block filter"
+                              "description": "The starting block filter applied."
                             },
                             "endBlock": {
                               "type": "integer",
-                              "description": "Applied end block filter"
+                              "description": "The ending block filter applied."
                             }
-                          }
+                          },
+                          "description": "The filters applied to the query."
                         }
-                      }
+                      },
+                      "description": "Metadata about the query result and applied filters."
                     }
                   }
                 }
@@ -803,61 +882,63 @@
         }
       }
     },
-    "/eigenda-operator-with-issues": {
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-with-issues": {
       "get": {
-        "summary": "Operators with Issues",
-        "description": "Returns a list of all operators who have missed signing batches, with their non-signing statistics and history",
+        "summary": "Fetch Non-Signing Operators",
+        "description": "Retrieves a list of operators who have been non-signers with optional time and block-based filtering",
         "parameters": [
           {
             "name": "startTime",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
               "format": "date-time"
             },
-            "description": "Filter results from this timestamp onwards"
+            "description": "Start time for filtering non-signing events"
           },
           {
             "name": "endTime",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
               "format": "date-time"
             },
-            "description": "Filter results up to this timestamp"
+            "description": "End time for filtering non-signing events"
           },
           {
             "name": "startBlock",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "integer",
-              "minimum": 0
+              "type": "integer"
             },
-            "description": "Filter results from this block number onwards"
+            "description": "Starting block number for filtering non-signing events"
           },
           {
             "name": "endBlock",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "integer",
-              "minimum": 0
+              "type": "integer"
             },
-            "description": "Filter results up to this block number"
+            "description": "Ending block number for filtering non-signing events"
           },
           {
             "name": "lastNBatches",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1
+              "type": "string",
+              "default": "10"
             },
-            "description": "Limit results to the last N batches (only applies when no other filters are used)"
+            "description": "Number of most recent batches to retrieve if no other filters are applied"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response with non-signing operators data",
             "content": {
               "application/json": {
                 "schema": {
@@ -870,26 +951,26 @@
                         "properties": {
                           "operatorId": {
                             "type": "string",
-                            "description": "The unique identifier of the operator"
+                            "description": "Unique identifier for the operator"
                           },
                           "operator": {
                             "type": "string",
-                            "description": "The operator address"
+                            "description": "Operator name or address"
                           },
                           "socket": {
                             "type": "string",
-                            "description": "The socket information for the operator"
+                            "description": "Socket information for the operator"
                           },
                           "missedBatchCount": {
                             "type": "integer",
-                            "description": "Total number of batches missed by this operator"
+                            "description": "Number of batches missed by the operator"
                           },
                           "missedBatches": {
                             "type": "array",
                             "items": {
                               "type": "string"
                             },
-                            "description": "Array of batch IDs that were missed"
+                            "description": "List of missed batch IDs"
                           },
                           "firstMissedAt": {
                             "type": "string",
@@ -899,15 +980,15 @@
                           "lastMissedAt": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "Timestamp of the most recent missed batch"
+                            "description": "Timestamp of the last missed batch"
                           },
                           "firstMissedBlock": {
                             "type": "integer",
-                            "description": "Block number of the first missed batch"
+                            "description": "First block number where a batch was missed"
                           },
                           "lastMissedBlock": {
                             "type": "integer",
-                            "description": "Block number of the most recent missed batch"
+                            "description": "Last block number where a batch was missed"
                           }
                         }
                       }
@@ -924,13 +1005,11 @@
                           "properties": {
                             "start": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "Start timestamp of the result set"
+                              "format": "date-time"
                             },
                             "end": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "End timestamp of the result set"
+                              "format": "date-time"
                             }
                           }
                         },
@@ -938,42 +1017,39 @@
                           "type": "object",
                           "properties": {
                             "start": {
-                              "type": "integer",
-                              "description": "Start block number of the result set"
+                              "type": "integer"
                             },
                             "end": {
-                              "type": "integer",
-                              "description": "End block number of the result set"
+                              "type": "integer"
                             }
                           }
                         },
                         "filteredBatchCount": {
                           "type": "integer",
-                          "description": "Total number of batches in the filtered period"
+                          "description": "Number of batches considered in the query"
                         },
                         "statistics": {
                           "type": "object",
                           "properties": {
                             "totalOperators": {
                               "type": "integer",
-                              "description": "Total number of operators who missed signing"
+                              "description": "Total number of operators with missed batches"
                             },
                             "totalMissedBatches": {
                               "type": "integer",
-                              "description": "Total number of missed batch signings across all operators"
+                              "description": "Total number of missed batches"
                             },
                             "averageMissedBatchesPerOperator": {
                               "type": "number",
-                              "format": "float",
                               "description": "Average number of missed batches per operator"
                             },
                             "mostMissedBatches": {
                               "type": "integer",
-                              "description": "Highest number of missed batches by any operator"
+                              "description": "Highest number of missed batches by a single operator"
                             },
                             "leastMissedBatches": {
                               "type": "integer",
-                              "description": "Lowest number of missed batches by any operator"
+                              "description": "Lowest number of missed batches by a single operator"
                             }
                           }
                         },
@@ -982,28 +1058,172 @@
                           "properties": {
                             "startTime": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "Applied start time filter"
+                              "format": "date-time"
                             },
                             "endTime": {
                               "type": "string",
-                              "format": "date-time",
-                              "description": "Applied end time filter"
+                              "format": "date-time"
                             },
                             "startBlock": {
-                              "type": "integer",
-                              "description": "Applied start block filter"
+                              "type": "integer"
                             },
                             "endBlock": {
-                              "type": "integer",
-                              "description": "Applied end block filter"
+                              "type": "integer"
                             },
                             "lastNBatches": {
-                              "type": "integer",
-                              "description": "Number of last batches filtered (only present when no other filters are used)"
+                              "type": "string"
                             }
                           }
                         }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-activity": {
+      "get": {
+        "summary": "Fetch operator activities",
+        "operationId": "getOperatorActivities",
+        "parameters": [
+          {
+            "name": "operatorId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the operator."
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The action performed by the operator (e.g., 'sign', 'missed')."
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "1",
+              "description": "Page number for pagination."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "20",
+              "description": "Number of records per page."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator activity data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "type": "string",
+                            "description": "The operator's unique identifier."
+                          },
+                          "quorumNumber": {
+                            "type": "string",
+                            "description": "The quorum number associated with the action."
+                          },
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed by the operator."
+                          },
+                          "batchId": {
+                            "type": "string",
+                            "description": "The batch identifier associated with the action."
+                          },
+                          "transactionHash": {
+                            "type": "string",
+                            "description": "The transaction hash of the action."
+                          },
+                          "blockTimestamp": {
+                            "type": "string",
+                            "description": "The timestamp of the block in which the action occurred."
+                          },
+                          "blockNumber": {
+                            "type": "integer",
+                            "description": "The block number in which the action occurred."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of activities matching the filters."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of records per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages based on the provided limit."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are more results available on the next page."
+                        }
+                      }
+                    },
+                    "summary": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer",
+                        "description": "The count of activities per action type."
                       }
                     }
                   }
