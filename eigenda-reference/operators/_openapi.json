@@ -2,7 +2,7 @@
   "paths": {
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-operators": {
       "get": {
-        "summary": "Fetch Operators with Quorum Stakes",
+        "summary": "All Operators",
         "description": "Retrieves a paginated list of operators along with their latest quorum stakes, metadata, and statistics about the operators.",
         "parameters": [
           {
@@ -169,7 +169,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-info": {
       "get": {
-        "summary": "Fetch Details for a Specific Operator",
+        "summary": "Operator Info",
         "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
         "parameters": [
           {
@@ -330,7 +330,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-status": {
       "get": {
-        "summary": "Fetch Operators by Status with Pagination",
+        "summary": "Operators by Status",
         "description": "Retrieves a list of operators filtered by their status, with pagination and aggregated statistics.",
         "parameters": [
           {
@@ -502,7 +502,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-ejection": {
       "get": {
-        "summary": "Fetch Operators by Ejection Status with Pagination",
+        "summary": "Operators by Ejection",
         "description": "Retrieves a list of operators filtered by their ejection status, with pagination and aggregated statistics.",
         "parameters": [
           {
@@ -674,7 +674,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-nonsignings": {
       "get": {
-        "summary": "Retrieve Distinct Non-Signed Batches by Operator and Filters",
+        "summary": "Operator Non-Signings",
         "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
         "parameters": [
           {
@@ -884,7 +884,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-with-issues": {
       "get": {
-        "summary": "Fetch Non-Signing Operators",
+        "summary": "Operators with Issues",
         "description": "Retrieves a list of operators who have been non-signers with optional time and block-based filtering",
         "parameters": [
           {
@@ -1108,7 +1108,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-activity": {
       "get": {
-        "summary": "Fetch operator activities",
+        "summary": "Operator Activities",
         "operationId": "getOperatorActivities",
         "parameters": [
           {

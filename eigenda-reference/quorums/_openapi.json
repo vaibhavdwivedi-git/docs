@@ -2,7 +2,7 @@
   "paths": {
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-quorums": {
       "get": {
-        "summary": "Fetch Quorums",
+        "summary": "All Quorums",
         "description": "Retrieves the latest information about all quorums with pagination and metadata, including statistics.",
         "parameters": [
           {
@@ -144,7 +144,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/quorum-info": {
       "get": {
-        "summary": "Fetch Quorum Details",
+        "summary": "Quorum Info",
         "description": "Retrieves detailed information about a specific quorum, including strategies, stake, and member counts.",
         "parameters": [
           {
@@ -214,7 +214,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/quorum-operators": {
       "get": {
-        "summary": "Fetch Operators of a Quorum",
+        "summary": "Quorum Operators",
         "description": "Retrieves a paginated list of operators in a specified quorum, along with metadata and additional statistics.",
         "parameters": [
           {
@@ -349,7 +349,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/quorum-activity": {
       "get": {
-        "summary": "Fetch Operator Activities",
+        "summary": "Quorum Activities",
         "description": "Retrieves a paginated list of operator activities for a specified quorum, filtered by optional parameters such as `operatorId` and `action`. The response also includes metadata and a summary of actions.",
         "parameters": [
           {
