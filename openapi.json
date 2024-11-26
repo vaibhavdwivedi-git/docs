@@ -7936,7 +7936,8 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-batches": {
       "get": {
-        "summary": "Fetch detailed batch information",
+        "summary": "All Batches",
+        "description": "Fetches all batches with basic info",
         "operationId": "getBatchData",
         "parameters": [
           {
@@ -8113,13 +8114,23 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-info": {
       "get": {
-        "summary": "Get Batch Data by batchHeaderHash",
+        "summary": "Batch Info",
+        "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
         "operationId": "getBatchData",
         "parameters": [
           {
+            "name": "batchId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier for the batch."
+            }
+          },
+          {
             "name": "batchHeaderHash",
             "in": "query",
-            "required": true,
+            "required": false,
             "description": "The batch header hash to identify the batch data",
             "schema": {
               "type": "string"
@@ -8410,7 +8421,8 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-by-hash": {
       "get": {
-        "summary": "Get Batch Data by batchHeaderHash",
+        "summary": "Batch Info by Hash",
+        "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
         "operationId": "getBatchData",
         "parameters": [
           {
@@ -8707,7 +8719,7 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-by-id": {
       "get": {
-        "summary": "Get batch details by batchId",
+        "summary": "Batch Info by Id",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
         "operationId": "getBatchDetails",
         "parameters": [
@@ -8831,7 +8843,8 @@
     },
     "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-nonsigners": {
       "get": {
-        "summary": "Fetch Non-Signers Information for a Batch",
+        "summary": "Batch Non-Signers",
+        "description": "Fetches all non-signers information of a given batch.",
         "operationId": "getNonSignersByBatchId",
         "parameters": [
           {
