@@ -10090,8 +10090,16 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "The action performed by the operator (e.g., 'sign', 'missed')."
-            }
+              "enum": [
+                "Registered",
+                "Deregistered",
+                "StakeUpdated",
+                "Ejected",
+                "SocketUpdated"
+              ],
+              "default": "Registered"
+            },
+            "description": "A specific action type to filter activities."
           },
           {
             "name": "page",
@@ -10446,6 +10454,20 @@
             "description": "The unique number of the quorum to retrieve operators for."
           },
           {
+            "name": "active",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "default": "false"
+            },
+            "required": false,
+            "description": "Filter to include only active operators (stake > 0) if set to `true`."
+          },
+          {
             "name": "page",
             "in": "query",
             "schema": {
@@ -10466,20 +10488,6 @@
             },
             "required": false,
             "description": "The number of operators per page."
-          },
-          {
-            "name": "active",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "true",
-                "false"
-              ],
-              "default": "false"
-            },
-            "required": false,
-            "description": "Filter to include only active operators (stake > 0) if set to `true`."
           }
         ],
         "responses": {
@@ -10597,9 +10605,16 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "Registered",
+                "Deregistered",
+                "StakeUpdated",
+                "Ejected"
+              ],
+              "default": "Registered"
             },
-            "description": "A specific action type to filter activities (e.g., 'join', 'leave')."
+            "description": "A specific action type to filter activities."
           },
           {
             "name": "page",

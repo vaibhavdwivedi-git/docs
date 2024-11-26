@@ -1126,8 +1126,16 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "The action performed by the operator (e.g., 'sign', 'missed')."
-            }
+              "enum": [
+                "Registered",
+                "Deregistered",
+                "StakeUpdated",
+                "Ejected",
+                "SocketUpdated"
+              ],
+              "default": "Registered"
+            },
+            "description": "A specific action type to filter activities."
           },
           {
             "name": "page",
