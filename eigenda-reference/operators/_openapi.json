@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-operators": {
+    "/eigenda/all-operators": {
       "get": {
         "summary": "All Operators",
         "description": "Retrieves a paginated list of operators along with their latest quorum stakes, metadata, and statistics about the operators.",
@@ -167,7 +167,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-info": {
+    "/eigenda/operator-info": {
       "get": {
         "summary": "Operator Info",
         "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
@@ -328,7 +328,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operators-by-status": {
+    "/eigenda/operators-by-status": {
       "get": {
         "summary": "Operators by Status",
         "description": "Retrieves a list of operators filtered by their status, with pagination and aggregated statistics.",
@@ -502,7 +502,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operators-by-ejection": {
+    "/eigenda/operators-by-ejection": {
       "get": {
         "summary": "Operators by Ejection",
         "description": "Retrieves a list of operators filtered by their ejection status, with pagination and aggregated statistics.",
@@ -676,7 +676,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-nonsignings": {
+    "/eigenda/operator-nonsignings": {
       "get": {
         "summary": "Operator Non-Signings",
         "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
@@ -886,7 +886,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-with-issues": {
+    "/eigenda/operator-with-issues": {
       "get": {
         "summary": "Operators with Issues",
         "description": "Retrieves a list of operators who have been non-signers with optional time and block-based filtering",
@@ -1110,7 +1110,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-activity": {
+    "/eigenda/operator-activity": {
       "get": {
         "summary": "Operator Activities",
         "operationId": "getOperatorActivities",

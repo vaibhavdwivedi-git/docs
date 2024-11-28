@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-batches": {
+    "/eigenda/all-batches": {
       "get": {
         "summary": "All Batches",
         "description": "Fetches all distinct batch entries with their latest information.",
@@ -217,7 +217,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-info": {
+    "/eigenda/batch-info": {
       "get": {
         "summary": "Batch Info",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -550,7 +550,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-by-hash": {
+    "/eigenda/batch-by-hash": {
       "get": {
         "summary": "Batch Info by Hash",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -873,7 +873,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-by-id": {
+    "/eigenda/batch-by-id": {
       "get": {
         "summary": "Batch Info by Id",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -1196,7 +1196,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-nonsigners": {
+    "/eigenda/batch-nonsigners": {
       "get": {
         "summary": "Batch Non-Signers",
         "description": "Fetches all non-signers information of a given batch.",

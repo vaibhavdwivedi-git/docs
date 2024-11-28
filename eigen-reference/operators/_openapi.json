@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operators": {
+    "/eigenlayer/operators": {
       "get": {
         "operationId": "getAllOperators",
         "summary": "Retrieve all operators",
@@ -329,7 +329,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-by-address": {
+    "/eigenlayer/operator-by-address": {
       "get": {
         "operationId": "getOperatorByAddress",
         "summary": "Retrieve operator details for a specific address",
@@ -596,7 +596,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operators-all-address": {
+    "/eigenlayer/operators-all-address": {
       "get": {
         "operationId": "getOperatorAddresses",
         "summary": "Retrieve all operator addresses with basic metadata",
@@ -767,7 +767,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-stakers": {
+    "/eigenlayer/operator-stakers": {
       "get": {
         "operationId": "getOperatorStakers",
         "summary": "Retrieve all stakers for a specific operator",
@@ -994,7 +994,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-staker-history": {
+    "/eigenlayer/operator-staker-history": {
       "get": {
         "operationId": "getOperatorStakerHistory",
         "summary": "Retrieve staking history for a specific operator",
@@ -1229,7 +1229,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-avs-history": {
+    "/eigenlayer/operator-avs-history": {
       "get": {
         "operationId": "getOperatorAvsHistory",
         "summary": "Retrieve AVS history for a specific operator",

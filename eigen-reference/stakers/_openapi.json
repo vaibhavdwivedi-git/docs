@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/stakers": {
+    "/eigenlayer/stakers": {
       "get": {
         "operationId": "getAllStakers",
         "summary": "Retrieve all stakers",
@@ -212,7 +212,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-by-address": {
+    "/eigenlayer/staker-by-address": {
       "get": {
         "operationId": "getStakerByAddress",
         "summary": "Retrieve staker details for a specific address",
@@ -415,7 +415,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawals-all": {
+    "/eigenlayer/staker-withdrawals-all": {
       "get": {
         "operationId": "getStakerWithdrawals",
         "summary": "Retrieve all withdrawals for a specific staker",
@@ -665,7 +665,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawal-completed": {
+    "/eigenlayer/staker-withdrawal-completed": {
       "get": {
         "operationId": "getStakerCompletedWithdrawals",
         "summary": "Retrieve completed withdrawals for a specific staker",
@@ -911,7 +911,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-deposits": {
+    "/eigenlayer/staker-deposits": {
       "get": {
         "operationId": "getStakerDeposits",
         "summary": "Retrieve deposits for a specific staker",
@@ -1120,7 +1120,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawals-queued": {
+    "/eigenlayer/staker-withdrawals-queued": {
       "get": {
         "operationId": "getStakerQueuedWithdrawals",
         "summary": "Retrieve queued withdrawals for a specific staker",

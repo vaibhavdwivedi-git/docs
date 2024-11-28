@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-quorums": {
+    "/eigenda/all-quorums": {
       "get": {
         "summary": "All Quorums",
         "description": "Retrieves the latest information about all quorums with pagination and metadata, including statistics.",
@@ -142,7 +142,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/quorum-info": {
+    "/eigenda/quorum-info": {
       "get": {
         "summary": "Quorum Info",
         "description": "Retrieves detailed information about a specific quorum, including strategies, stake, and member counts.",
@@ -212,7 +212,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/quorum-operators": {
+    "/eigenda/quorum-operators": {
       "get": {
         "summary": "Quorum Operators",
         "description": "Retrieves a paginated list of operators in a specified quorum, along with metadata and additional statistics.",
@@ -347,7 +347,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/quorum-activity": {
+    "/eigenda/quorum-activity": {
       "get": {
         "summary": "Quorum Activities",
         "description": "Retrieves a paginated list of operator activities for a specified quorum, filtered by optional parameters such as `operatorId` and `action`. The response also includes metadata and a summary of actions.",

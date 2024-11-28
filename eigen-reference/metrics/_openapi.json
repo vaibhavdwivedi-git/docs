@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics": {
+    "/eigenlayer/metrics": {
       "get": {
         "operationId": "getAllMetrics",
         "summary": "Retrieve summary metrics",
@@ -99,7 +99,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics-tvl": {
+    "/eigenlayer/metrics-tvl": {
       "get": {
         "operationId": "getTvlMetrics",
         "summary": "Retrieve total TVL",
@@ -177,7 +177,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics-tvl-strategy": {
+    "/eigenlayer/metrics-tvl-strategy": {
       "get": {
         "operationId": "getTvlRestakingMetricByStrategy",
         "summary": "Retrieve a strategy TVL by name",
@@ -258,7 +258,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-avs": {
+    "/eigenlayer/total-avs": {
       "get": {
         "operationId": "getTotalAvsMetric",
         "summary": "Retrieve total number of AVS",
@@ -323,7 +323,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-operators": {
+    "/eigenlayer/total-operators": {
       "get": {
         "operationId": "getTotalOperatorsMetric",
         "summary": "Retrieve total number of AVS operators",
@@ -388,7 +388,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-stakers": {
+    "/eigenlayer/total-stakers": {
       "get": {
         "operationId": "getTotalStakerssMetric",
         "summary": "Retrieve total number of AVS stakers",
@@ -453,7 +453,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-withdrawals": {
+    "/eigenlayer/total-withdrawals": {
       "get": {
         "operationId": "getTotalWithdrawals",
         "summary": "Retrieve total number of withdrawals ",
@@ -528,7 +528,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-deposits": {
+    "/eigenlayer/total-deposits": {
       "get": {
         "operationId": "getTotalDeposits",
         "summary": "Retrieve total number of deposits",

@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs": {
+    "/eigenlayer/avs": {
       "get": {
         "operationId": "getAllAvs",
         "summary": "Retrieve all registered AVS",
@@ -246,7 +246,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-all-address": {
+    "/eigenlayer/avs-all-address": {
       "get": {
         "operationId": "getAllAvsAddresses",
         "summary": "Retrieve all AVS addresses",
@@ -381,7 +381,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-by-address": {
+    "/eigenlayer/avs-by-address": {
       "get": {
         "operationId": "getAvsByAddress",
         "summary": "Retrieve an AVS details for a specific address",
@@ -607,7 +607,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-stakers": {
+    "/eigenlayer/avs-its-stakers": {
       "get": {
         "operationId": "getAvsStakersByAddress",
         "summary": "Retrieve all stakers for a specific AVS address",
@@ -790,7 +790,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-operators": {
+    "/eigenlayer/avs-its-operators": {
       "get": {
         "operationId": "getAvsOperatorsByAddress",
         "summary": "Retrieve all operators for a given AVS address",

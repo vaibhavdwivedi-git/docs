@@ -14,7 +14,7 @@
     }
   ],
   "paths": {
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs": {
+    "/eigenlayer/avs": {
       "get": {
         "operationId": "getAllAvs",
         "summary": "Retrieve all registered AVS",
@@ -271,7 +271,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-all-address": {
+    "/eigenlayer/avs-all-address": {
       "get": {
         "operationId": "getAllAvsAddresses",
         "summary": "Retrieve all AVS addresses",
@@ -422,7 +422,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-by-address": {
+    "/eigenlayer/avs-by-address": {
       "get": {
         "operationId": "getAvsByAddress",
         "summary": "Retrieve an AVS details for a specific address",
@@ -652,7 +652,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-stakers": {
+    "/eigenlayer/avs-its-stakers": {
       "get": {
         "operationId": "getAvsStakersByAddress",
         "summary": "Retrieve all stakers for a specific AVS address",
@@ -849,7 +849,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-its-operators": {
+    "/eigenlayer/avs-its-operators": {
       "get": {
         "operationId": "getAvsOperatorsByAddress",
         "summary": "Retrieve all operators for a given AVS address",
@@ -1122,7 +1122,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics": {
+    "/eigenlayer/metrics": {
       "get": {
         "operationId": "getAllMetrics",
         "summary": "Retrieve summary metrics",
@@ -1225,7 +1225,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics-tvl": {
+    "/eigenlayer/metrics-tvl": {
       "get": {
         "operationId": "getTvlMetrics",
         "summary": "Retrieve total TVL",
@@ -1310,7 +1310,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/metrics-tvl-strategy": {
+    "/eigenlayer/metrics-tvl-strategy": {
       "get": {
         "operationId": "getTvlRestakingMetricByStrategy",
         "summary": "Retrieve a strategy TVL by name",
@@ -1397,7 +1397,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-avs": {
+    "/eigenlayer/total-avs": {
       "get": {
         "operationId": "getTotalAvsMetric",
         "summary": "Retrieve total number of AVS",
@@ -1468,7 +1468,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-operators": {
+    "/eigenlayer/total-operators": {
       "get": {
         "operationId": "getTotalOperatorsMetric",
         "summary": "Retrieve total number of AVS operators",
@@ -1539,7 +1539,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-stakers": {
+    "/eigenlayer/total-stakers": {
       "get": {
         "operationId": "getTotalStakerssMetric",
         "summary": "Retrieve total number of AVS stakers",
@@ -1610,7 +1610,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-withdrawals": {
+    "/eigenlayer/total-withdrawals": {
       "get": {
         "operationId": "getTotalWithdrawals",
         "summary": "Retrieve total number of withdrawals ",
@@ -1693,7 +1693,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/total-deposits": {
+    "/eigenlayer/total-deposits": {
       "get": {
         "operationId": "getTotalDeposits",
         "summary": "Retrieve total number of deposits",
@@ -1764,7 +1764,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operators": {
+    "/eigenlayer/operators": {
       "get": {
         "operationId": "getAllOperators",
         "summary": "Retrieve all operators",
@@ -2110,7 +2110,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-by-address": {
+    "/eigenlayer/operator-by-address": {
       "get": {
         "operationId": "getOperatorByAddress",
         "summary": "Retrieve operator details for a specific address",
@@ -2387,7 +2387,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operators-all-address": {
+    "/eigenlayer/operators-all-address": {
       "get": {
         "operationId": "getOperatorAddresses",
         "summary": "Retrieve all operator addresses with basic metadata",
@@ -2585,7 +2585,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-stakers": {
+    "/eigenlayer/operator-stakers": {
       "get": {
         "operationId": "getOperatorStakers",
         "summary": "Retrieve all stakers for a specific operator",
@@ -2838,7 +2838,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-staker-history": {
+    "/eigenlayer/operator-staker-history": {
       "get": {
         "operationId": "getOperatorStakerHistory",
         "summary": "Retrieve staking history for a specific operator",
@@ -3102,7 +3102,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/operator-avs-history": {
+    "/eigenlayer/operator-avs-history": {
       "get": {
         "operationId": "getOperatorAvsHistory",
         "summary": "Retrieve AVS history for a specific operator",
@@ -3330,7 +3330,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods": {
+    "/eigenlayer/pods": {
       "get": {
         "operationId": "getPods",
         "summary": "Retrieve all EigenPods",
@@ -3529,7 +3529,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods-all-address": {
+    "/eigenlayer/pods-all-address": {
       "get": {
         "operationId": "getPodsAllAddresses",
         "summary": "Retrieve EigenPods Addresses List",
@@ -3671,7 +3671,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pod-by-address": {
+    "/eigenlayer/pod-by-address": {
       "get": {
         "operationId": "getPodByAddress",
         "summary": "Retrieve an EigenPod by address",
@@ -3887,7 +3887,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods-by-owner": {
+    "/eigenlayer/pods-by-owner": {
       "get": {
         "operationId": "getPodsByOwner",
         "summary": "Retrieve EigenPods by owner address",
@@ -4097,7 +4097,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pods-transaction": {
+    "/eigenlayer/pods-transaction": {
       "get": {
         "operationId": "getPodsTransactions",
         "summary": "Retrieve all EigenPod Transactions",
@@ -4247,7 +4247,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/pod-transaction": {
+    "/eigenlayer/pod-transaction": {
       "get": {
         "operationId": "getPodTransactions",
         "summary": "Retrieve transactions for a specific EigenPod",
@@ -4407,7 +4407,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/stakers": {
+    "/eigenlayer/stakers": {
       "get": {
         "operationId": "getAllStakers",
         "summary": "Retrieve all stakers",
@@ -4646,7 +4646,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-by-address": {
+    "/eigenlayer/staker-by-address": {
       "get": {
         "operationId": "getStakerByAddress",
         "summary": "Retrieve staker details for a specific address",
@@ -4878,7 +4878,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawals-all": {
+    "/eigenlayer/staker-withdrawals-all": {
       "get": {
         "operationId": "getStakerWithdrawals",
         "summary": "Retrieve all withdrawals for a specific staker",
@@ -5158,7 +5158,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawal-completed": {
+    "/eigenlayer/staker-withdrawal-completed": {
       "get": {
         "operationId": "getStakerCompletedWithdrawals",
         "summary": "Retrieve completed withdrawals for a specific staker",
@@ -5432,7 +5432,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-deposits": {
+    "/eigenlayer/staker-deposits": {
       "get": {
         "operationId": "getStakerDeposits",
         "summary": "Retrieve deposits for a specific staker",
@@ -5668,7 +5668,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/staker-withdrawals-queued": {
+    "/eigenlayer/staker-withdrawals-queued": {
       "get": {
         "operationId": "getStakerQueuedWithdrawals",
         "summary": "Retrieve queued withdrawals for a specific staker",
@@ -5929,7 +5929,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/deposits": {
+    "/eigenlayer/deposits": {
       "get": {
         "operationId": "getAllDeposits",
         "summary": "Retrieve all deposits",
@@ -6154,7 +6154,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/withdrawals": {
+    "/eigenlayer/withdrawals": {
       "get": {
         "operationId": "getAllWithdrawals",
         "summary": "Retrieve all withdrawals",
@@ -6421,7 +6421,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/withdrawals-by-withdrawal-root": {
+    "/eigenlayer/withdrawals-by-withdrawal-root": {
       "get": {
         "operationId": "getWithdrawalByRoot",
         "summary": "Retrieve withdrawal details by withdrawal root",
@@ -6679,7 +6679,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-distribution-roots": {
+    "/eigenlayer/all-distribution-roots": {
       "get": {
         "operationId": "getAllDistributionRoots",
         "summary": "Retrieve all distribution roots",
@@ -6829,7 +6829,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/distribution-roots-by-status": {
+    "/eigenlayer/distribution-roots-by-status": {
       "get": {
         "operationId": "getAllDistributionRootsByStatus",
         "summary": "Retrieve all distribution roots by status",
@@ -6989,7 +6989,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-rewards-claim": {
+    "/eigenlayer/all-rewards-claim": {
       "get": {
         "operationId": "getAllRewardClaims",
         "summary": "Retrieve all reward claims with statistics",
@@ -7271,7 +7271,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/all-avs-rewards-submission": {
+    "/eigenlayer/all-avs-rewards-submission": {
       "get": {
         "operationId": "getAVSRewardsSubmissions",
         "summary": "Retrieve all AVS rewards submissions",
@@ -7439,7 +7439,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-avs": {
+    "/eigenlayer/avs-rewards-submission-by-avs": {
       "get": {
         "operationId": "getAVSRewardsSubmissionsByAVS",
         "summary": "Retrieve all AVS rewards submissions of an AVS",
@@ -7617,7 +7617,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-tokenUsed": {
+    "/eigenlayer/avs-rewards-submission-by-tokenUsed": {
       "get": {
         "operationId": "getAVSRewardsSubmissionsByTokenUsed",
         "summary": "Retrieve all AVS rewards submissions of given Token",
@@ -7795,7 +7795,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/avs-rewards-submission-by-hash": {
+    "/eigenlayer/avs-rewards-submission-by-hash": {
       "get": {
         "operationId": "getAVSRewardsSubmissionByHash",
         "summary": "Retrieve AVS rewards submission by hash",
@@ -7934,7 +7934,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-batches": {
+    "/eigenda/all-batches": {
       "get": {
         "summary": "All Batches",
         "description": "Fetches all distinct batch entries with their latest information.",
@@ -8151,7 +8151,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-info": {
+    "/eigenda/batch-info": {
       "get": {
         "summary": "Batch Info",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -8484,7 +8484,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-by-hash": {
+    "/eigenda/batch-by-hash": {
       "get": {
         "summary": "Batch Info by Hash",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -8807,7 +8807,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-by-id": {
+    "/eigenda/batch-by-id": {
       "get": {
         "summary": "Batch Info by Id",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -9130,7 +9130,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-nonsigners": {
+    "/eigenda/batch-nonsigners": {
       "get": {
         "summary": "Batch Non-Signers",
         "description": "Fetches all non-signers information of a given batch.",
@@ -9253,7 +9253,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-operators": {
+    "/eigenda/all-operators": {
       "get": {
         "summary": "All Operators",
         "description": "Retrieves a paginated list of operators along with their latest quorum stakes, metadata, and statistics about the operators.",
@@ -9420,7 +9420,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-info": {
+    "/eigenda/operator-info": {
       "get": {
         "summary": "Operator Info",
         "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
@@ -9581,7 +9581,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operators-by-status": {
+    "/eigenda/operators-by-status": {
       "get": {
         "summary": "Operators by Status",
         "description": "Retrieves a list of operators filtered by their status, with pagination and aggregated statistics.",
@@ -9758,7 +9758,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operators-by-ejection": {
+    "/eigenda/operators-by-ejection": {
       "get": {
         "summary": "Operators by Ejection",
         "description": "Retrieves a list of operators filtered by their ejection status, with pagination and aggregated statistics.",
@@ -9935,7 +9935,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-nonsignings": {
+    "/eigenda/operator-nonsignings": {
       "get": {
         "summary": "Operator Non-Signings",
         "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
@@ -10145,7 +10145,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-with-issues": {
+    "/eigenda/operator-with-issues": {
       "get": {
         "summary": "Operators with Issues",
         "description": "Retrieves a list of operators who have been non-signers with optional time and block-based filtering",
@@ -10369,7 +10369,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-activity": {
+    "/eigenda/operator-activity": {
       "get": {
         "summary": "Operator Activities",
         "operationId": "getOperatorActivities",
@@ -10530,7 +10530,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-quorums": {
+    "/eigenda/all-quorums": {
       "get": {
         "summary": "All Quorums",
         "description": "Retrieves the latest information about all quorums with pagination and metadata, including statistics.",
@@ -10672,7 +10672,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/quorum-info": {
+    "/eigenda/quorum-info": {
       "get": {
         "summary": "Quorum Info",
         "description": "Retrieves detailed information about a specific quorum, including strategies, stake, and member counts.",
@@ -10742,7 +10742,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/quorum-operators": {
+    "/eigenda/quorum-operators": {
       "get": {
         "summary": "Quorum Operators",
         "description": "Retrieves a paginated list of operators in a specified quorum, along with metadata and additional statistics.",
@@ -10880,7 +10880,7 @@
         }
       }
     },
-    "/e65f9c98-e499-42aa-8181-19427d8982e9/quorum-activity": {
+    "/eigenda/quorum-activity": {
       "get": {
         "summary": "Quorum Activities",
         "description": "Retrieves a paginated list of operator activities for a specified quorum, filtered by optional parameters such as `operatorId` and `action`. The response also includes metadata and a summary of actions.",

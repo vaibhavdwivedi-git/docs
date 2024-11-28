@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/deposits": {
+    "/eigenlayer/deposits": {
       "get": {
         "operationId": "getAllDeposits",
         "summary": "Retrieve all deposits",
@@ -201,7 +201,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/withdrawals": {
+    "/eigenlayer/withdrawals": {
       "get": {
         "operationId": "getAllWithdrawals",
         "summary": "Retrieve all withdrawals",
@@ -441,7 +441,7 @@
         }
       }
     },
-    "/fbcc1fb0-7e72-4e5f-a711-879ee3e616ba/withdrawals-by-withdrawal-root": {
+    "/eigenlayer/withdrawals-by-withdrawal-root": {
       "get": {
         "operationId": "getWithdrawalByRoot",
         "summary": "Retrieve withdrawal details by withdrawal root",
