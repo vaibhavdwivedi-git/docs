@@ -1,9 +1,9 @@
 {
   "paths": {
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-batches": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-batches": {
       "get": {
         "summary": "All Batches",
-        "description": "Fetches all batches with basic info",
+        "description": "Fetches all distinct batch entries with their latest information.",
         "operationId": "getBatchData",
         "parameters": [
           {
@@ -98,9 +98,39 @@
                             "type": "integer",
                             "description": "The block number for the batch."
                           },
-                          "nonSignersCount": {
-                            "type": "integer",
-                            "description": "The number of non-signers in the batch."
+                          "operators": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "nonSigners": {
+                                  "type": "integer",
+                                  "description": "The count of non-signers for the batch."
+                                },
+                                "signers": {
+                                  "type": "integer",
+                                  "description": "The count of signers for the batch."
+                                }
+                              }
+                            },
+                            "description": "Details about operators in the batch."
+                          },
+                          "quorumStakes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quorumNumber": {
+                                  "type": "string",
+                                  "description": "The quorum number."
+                                },
+                                "stakeAmount": {
+                                  "type": "integer",
+                                  "description": "The amount of stake for the quorum."
+                                }
+                              }
+                            },
+                            "description": "Quorum stakes for the batch."
                           }
                         }
                       }
@@ -110,7 +140,7 @@
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "description": "Total number of batches."
+                          "description": "Total number of distinct batches."
                         },
                         "page": {
                           "type": "integer",
@@ -132,9 +162,9 @@
                         "statistics": {
                           "type": "object",
                           "properties": {
-                            "totalBatches": {
+                            "totalDistinctBatches": {
                               "type": "integer",
-                              "description": "Total number of batches."
+                              "description": "Total number of distinct batches."
                             },
                             "batchesWithNonSigners": {
                               "type": "integer",
@@ -144,6 +174,15 @@
                               "type": "number",
                               "format": "float",
                               "description": "Percentage of batches with non-signers."
+                            },
+                            "batchesWithSigners": {
+                              "type": "integer",
+                              "description": "Number of batches with signers."
+                            },
+                            "batchesWithSignersPercentage": {
+                              "type": "number",
+                              "format": "float",
+                              "description": "Percentage of batches with signers."
                             }
                           }
                         }
@@ -178,7 +217,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-info": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-info": {
       "get": {
         "summary": "Batch Info",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -189,7 +228,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "type": "number",
               "description": "The unique identifier for the batch."
             }
           },
@@ -199,7 +238,8 @@
             "required": false,
             "description": "The batch header hash to identify the batch data",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "The unique identifier for the batch."
             }
           }
         ],
@@ -298,13 +338,38 @@
                             }
                           }
                         },
-                        "nonSignersCount": {
-                          "type": "integer"
+                        "operators": {
+                          "type": "object",
+                          "properties": {
+                            "signers": {
+                              "type": "string"
+                            },
+                            "nonSigners": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "signers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         "nonSigners": {
                           "type": "array",
                           "items": {
                             "type": "string"
+                          }
+                        },
+                        "quorumStakes": {
+                          "type": "object",
+                          "properties": {
+                            "quorumNumber": {
+                              "type": "string"
+                            },
+                            "stake": {
+                              "type": "string"
+                            }
                           }
                         },
                         "signatoryRecordHash": {
@@ -485,7 +550,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-by-hash": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-by-hash": {
       "get": {
         "summary": "Batch Info by Hash",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -596,13 +661,38 @@
                             }
                           }
                         },
-                        "nonSignersCount": {
-                          "type": "integer"
+                        "operators": {
+                          "type": "object",
+                          "properties": {
+                            "signers": {
+                              "type": "string"
+                            },
+                            "nonSigners": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "signers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         "nonSigners": {
                           "type": "array",
                           "items": {
                             "type": "string"
+                          }
+                        },
+                        "quorumStakes": {
+                          "type": "object",
+                          "properties": {
+                            "quorumNumber": {
+                              "type": "string"
+                            },
+                            "stake": {
+                              "type": "string"
+                            }
                           }
                         },
                         "signatoryRecordHash": {
@@ -783,7 +873,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-by-id": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-by-id": {
       "get": {
         "summary": "Batch Info by Id",
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
@@ -794,67 +884,289 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
+              "type": "number",
               "description": "The unique identifier for the batch."
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Successfully fetched batch details",
+            "description": "Successfully fetched batch data",
             "content": {
               "application/json": {
-                "example": {
-                  "data": {
-                    "batchId": "1234",
-                    "batchHeaderHash": "abcd1234",
-                    "blobsLength": 256,
-                    "quorumNumbers": [1, 2, 3],
-                    "blobHeadersRoot": "rootHash",
-                    "referenceBlockNumber": 1000,
-                    "signedStakeForQuorums": [100, 200],
-                    "transactionHash": "txHash",
-                    "blockTimestamp": "2024-11-25T12:00:00Z",
-                    "blockNumber": 1001,
-                    "batchMetadata": {
-                      "apkG2": "someValue",
-                      "sigma": "value",
-                      "quorumApks": ["apk1", "apk2"],
-                      "quorumApkIndices": [0, 1],
-                      "nonSignerPubkeys": ["pubKey1", "pubKey2"],
-                      "totalStakeIndices": [0, 1],
-                      "nonSignerStakeIndices": [0],
-                      "nonSignerQuorumBitmapIndices": [0]
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "batchId": {
+                          "type": "string"
+                        },
+                        "batchHeaderHash": {
+                          "type": "string"
+                        },
+                        "blobsLength": {
+                          "type": "integer"
+                        },
+                        "quorumNumbers": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          }
+                        },
+                        "blobHeadersRoot": {
+                          "type": "string"
+                        },
+                        "referenceBlockNumber": {
+                          "type": "integer"
+                        },
+                        "signedStakeForQuorums": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          }
+                        },
+                        "transactionHash": {
+                          "type": "string"
+                        },
+                        "blockTimestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        },
+                        "batchMetadata": {
+                          "type": "object",
+                          "properties": {
+                            "apkG2": {
+                              "type": "string"
+                            },
+                            "sigma": {
+                              "type": "string"
+                            },
+                            "quorumApks": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "quorumApkIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerPubkeys": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "totalStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerStakeIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "nonSignerQuorumBitmapIndices": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "operators": {
+                          "type": "object",
+                          "properties": {
+                            "signers": {
+                              "type": "string"
+                            },
+                            "nonSigners": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "signers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "nonSigners": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "quorumStakes": {
+                          "type": "object",
+                          "properties": {
+                            "quorumNumber": {
+                              "type": "string"
+                            },
+                            "stake": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "signatoryRecordHash": {
+                          "type": "string"
+                        },
+                        "logs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "logIndex": {
+                                "type": "string"
+                              },
+                              "logTransactionHash": {
+                                "type": "string"
+                              },
+                              "logTransactionIndex": {
+                                "type": "string"
+                              },
+                              "logAddress": {
+                                "type": "string"
+                              },
+                              "logData": {
+                                "type": "string"
+                              },
+                              "topics": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "transactionHash": {
+                                "type": "string"
+                              },
+                              "nonce": {
+                                "type": "integer"
+                              },
+                              "index": {
+                                "type": "integer"
+                              },
+                              "fromAddress": {
+                                "type": "string"
+                              },
+                              "toAddress": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              },
+                              "gas": {
+                                "type": "integer"
+                              },
+                              "gasPrice": {
+                                "type": "string"
+                              },
+                              "receiptCumulativeGasUsed": {
+                                "type": "integer"
+                              },
+                              "receiptGasUsed": {
+                                "type": "integer"
+                              },
+                              "receiptStatus": {
+                                "type": "string"
+                              },
+                              "effectiveGasPrice": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "block": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "integer"
+                            },
+                            "blockHash": {
+                              "type": "string"
+                            },
+                            "parentHash": {
+                              "type": "string"
+                            },
+                            "nonce": {
+                              "type": "string"
+                            },
+                            "sha3Uncles": {
+                              "type": "string"
+                            },
+                            "logsBloom": {
+                              "type": "string"
+                            },
+                            "transactionsRoot": {
+                              "type": "string"
+                            },
+                            "stateRoot": {
+                              "type": "string"
+                            },
+                            "receiptsRoot": {
+                              "type": "string"
+                            },
+                            "miner": {
+                              "type": "string"
+                            },
+                            "difficulty": {
+                              "type": "integer"
+                            },
+                            "totalDifficulty": {
+                              "type": "integer"
+                            },
+                            "size": {
+                              "type": "integer"
+                            },
+                            "extraData": {
+                              "type": "string"
+                            },
+                            "gasLimit": {
+                              "type": "integer"
+                            },
+                            "gasUsed": {
+                              "type": "integer"
+                            },
+                            "transactionCount": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
                     },
-                    "nonSignersCount": 5,
-                    "nonSigners": [],
-                    "signatoryRecordHash": "signatoryHash",
-                    "logs": [],
-                    "transactions": [],
-                    "block": {
-                      "blockNumber": 1001,
-                      "blockHash": "blockHash123",
-                      "parentHash": "parentHash123",
-                      "nonce": "00000001",
-                      "sha3Uncles": "sha3Hash",
-                      "logsBloom": "logsBloomHash",
-                      "transactionsRoot": "transactionsRootHash",
-                      "stateRoot": "stateRootHash",
-                      "receiptsRoot": "receiptsRootHash",
-                      "miner": "minerAddress",
-                      "difficulty": 100000,
-                      "totalDifficulty": 200000,
-                      "size": 1000,
-                      "extraData": "extraData",
-                      "gasLimit": 1000000,
-                      "gasUsed": 500000,
-                      "transactionCount": 10
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "batchId": {
+                          "type": "string"
+                        },
+                        "blockNumber": {
+                          "type": "integer"
+                        },
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
                     }
-                  },
-                  "metadata": {
-                    "batchId": "1234",
-                    "blockNumber": 1001,
-                    "timestamp": "2024-11-25T12:00:00Z"
                   }
                 }
               }
@@ -884,7 +1196,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/batch-nonsigners": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/batch-nonsigners": {
       "get": {
         "summary": "Batch Non-Signers",
         "description": "Fetches all non-signers information of a given batch.",
@@ -895,7 +1207,7 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
+              "type": "number",
               "description": "The ID of the batch for which non-signer information is being requested."
             }
           }

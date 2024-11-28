@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/all-operators": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/all-operators": {
       "get": {
         "summary": "All Operators",
         "description": "Retrieves a paginated list of operators along with their latest quorum stakes, metadata, and statistics about the operators.",
@@ -167,7 +167,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-info": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-info": {
       "get": {
         "summary": "Operator Info",
         "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
@@ -328,7 +328,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-status": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/operators-by-status": {
       "get": {
         "summary": "Operators by Status",
         "description": "Retrieves a list of operators filtered by their status, with pagination and aggregated statistics.",
@@ -338,7 +338,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "boolean",
+              "enum": [true, false],
+              "default": true
             },
             "description": "The status of the operators to filter by."
           },
@@ -500,7 +502,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operators-by-ejection": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/operators-by-ejection": {
       "get": {
         "summary": "Operators by Ejection",
         "description": "Retrieves a list of operators filtered by their ejection status, with pagination and aggregated statistics.",
@@ -510,7 +512,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "boolean"
+              "type": "boolean",
+              "enum": [true, false],
+              "default": true
             },
             "description": "The ejection status of the operators to filter by. `true` for ejected operators, `false` for non-ejected."
           },
@@ -672,7 +676,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-nonsignings": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-nonsignings": {
       "get": {
         "summary": "Operator Non-Signings",
         "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
@@ -882,7 +886,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-with-issues": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-with-issues": {
       "get": {
         "summary": "Operators with Issues",
         "description": "Retrieves a list of operators who have been non-signers with optional time and block-based filtering",
@@ -1106,7 +1110,7 @@
         }
       }
     },
-    "/6f77a93e-fc87-4f71-9073-48f8fe1af02c/operator-activity": {
+    "/e65f9c98-e499-42aa-8181-19427d8982e9/operator-activity": {
       "get": {
         "summary": "Operator Activities",
         "operationId": "getOperatorActivities",
@@ -1182,6 +1186,10 @@
                           "action": {
                             "type": "string",
                             "description": "The action performed by the operator."
+                          },
+                          "stake": {
+                            "type": "string",
+                            "description": "The stake of operator in the quorum."
                           },
                           "batchId": {
                             "type": "string",

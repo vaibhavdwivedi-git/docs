@@ -35,6 +35,10 @@
   ],
   "tabs": [
     {
+      "name": "Documentation",
+      "url": "documentation"
+    },
+    {
       "name": "EigenLayer",
       "url": "eigen-reference"
     },
@@ -47,9 +51,9 @@
     {
       "group": "API Documentation",
       "pages": [
-        "eigen-reference/introduction",
-        "eigen-reference/prerequisites",
-        "eigen-reference/errors"
+        "documentation/introduction",
+        "documentation/prerequisites",
+        "documentation/errors"
       ]
     },
     {
@@ -113,14 +117,6 @@
         "eigen-reference/rewards/avs-rewards-submission-by-avs",
         "eigen-reference/rewards/avs-rewards-submission-by-tokenUsed",
         "eigen-reference/rewards/distribution-roots-by-status"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "eigenda-reference/introduction",
-        "eigenda-reference/prerequisites",
-        "eigenda-reference/errors"
       ]
     },
     {
