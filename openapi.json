@@ -11047,6 +11047,4472 @@
           }
         }
       }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-avs": {
+      "get": {
+        "summary": "All AVS",
+        "description": "Fetches paginated AVS details, including operator counts and associated metadata.",
+        "operationId": "getAvsDetails",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with AVS data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "avs": {
+                            "type": "string",
+                            "description": "The unique identifier for the AVS."
+                          },
+                          "metadataURI": {
+                            "type": "string",
+                            "description": "The URI for associated metadata."
+                          },
+                          "operatorCount": {
+                            "type": "integer",
+                            "description": "The number of operators in the AVS."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the metadata."
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "The description of the metadata."
+                          },
+                          "logo": {
+                            "type": "string",
+                            "description": "The logo associated with the metadata."
+                          },
+                          "website": {
+                            "type": "string",
+                            "description": "The website associated with the metadata."
+                          },
+                          "telegram": {
+                            "type": "string",
+                            "description": "The Telegram link for the metadata."
+                          },
+                          "discord": {
+                            "type": "string",
+                            "description": "The Discord link for the metadata."
+                          },
+                          "x": {
+                            "type": "string",
+                            "description": "Additional metadata information."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of AVS entries."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalAVS": {
+                              "type": "integer",
+                              "description": "Total number of AVS entries."
+                            },
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "Total number of operators across all AVS entries."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-info": {
+      "get": {
+        "summary": "AVS Info",
+        "description": "Fetches AVS details along with metadata and operator statistics.",
+        "operationId": "getAvsDetails",
+        "parameters": [
+          {
+            "name": "avs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The AVS identifier to fetch details for."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with AVS details, metadata, and operator statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "avsDetails": {
+                          "type": "object",
+                          "properties": {
+                            "avs": {
+                              "type": "string",
+                              "description": "The AVS identifier."
+                            },
+                            "metadataURI": {
+                              "type": "string",
+                              "description": "The URI pointing to the AVS metadata."
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Name of the AVS."
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Description of the AVS."
+                            },
+                            "logo": {
+                              "type": "string",
+                              "description": "Logo URL of the AVS."
+                            },
+                            "website": {
+                              "type": "string",
+                              "description": "Website URL of the AVS."
+                            },
+                            "telegram": {
+                              "type": "string",
+                              "description": "Telegram link for the AVS."
+                            },
+                            "discord": {
+                              "type": "string",
+                              "description": "Discord link for the AVS."
+                            },
+                            "x": {
+                              "type": "string",
+                              "description": "Additional metadata field X."
+                            }
+                          }
+                        },
+                        "operatorStats": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "Total number of operators associated with the AVS."
+                            },
+                            "strategySummary": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "strategy": {
+                                    "type": "string",
+                                    "description": "The strategy name."
+                                  },
+                                  "shares": {
+                                    "type": "string",
+                                    "description": "The total shares for the strategy, represented as a string for precision."
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-activity": {
+      "get": {
+        "summary": "AVS Activity",
+        "description": "Fetches paginated AVS activity details, including metadata and statistics.",
+        "operationId": "getAvsActivities",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          },
+          {
+            "name": "avs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The AVS identifier to filter activities."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with AVS activity data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed in the activity."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator involved in the activity."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker involved in the activity."
+                          },
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy associated with the activity."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token involved in the activity."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS identifier associated with the activity."
+                          },
+                          "pod": {
+                            "type": "string",
+                            "description": "The pod associated with the activity."
+                          },
+                          "data": {
+                            "type": "object",
+                            "description": "Additional data for the activity."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Metadata associated with the activity."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of activities."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer",
+                              "description": "Total number of activities."
+                            },
+                            "uniqueActions": {
+                              "type": "integer",
+                              "description": "Number of unique actions across all activities."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Number of unique stakers across all activities."
+                            },
+                            "uniquePods": {
+                              "type": "integer",
+                              "description": "Number of unique pods across all activities."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-apy": {
+      "get": {
+        "summary": "AVS APY",
+        "description": "Fetches APY (Annual Percentage Yield) data for the specified AVS.",
+        "parameters": [
+          {
+            "name": "avs",
+            "in": "query",
+            "description": "The AVS address for which APY data is requested.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing APY data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "strategyApys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strategyAddress": {
+                            "type": "string",
+                            "description": "The address of the strategy."
+                          },
+                          "apy": {
+                            "type": "number",
+                            "description": "The calculated APY percentage."
+                          },
+                          "tokens": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "tokenAddress": {
+                                  "type": "string",
+                                  "description": "The address of the token."
+                                },
+                                "apy": {
+                                  "type": "number",
+                                  "description": "The APY for the token."
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-distribution-roots": {
+      "get": {
+        "summary": "All Distribution Roots",
+        "description": "Fetches distinct distribution root entries with their latest information, supporting pagination and filtering based on various query parameters.",
+        "operationId": "getDistributionRoots",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          },
+          {
+            "name": "rootIndex",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The root index to filter the distribution roots."
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to filter by active status (true or false)."
+            }
+          },
+          {
+            "name": "startTimestamp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The start timestamp to filter distribution roots."
+            }
+          },
+          {
+            "name": "endTimestamp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The end timestamp to filter distribution roots."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with distribution root data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rootIndex": {
+                            "type": "string",
+                            "description": "The unique identifier for the distribution root."
+                          },
+                          "root": {
+                            "type": "string",
+                            "description": "The root value associated with the distribution root."
+                          },
+                          "rewardsCalculationEndTimestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp marking the end of the rewards calculation."
+                          },
+                          "activatedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp when the distribution root was activated."
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Indicates whether the distribution root is active."
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number for the last update."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the block when the last update occurred."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash of the last update."
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number when the distribution root was created."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the block when the distribution root was created."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash when the distribution root was created."
+                              }
+                            }
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp when the distribution root was created."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of distribution roots."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are more pages."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalDistributionRoots": {
+                              "type": "integer",
+                              "description": "The total number of distribution roots."
+                            },
+                            "activeDistributionRoots": {
+                              "type": "integer",
+                              "description": "The total number of active distribution roots."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/distribution-root-info": {
+      "get": {
+        "summary": "Distribution Root Info",
+        "description": "Fetches the distribution root details for the specified rootIndex.",
+        "operationId": "getDistributionRootDetails",
+        "parameters": [
+          {
+            "name": "rootIndex",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The rootIndex of the distribution root to fetch details for."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with distribution root details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rootIndex": {
+                      "type": "string",
+                      "description": "The unique identifier for the distribution root."
+                    },
+                    "root": {
+                      "type": "string",
+                      "description": "The root value of the distribution."
+                    },
+                    "rewardsCalculationEndTimestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the rewards calculation ends."
+                    },
+                    "activatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the distribution root was activated."
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "description": "Indicates whether the distribution root is active."
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the distribution root was last updated."
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the distribution root was created."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-operators": {
+      "get": {
+        "summary": "All Operators",
+        "description": "Fetches the latest operator details with metadata and associated statistics.",
+        "operationId": "getLatestOperatorDetails",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operator": {
+                            "type": "string",
+                            "description": "The unique identifier for the operator."
+                          },
+                          "metadataURI": {
+                            "type": "string",
+                            "description": "The metadata URI associated with the operator."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the operator."
+                          },
+                          "logo": {
+                            "type": "string",
+                            "description": "The logo URL of the operator."
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the latest operator data."
+                          },
+                          "avsCount": {
+                            "type": "integer",
+                            "description": "The count of AVSs associated with the operator."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of operators."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages available."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators."
+                            },
+                            "totalAVSs": {
+                              "type": "integer",
+                              "description": "The total number of AVSs across all operators."
+                            },
+                            "totalStakers": {
+                              "type": "integer",
+                              "description": "The total number of stakers across all operators."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-info": {
+      "get": {
+        "summary": "Operator Info",
+        "description": "Retrieves detailed information about a specific operator, including metadata, statistics, and strategies.",
+        "operationId": "getOperatorDetails",
+        "parameters": [
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The address of the operator."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "operatorDetails": {
+                          "type": "object",
+                          "properties": {
+                            "operator": {
+                              "type": "string",
+                              "description": "The unique identifier for the operator."
+                            },
+                            "metadataURI": {
+                              "type": "string",
+                              "description": "The metadata URI for the operator."
+                            },
+                            "details": {
+                              "type": "string",
+                              "description": "Additional details about the operator."
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The last update timestamp for the operator details."
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The creation timestamp for the operator details."
+                            }
+                          }
+                        },
+                        "operatorStats": {
+                          "type": "object",
+                          "properties": {
+                            "avs": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "description": "The AVSs associated with the operator."
+                            },
+                            "stakersCount": {
+                              "type": "integer",
+                              "description": "The count of stakers associated with the operator."
+                            },
+                            "strategies": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "strategy": {
+                                    "type": "string",
+                                    "description": "The name of the strategy."
+                                  },
+                                  "shares": {
+                                    "type": "string",
+                                    "description": "The shares for the strategy."
+                                  }
+                                }
+                              },
+                              "description": "The strategies and their shares associated with the operator."
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The last update timestamp for the operator statistics."
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "metadataURI": {
+                              "type": "string",
+                              "description": "The metadata URI for the operator."
+                            },
+                            "synced": {
+                              "type": "boolean",
+                              "description": "Whether the metadata is synced."
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "The name of the operator."
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "The description of the operator."
+                            },
+                            "logo": {
+                              "type": "string",
+                              "description": "The logo URL of the operator."
+                            },
+                            "website": {
+                              "type": "string",
+                              "description": "The website URL of the operator."
+                            },
+                            "telegram": {
+                              "type": "string",
+                              "description": "The Telegram link for the operator."
+                            },
+                            "discord": {
+                              "type": "string",
+                              "description": "The Discord link for the operator."
+                            },
+                            "x": {
+                              "type": "string",
+                              "description": "Additional metadata."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-activity": {
+      "get": {
+        "summary": "Operator Activity",
+        "description": "Retrieves paginated activities for a specific operator, including global statistics and metadata.",
+        "operationId": "getActivities",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier for the operator."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with activities data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator identifier."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker identifier."
+                          },
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy associated with the action."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token involved in the action."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS associated with the action."
+                          },
+                          "pod": {
+                            "type": "string",
+                            "description": "The pod associated with the action."
+                          },
+                          "data": {
+                            "type": "object",
+                            "description": "Additional data for the action."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Additional metadata for the action."
+                          },
+                          "activity_timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Timestamp of the activity."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of activities."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer",
+                              "description": "Total number of activities."
+                            },
+                            "uniqueActions": {
+                              "type": "integer",
+                              "description": "Number of unique actions performed."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Number of unique stakers."
+                            },
+                            "uniquePods": {
+                              "type": "integer",
+                              "description": "Number of unique pods."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-historical": {
+      "get": {
+        "summary": "Operator Historical",
+        "description": "Retrieves paginated operator statistics for a specific operator, including global metadata.",
+        "operationId": "getOperatorStats",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier for the operator."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator statistics data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator identifier."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS associated with the operator."
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Last update timestamp."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of records."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether more pages are available."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-pods": {
+      "get": {
+        "summary": "All Pods",
+        "description": "Fetches paginated data of pods and their metadata along with global statistics.",
+        "operationId": "getPods",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing pod data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "pod": {
+                            "type": "string",
+                            "description": "The identifier of the pod."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker associated with the pod."
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number of the last update."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the last update."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash of the last update."
+                              }
+                            }
+                          },
+                          "blockNumber": {
+                            "type": "integer",
+                            "description": "The block number associated with the pod."
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp associated with the pod."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of pods."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalPods": {
+                              "type": "integer",
+                              "description": "Total number of pods globally."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Total number of unique stakers globally."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-info": {
+      "get": {
+        "summary": "Pod Info",
+        "description": "Fetches the latest details of a pod or a staker's associated pod and shares.",
+        "operationId": "getPodDetails",
+        "parameters": [
+          {
+            "name": "pod",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the pod."
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The address of the staker associated with the pod."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing pod details and associated staker shares.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "pod": {
+                          "type": "string",
+                          "description": "The identifier of the pod."
+                        },
+                        "staker": {
+                          "type": "string",
+                          "description": "The staker associated with the pod."
+                        },
+                        "strategy": {
+                          "type": "string",
+                          "description": "The strategy used by the staker."
+                        },
+                        "amount": {
+                          "type": "string",
+                          "description": "The amount of shares held by the staker."
+                        },
+                        "updatedAt": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "string",
+                              "description": "The block number of the last update."
+                            },
+                            "blockTimestamp": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The timestamp of the last update."
+                            },
+                            "transactionHash": {
+                              "type": "string",
+                              "description": "The transaction hash of the last update."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-activity": {
+      "get": {
+        "summary": "Pod Activity",
+        "description": "Fetches paginated activities for a specific pod along with global statistics.",
+        "operationId": "getActivities",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "pod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the pod."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing activity data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed in the activity."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator involved in the activity."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker associated with the activity."
+                          },
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy involved in the activity."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token involved in the activity."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "Additional value or state associated with the activity."
+                          },
+                          "pod": {
+                            "type": "string",
+                            "description": "The pod related to the activity."
+                          },
+                          "data": {
+                            "type": "object",
+                            "description": "Additional data related to the activity."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Metadata of the activity."
+                          },
+                          "activity_timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the activity."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of activities."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer",
+                              "description": "Total number of activities globally."
+                            },
+                            "uniqueActions": {
+                              "type": "integer",
+                              "description": "Total number of unique actions globally."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Total number of unique stakers globally."
+                            },
+                            "uniquePods": {
+                              "type": "integer",
+                              "description": "Total number of unique pods globally."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-historical": {
+      "get": {
+        "summary": "Pod Historical",
+        "description": "Fetches paginated shares history for a specific pod along with metadata.",
+        "operationId": "getPodSharesHistory",
+        "parameters": [
+          {
+            "name": "pod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the pod."
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "description": "The number of items per page for pagination. Defaults to 50."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing shares history and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "staker": {
+                      "type": "string",
+                      "description": "The staker associated with the pod."
+                    },
+                    "strategy": {
+                      "type": "string",
+                      "description": "The strategy used by the staker."
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "The token associated with the shares."
+                    },
+                    "history": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "shares": {
+                            "type": "string",
+                            "description": "The amount of shares held by the staker."
+                          },
+                          "blockNumber": {
+                            "type": "string",
+                            "description": "The block number of the update."
+                          },
+                          "blockTimestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the update."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of shares entries."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-rewards": {
+      "get": {
+        "summary": "All Rewards",
+        "description": "Fetches paginated rewards history with optional filtering by type, AVS, submitter, and token, along with metadata and global statistics.",
+        "operationId": "getRewardsHistory",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The type of reward to filter by."
+            }
+          },
+          {
+            "name": "avs",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The AVS value to filter by."
+            }
+          },
+          {
+            "name": "submitter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The submitter to filter by."
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The token to filter by."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing rewards data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "avs": {
+                            "type": "string"
+                          },
+                          "submitter": {
+                            "type": "string"
+                          },
+                          "tokenHopper": {
+                            "type": "string"
+                          },
+                          "submissionNonce": {
+                            "type": "string"
+                          },
+                          "rewardsSubmissionHash": {
+                            "type": "string"
+                          },
+                          "strategies": {
+                            "type": "string"
+                          },
+                          "token": {
+                            "type": "string"
+                          },
+                          "amount": {
+                            "type": "string"
+                          },
+                          "startTimestamp": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "duration": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalRewards": {
+                              "type": "integer"
+                            },
+                            "totalAmount": {
+                              "type": "number"
+                            },
+                            "uniqueTokens": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-info": {
+      "get": {
+        "summary": "Reward Info",
+        "description": "Fetches the most recent reward details based on the provided rewardsSubmissionHash.",
+        "operationId": "getRewardDetails",
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique rewardsSubmissionHash of the reward to fetch."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the reward details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The type of the reward."
+                    },
+                    "avs": {
+                      "type": "string",
+                      "description": "The AVS of the reward."
+                    },
+                    "submitter": {
+                      "type": "string",
+                      "description": "The submitter of the reward."
+                    },
+                    "tokenHopper": {
+                      "type": "string",
+                      "description": "The token hopper associated with the reward."
+                    },
+                    "submissionNonce": {
+                      "type": "string",
+                      "description": "The submission nonce for the reward."
+                    },
+                    "rewardsSubmissionHash": {
+                      "type": "string",
+                      "description": "The unique hash for the reward submission."
+                    },
+                    "strategies": {
+                      "type": "string",
+                      "description": "The strategies associated with the reward."
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "The token associated with the reward."
+                    },
+                    "amount": {
+                      "type": "string",
+                      "description": "The amount of the reward."
+                    },
+                    "startTimestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The start timestamp of the reward."
+                    },
+                    "duration": {
+                      "type": "string",
+                      "description": "The duration of the reward."
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The last updated timestamp of the reward."
+                    },
+                    "recordTimestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the record was created."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-claim": {
+      "get": {
+        "summary": "Reward Claims",
+        "description": "Fetches a list of reward claims, optionally filtered by various parameters like root, earner, claimer, recipient, and token. The results are paginated.",
+        "operationId": "getRewardClaims",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page. Defaults to 12."
+            }
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by root."
+            }
+          },
+          {
+            "name": "earner",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by earner."
+            }
+          },
+          {
+            "name": "claimer",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by claimer."
+            }
+          },
+          {
+            "name": "recipient",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by recipient."
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by token."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the reward claims data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "root": {
+                            "type": "string",
+                            "description": "The root associated with the claim."
+                          },
+                          "earner": {
+                            "type": "string",
+                            "description": "The earner of the reward."
+                          },
+                          "claimer": {
+                            "type": "string",
+                            "description": "The claimer of the reward."
+                          },
+                          "recipient": {
+                            "type": "string",
+                            "description": "The recipient of the reward."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token associated with the reward claim."
+                          },
+                          "claimedAmount": {
+                            "type": "string",
+                            "description": "The claimed amount in the reward claim."
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number associated with the reward claim update."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "description": "The block timestamp associated with the reward claim update."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash associated with the reward claim update."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of reward claims."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The limit (items per page)."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more pages of results."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalRewardClaims": {
+                              "type": "string",
+                              "description": "The total number of reward claims."
+                            },
+                            "totalClaimedAmount": {
+                              "type": "string",
+                              "description": "The total amount claimed across all claims."
+                            },
+                            "uniqueTokens": {
+                              "type": "integer",
+                              "description": "The number of unique tokens across all claims."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-strategy": {
+      "get": {
+        "summary": "Reward Strategy",
+        "operationId": "getRewardStrategies",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter by strategy type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "avs",
+            "in": "query",
+            "description": "Filter by AVS",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Filter by token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "strategy",
+            "in": "query",
+            "description": "Filter by strategy",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of reward strategies with metadata and statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "avs": {
+                            "type": "string"
+                          },
+                          "strategy": {
+                            "type": "string"
+                          },
+                          "rewardsSubmissionHash": {
+                            "type": "string"
+                          },
+                          "token": {
+                            "type": "string"
+                          },
+                          "amount": {
+                            "type": "string"
+                          },
+                          "weight": {
+                            "type": "string"
+                          },
+                          "strategyReward": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "uniqueTokens": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "uniqueAVSs": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalStrategies": {
+                              "type": "integer"
+                            },
+                            "uniqueTokens": {
+                              "type": "integer"
+                            },
+                            "uniqueAVSs": {
+                              "type": "integer"
+                            },
+                            "totalAmount": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-stakers": {
+      "get": {
+        "summary": "All Stakers",
+        "description": "Fetch staker information with pagination",
+        "operationId": "getStakers",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of stakers with pagination and statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "staker": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string"
+                          },
+                          "strategies": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "strategy": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalStakers": {
+                              "type": "integer"
+                            },
+                            "uniqueOperators": {
+                              "type": "integer"
+                            },
+                            "strategyDistribution": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "integer"
+                              }
+                            },
+                            "averageStrategiesPerStaker": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-info": {
+      "get": {
+        "summary": "Staker Info",
+        "description": "Fetch detailed information about a specific staker",
+        "operationId": "getStakerDetail",
+        "parameters": [
+          {
+            "name": "staker",
+            "in": "query",
+            "description": "The staker address to fetch details for",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detailed information about the specified staker, including operator and metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "staker": {
+                      "type": "string"
+                    },
+                    "operator": {
+                      "type": "string"
+                    },
+                    "strategies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strategy": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "stakerUpdatedAt": {
+                      "type": "object",
+                      "properties": {
+                        "blockNumber": {
+                          "type": "string"
+                        },
+                        "blockTimestamp": {
+                          "type": "string"
+                        },
+                        "transactionHash": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "operatorDetails": {
+                      "type": "object",
+                      "properties": {
+                        "metadataURI": {
+                          "type": "string"
+                        },
+                        "details": {
+                          "type": "string"
+                        },
+                        "operatorUpdatedAt": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "string"
+                            },
+                            "blockTimestamp": {
+                              "type": "string"
+                            },
+                            "transactionHash": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "operatorCreatedAt": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "string"
+                            },
+                            "blockTimestamp": {
+                              "type": "string"
+                            },
+                            "transactionHash": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "metadataURI": {
+                          "type": "string"
+                        },
+                        "synced": {
+                          "type": "boolean"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "logo": {
+                          "type": "string"
+                        },
+                        "website": {
+                          "type": "string"
+                        },
+                        "telegram": {
+                          "type": "string"
+                        },
+                        "discord": {
+                          "type": "string"
+                        },
+                        "x": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-activity": {
+      "get": {
+        "summary": "Staker Activity",
+        "description": "Fetches activities for a specific staker",
+        "operationId": "getActivities",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "description": "Staker address or identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of activities for the specified staker with metadata and statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string"
+                          },
+                          "staker": {
+                            "type": "string"
+                          },
+                          "strategy": {
+                            "type": "string"
+                          },
+                          "token": {
+                            "type": "string"
+                          },
+                          "avs": {
+                            "type": "string"
+                          },
+                          "pod": {
+                            "type": "string"
+                          },
+                          "data": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer"
+                            },
+                            "uniqueActions": {
+                              "type": "integer"
+                            },
+                            "uniquePods": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-historical": {
+      "get": {
+        "summary": "Staker Historical",
+        "description": "Fetch a paginated list of staker details with global statistics",
+        "operationId": "getStakerList",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination, defaults to 1",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page, defaults to 12",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "description": "The staker address to filter by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of staker details with global statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "staker": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string"
+                          },
+                          "strategies": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "strategy": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalEntries": {
+                              "type": "integer"
+                            },
+                            "uniqueOperators": {
+                              "type": "integer"
+                            },
+                            "totalStrategies": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-strategies": {
+      "get": {
+        "summary": "All Strategies",
+        "description": "Fetch a paginated list of strategies with details and global statistics",
+        "operationId": "getStrategyList",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination, defaults to 1",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page, defaults to 12",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of strategies with details and global statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strategy": {
+                            "type": "string"
+                          },
+                          "token": {
+                            "type": "string"
+                          },
+                          "whitelisted": {
+                            "type": "boolean"
+                          },
+                          "thirdPartyTransfersForbidden": {
+                            "type": "boolean"
+                          },
+                          "withdrawalDelayBlocks": {
+                            "type": "integer"
+                          },
+                          "tvl": {
+                            "type": "number"
+                          },
+                          "withdrawals": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalStrategies": {
+                              "type": "integer"
+                            },
+                            "uniqueTokens": {
+                              "type": "integer"
+                            },
+                            "whitelistedStrategiesCount": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-info": {
+      "get": {
+        "summary": "Strategy Info",
+        "description": "Fetch detailed information for a specific strategy",
+        "operationId": "getStrategyDetail",
+        "parameters": [
+          {
+            "name": "strategy",
+            "in": "query",
+            "description": "The strategy address (required)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detailed information about the strategy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "strategy": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "whitelisted": {
+                      "type": "boolean"
+                    },
+                    "thirdPartyTransfersForbidden": {
+                      "type": "boolean"
+                    },
+                    "withdrawalDelayBlocks": {
+                      "type": "integer"
+                    },
+                    "tvl": {
+                      "type": "number"
+                    },
+                    "withdrawals": {
+                      "type": "number"
+                    },
+                    "createdAt": {
+                      "type": "object",
+                      "properties": {
+                        "blockNumber": {
+                          "type": "string"
+                        },
+                        "blockTimestamp": {
+                          "type": "string"
+                        },
+                        "transactionHash": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "updatedAt": {
+                      "type": "object",
+                      "properties": {
+                        "blockNumber": {
+                          "type": "string"
+                        },
+                        "blockTimestamp": {
+                          "type": "string"
+                        },
+                        "transactionHash": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request, strategy address is required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Strategy not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-activity": {
+      "get": {
+        "summary": "Strategy Activity",
+        "description": "Fetch a paginated list of activities related to a specific strategy with global statistics",
+        "operationId": "getActivityList",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination, defaults to 1",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page, defaults to 12",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "strategy",
+            "in": "query",
+            "description": "The strategy to filter activities by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of activities related to the strategy with global statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string"
+                          },
+                          "staker": {
+                            "type": "string"
+                          },
+                          "strategy": {
+                            "type": "string"
+                          },
+                          "token": {
+                            "type": "string"
+                          },
+                          "avs": {
+                            "type": "string"
+                          },
+                          "pod": {
+                            "type": "string"
+                          },
+                          "data": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer"
+                            },
+                            "uniqueActions": {
+                              "type": "integer"
+                            },
+                            "uniqueStakers": {
+                              "type": "integer"
+                            },
+                            "uniquePods": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-historical": {
+      "get": {
+        "summary": "Strategy Historical",
+        "description": "Fetch paginated statistics for a specific strategy and global statistics",
+        "operationId": "getStrategyStats",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination, defaults to 1",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page, defaults to 12",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "strategy",
+            "in": "query",
+            "description": "The strategy identifier (required)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated strategy statistics with global statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strategy": {
+                            "type": "string"
+                          },
+                          "tvl": {
+                            "type": "number"
+                          },
+                          "withdrawals": {
+                            "type": "number"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalStats": {
+                              "type": "integer"
+                            },
+                            "totalTvl": {
+                              "type": "number"
+                            },
+                            "totalWithdrawals": {
+                              "type": "number"
+                            },
+                            "averageTvl": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/activity": {
+      "get": {
+        "summary": "Track EigenLayer",
+        "description": "Retrieve a list of activities with optional filters and pagination",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of activities per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "description": "Filter activities by action",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AVS_METADATA_URI_UPDATED",
+                "AVS_REGISTER_OPERATOR",
+                "AVS_DEREGISTER_OPERATOR",
+                "MINIMUM_WITHDRAWAL_DELAY_BLOCKS_UPDATED_GLOBAL",
+                "OPERATOR_DETAILS_UPDATED",
+                "OPERATOR_METADATA_URI_UPDATED",
+                "OPERATOR_REGISTERED",
+                "OPERATOR_SHARES_DECREASED",
+                "OPERATOR_SHARES_INCREASED",
+                "STAKER_DELEGATED",
+                "STAKER_UNDELEGATED",
+                "MINIMUM_WITHDRAWAL_DELAY_BLOCKS_UPDATED_STRATEGY",
+                "WITHDRAWAL_COMPLETED",
+                "WITHDRAWAL_MIGRATED",
+                "WITHDRAWAL_QUEUED",
+                "POD_SHARES_UPDATED",
+                "POD_DEPLOYED",
+                "REWARD_ACTIVATION_DELAY_UPDATED",
+                "AVS_REWARD_SUBMISSION",
+                "CLAIMER_UPDATED",
+                "DISTRIBUTION_ROOT_DISABLED",
+                "DISTRIBUTION_ROOT_SUBMITTED",
+                "GLOBAL_COMMISSION_BIPS_UPDATED",
+                "REWARDS_CLAIMED",
+                "REWARD_SUBMITTER_FOR_ALL_UPDATED",
+                "REWARD_SUBMISSION_FOR_ALL",
+                "REWARD_SUBMISSION_FOR_EARNER",
+                "REWARDS_UPDATER_UPDATED",
+                "SHARES_DEPOSITED_IN_STRATEGY",
+                "STRATEGY_WHITELISTING",
+                "STRATEGY_WHITELISTER_CHANGED",
+                "UPDATE_THIRD_PARTY_TRANSFERS_FORBIDDEN"
+              ],
+              "default": ""
+            }
+          },
+          {
+            "name": "operator",
+            "in": "query",
+            "description": "Filter activities by operator",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "description": "Filter activities by staker",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "strategy",
+            "in": "query",
+            "description": "Filter activities by strategy",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Filter activities by token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "avs",
+            "in": "query",
+            "description": "Filter activities by AVS",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pod",
+            "in": "query",
+            "description": "Filter activities by pod",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of activities with pagination and filters applied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string"
+                          },
+                          "staker": {
+                            "type": "string"
+                          },
+                          "strategy": {
+                            "type": "string"
+                          },
+                          "token": {
+                            "type": "string"
+                          },
+                          "avs": {
+                            "type": "string"
+                          },
+                          "pod": {
+                            "type": "string"
+                          },
+                          "data": {
+                            "type": "object"
+                          },
+                          "metadata": {
+                            "type": "object"
+                          },
+                          "timestamp": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer"
+                            },
+                            "uniqueActions": {
+                              "type": "integer"
+                            },
+                            "uniqueOperators": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-tokens": {
+      "get": {
+        "summary": "Ecosystem Tokens",
+        "description": "Fetches paginated list of tokens with optional filters and global statistics.",
+        "operationId": "getTokens",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the token."
+            }
+          },
+          {
+            "name": "symbol",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The symbol of the token."
+            }
+          },
+          {
+            "name": "synced",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Filter by synced status of the token."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing token data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "token": {
+                            "type": "string",
+                            "description": "The unique identifier of the token."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the token."
+                          },
+                          "symbol": {
+                            "type": "string",
+                            "description": "The symbol of the token."
+                          },
+                          "decimals": {
+                            "type": "integer",
+                            "description": "The decimal places of the token."
+                          },
+                          "synced": {
+                            "type": "boolean",
+                            "description": "Indicates whether the token is synced."
+                          },
+                          "sharesUnderlying": {
+                            "type": "string",
+                            "description": "Underlying shares of the token."
+                          },
+                          "ethPrice": {
+                            "type": "number",
+                            "description": "ETH price of the token."
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The last update timestamp of the token."
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the token record."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of tokens."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalTokens": {
+                              "type": "integer",
+                              "description": "Total number of tokens globally."
+                            },
+                            "syncedTokens": {
+                              "type": "integer",
+                              "description": "Total number of synced tokens globally."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-withdrawals": {
+      "get": {
+        "summary": "All Withdrawals",
+        "description": "Fetch a paginated list of withdrawals with optional filters",
+        "operationId": "getWithdrawals",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number for pagination (default: 1)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items per page (default: 12)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "description": "Filter by staker address",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "withdrawalRoot",
+            "in": "query",
+            "description": "Filter by withdrawal root",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delegatedTo",
+            "in": "query",
+            "description": "Filter by delegated address",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "completed",
+            "in": "query",
+            "description": "Filter by completion status (true or false)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "migrated",
+            "in": "query",
+            "description": "Filter by migration status (true or false)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with a paginated list of withdrawals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "withdrawalRoot": {
+                            "type": "string"
+                          },
+                          "staker": {
+                            "type": "string"
+                          },
+                          "delegatedTo": {
+                            "type": "string"
+                          },
+                          "withdrawer": {
+                            "type": "string"
+                          },
+                          "nonce": {
+                            "type": "string"
+                          },
+                          "startBlock": {
+                            "type": "string"
+                          },
+                          "withdrawal": {
+                            "type": "string"
+                          },
+                          "migrated": {
+                            "type": "boolean"
+                          },
+                          "completed": {
+                            "type": "boolean"
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string"
+                              },
+                              "blockTimestamp": {
+                                "type": "string"
+                              },
+                              "transactionHash": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string"
+                              },
+                              "blockTimestamp": {
+                                "type": "string"
+                              },
+                              "transactionHash": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalWithdrawals": {
+                              "type": "integer"
+                            },
+                            "completedWithdrawals": {
+                              "type": "integer"
+                            },
+                            "migratedWithdrawals": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/withdrawal-info": {
+      "get": {
+        "summary": "Withdrawal Info",
+        "description": "Fetch the latest withdrawal for a given withdrawal root",
+        "operationId": "getWithdrawalByRoot",
+        "parameters": [
+          {
+            "name": "withdrawalRoot",
+            "in": "query",
+            "description": "The withdrawal root for which the latest withdrawal data is to be fetched",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number for pagination (default: 1)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items per page (default: 12)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with the latest withdrawal data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "withdrawalRoot": {
+                          "type": "string"
+                        },
+                        "staker": {
+                          "type": "string"
+                        },
+                        "delegatedTo": {
+                          "type": "string"
+                        },
+                        "withdrawer": {
+                          "type": "string"
+                        },
+                        "nonce": {
+                          "type": "string"
+                        },
+                        "startBlock": {
+                          "type": "string"
+                        },
+                        "withdrawal": {
+                          "type": "string"
+                        },
+                        "migrated": {
+                          "type": "boolean"
+                        },
+                        "completed": {
+                          "type": "boolean"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "withdrawalRoot": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
     }
   },
   "components": {

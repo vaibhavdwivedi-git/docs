@@ -1,0 +1,300 @@
+{
+  "paths": {
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-distribution-roots": {
+      "get": {
+        "summary": "All Distribution Roots",
+        "description": "Fetches distinct distribution root entries with their latest information, supporting pagination and filtering based on various query parameters.",
+        "operationId": "getDistributionRoots",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          },
+          {
+            "name": "rootIndex",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The root index to filter the distribution roots."
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to filter by active status (true or false)."
+            }
+          },
+          {
+            "name": "startTimestamp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The start timestamp to filter distribution roots."
+            }
+          },
+          {
+            "name": "endTimestamp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The end timestamp to filter distribution roots."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with distribution root data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rootIndex": {
+                            "type": "string",
+                            "description": "The unique identifier for the distribution root."
+                          },
+                          "root": {
+                            "type": "string",
+                            "description": "The root value associated with the distribution root."
+                          },
+                          "rewardsCalculationEndTimestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp marking the end of the rewards calculation."
+                          },
+                          "activatedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp when the distribution root was activated."
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Indicates whether the distribution root is active."
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number for the last update."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the block when the last update occurred."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash of the last update."
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number when the distribution root was created."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the block when the distribution root was created."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash when the distribution root was created."
+                              }
+                            }
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp when the distribution root was created."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of distribution roots."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are more pages."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalDistributionRoots": {
+                              "type": "integer",
+                              "description": "The total number of distribution roots."
+                            },
+                            "activeDistributionRoots": {
+                              "type": "integer",
+                              "description": "The total number of active distribution roots."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/distribution-root-info": {
+      "get": {
+        "summary": "Distribution Root Info",
+        "description": "Fetches the distribution root details for the specified rootIndex.",
+        "operationId": "getDistributionRootDetails",
+        "parameters": [
+          {
+            "name": "rootIndex",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The rootIndex of the distribution root to fetch details for."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with distribution root details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rootIndex": {
+                      "type": "string",
+                      "description": "The unique identifier for the distribution root."
+                    },
+                    "root": {
+                      "type": "string",
+                      "description": "The root value of the distribution."
+                    },
+                    "rewardsCalculationEndTimestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the rewards calculation ends."
+                    },
+                    "activatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the distribution root was activated."
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "description": "Indicates whether the distribution root is active."
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the distribution root was last updated."
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The timestamp when the distribution root was created."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

@@ -45,6 +45,10 @@
     {
       "name": "EigenDA",
       "url": "eigenda-reference"
+    },
+    {
+      "name": "EigenScan",
+      "url": "eigenlayer-reference"
     }
   ],
   "navigation": [
@@ -148,6 +152,80 @@
         "eigenda-reference/quorums/quorum-info",
         "eigenda-reference/quorums/quorum-operators",
         "eigenda-reference/quorums/quorum-activity"
+      ]
+    },
+    {
+      "group": "Tracker",
+      "pages": [
+        "documentation/tracker/activity",
+        "documentation/tracker/tokens"
+      ]
+    },
+    {
+      "group": "AVS",
+      "pages": [
+        "eigenlayer-reference/avs/all",
+        "eigenlayer-reference/avs/info",
+        "eigenlayer-reference/avs/activity"
+      ]
+    },
+    {
+      "group": "Operators",
+      "pages": [
+        "eigenlayer-reference/operator/all",
+        "eigenlayer-reference/operator/info",
+        "eigenlayer-reference/operator/historical",
+        "eigenlayer-reference/operator/activity"
+      ]
+    },
+    {
+      "group": "Stakers",
+      "pages": [
+        "eigenlayer-reference/staker/all",
+        "eigenlayer-reference/staker/info",
+        "eigenlayer-reference/staker/historical",
+        "eigenlayer-reference/staker/activity"
+      ]
+    },
+    {
+      "group": "Strategies",
+      "pages": [
+        "eigenlayer-reference/strategy/all",
+        "eigenlayer-reference/strategy/info",
+        "eigenlayer-reference/strategy/historical",
+        "eigenlayer-reference/strategy/activity"
+      ]
+    },
+    {
+      "group": "Pods",
+      "pages": [
+        "eigenlayer-reference/pod/all",
+        "eigenlayer-reference/pod/info",
+        "eigenlayer-reference/pod/historical",
+        "eigenlayer-reference/pod/activity"
+      ]
+    },
+    {
+      "group": "Rewards",
+      "pages": [
+        "eigenlayer-reference/reward/all",
+        "eigenlayer-reference/reward/info",
+        "eigenlayer-reference/reward/claim",
+        "eigenlayer-reference/reward/strategy"
+      ]
+    },
+    {
+      "group": "Withdrawals",
+      "pages": [
+        "eigenlayer-reference/withdrawal/all",
+        "eigenlayer-reference/withdrawal/info"
+      ]
+    },
+    {
+      "group": "Distribution Roots",
+      "pages": [
+        "eigenlayer-reference/distributionRoot/all",
+        "eigenlayer-reference/distributionRoot/info"
       ]
     }
   ],

@@ -1,0 +1,332 @@
+{
+  "paths": {
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-withdrawals": {
+      "get": {
+        "summary": "All Withdrawals",
+        "description": "Fetch a paginated list of withdrawals with optional filters",
+        "operationId": "getWithdrawals",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number for pagination (default: 1)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items per page (default: 12)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "description": "Filter by staker address",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "withdrawalRoot",
+            "in": "query",
+            "description": "Filter by withdrawal root",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delegatedTo",
+            "in": "query",
+            "description": "Filter by delegated address",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "completed",
+            "in": "query",
+            "description": "Filter by completion status (true or false)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "migrated",
+            "in": "query",
+            "description": "Filter by migration status (true or false)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with a paginated list of withdrawals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "withdrawalRoot": {
+                            "type": "string"
+                          },
+                          "staker": {
+                            "type": "string"
+                          },
+                          "delegatedTo": {
+                            "type": "string"
+                          },
+                          "withdrawer": {
+                            "type": "string"
+                          },
+                          "nonce": {
+                            "type": "string"
+                          },
+                          "startBlock": {
+                            "type": "string"
+                          },
+                          "withdrawal": {
+                            "type": "string"
+                          },
+                          "migrated": {
+                            "type": "boolean"
+                          },
+                          "completed": {
+                            "type": "boolean"
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string"
+                              },
+                              "blockTimestamp": {
+                                "type": "string"
+                              },
+                              "transactionHash": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string"
+                              },
+                              "blockTimestamp": {
+                                "type": "string"
+                              },
+                              "transactionHash": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalWithdrawals": {
+                              "type": "integer"
+                            },
+                            "completedWithdrawals": {
+                              "type": "integer"
+                            },
+                            "migratedWithdrawals": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/withdrawal-info": {
+      "get": {
+        "summary": "Withdrawal Info",
+        "description": "Fetch the latest withdrawal for a given withdrawal root",
+        "operationId": "getWithdrawalByRoot",
+        "parameters": [
+          {
+            "name": "withdrawalRoot",
+            "in": "query",
+            "description": "The withdrawal root for which the latest withdrawal data is to be fetched",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number for pagination (default: 1)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items per page (default: 12)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with the latest withdrawal data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "withdrawalRoot": {
+                          "type": "string"
+                        },
+                        "staker": {
+                          "type": "string"
+                        },
+                        "delegatedTo": {
+                          "type": "string"
+                        },
+                        "withdrawer": {
+                          "type": "string"
+                        },
+                        "nonce": {
+                          "type": "string"
+                        },
+                        "startBlock": {
+                          "type": "string"
+                        },
+                        "withdrawal": {
+                          "type": "string"
+                        },
+                        "migrated": {
+                          "type": "boolean"
+                        },
+                        "completed": {
+                          "type": "boolean"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "withdrawalRoot": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

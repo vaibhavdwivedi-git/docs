@@ -1,0 +1,530 @@
+{
+  "paths": {
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-avs": {
+      "get": {
+        "summary": "All AVS",
+        "description": "Fetches paginated AVS details, including operator counts and associated metadata.",
+        "operationId": "getAvsDetails",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with AVS data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "avs": {
+                            "type": "string",
+                            "description": "The unique identifier for the AVS."
+                          },
+                          "metadataURI": {
+                            "type": "string",
+                            "description": "The URI for associated metadata."
+                          },
+                          "operatorCount": {
+                            "type": "integer",
+                            "description": "The number of operators in the AVS."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the metadata."
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "The description of the metadata."
+                          },
+                          "logo": {
+                            "type": "string",
+                            "description": "The logo associated with the metadata."
+                          },
+                          "website": {
+                            "type": "string",
+                            "description": "The website associated with the metadata."
+                          },
+                          "telegram": {
+                            "type": "string",
+                            "description": "The Telegram link for the metadata."
+                          },
+                          "discord": {
+                            "type": "string",
+                            "description": "The Discord link for the metadata."
+                          },
+                          "x": {
+                            "type": "string",
+                            "description": "Additional metadata information."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of AVS entries."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalAVS": {
+                              "type": "integer",
+                              "description": "Total number of AVS entries."
+                            },
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "Total number of operators across all AVS entries."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-info": {
+      "get": {
+        "summary": "AVS Info",
+        "description": "Fetches AVS details along with metadata and operator statistics.",
+        "operationId": "getAvsDetails",
+        "parameters": [
+          {
+            "name": "avs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The AVS identifier to fetch details for."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with AVS details, metadata, and operator statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "avsDetails": {
+                          "type": "object",
+                          "properties": {
+                            "avs": {
+                              "type": "string",
+                              "description": "The AVS identifier."
+                            },
+                            "metadataURI": {
+                              "type": "string",
+                              "description": "The URI pointing to the AVS metadata."
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Name of the AVS."
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Description of the AVS."
+                            },
+                            "logo": {
+                              "type": "string",
+                              "description": "Logo URL of the AVS."
+                            },
+                            "website": {
+                              "type": "string",
+                              "description": "Website URL of the AVS."
+                            },
+                            "telegram": {
+                              "type": "string",
+                              "description": "Telegram link for the AVS."
+                            },
+                            "discord": {
+                              "type": "string",
+                              "description": "Discord link for the AVS."
+                            },
+                            "x": {
+                              "type": "string",
+                              "description": "Additional metadata field X."
+                            }
+                          }
+                        },
+                        "operatorStats": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "Total number of operators associated with the AVS."
+                            },
+                            "strategySummary": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "strategy": {
+                                    "type": "string",
+                                    "description": "The strategy name."
+                                  },
+                                  "shares": {
+                                    "type": "string",
+                                    "description": "The total shares for the strategy, represented as a string for precision."
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-activity": {
+      "get": {
+        "summary": "AVS Activity",
+        "description": "Fetches paginated AVS activity details, including metadata and statistics.",
+        "operationId": "getAvsActivities",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          },
+          {
+            "name": "avs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The AVS identifier to filter activities."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with AVS activity data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed in the activity."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator involved in the activity."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker involved in the activity."
+                          },
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy associated with the activity."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token involved in the activity."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS identifier associated with the activity."
+                          },
+                          "pod": {
+                            "type": "string",
+                            "description": "The pod associated with the activity."
+                          },
+                          "data": {
+                            "type": "object",
+                            "description": "Additional data for the activity."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Metadata associated with the activity."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of activities."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether there are more pages available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer",
+                              "description": "Total number of activities."
+                            },
+                            "uniqueActions": {
+                              "type": "integer",
+                              "description": "Number of unique actions across all activities."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Number of unique stakers across all activities."
+                            },
+                            "uniquePods": {
+                              "type": "integer",
+                              "description": "Number of unique pods across all activities."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-apy": {
+      "get": {
+        "summary": "AVS APY",
+        "description": "Fetches APY (Annual Percentage Yield) data for the specified AVS.",
+        "parameters": [
+          {
+            "name": "avs",
+            "in": "query",
+            "description": "The AVS address for which APY data is requested.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing APY data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "strategyApys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strategyAddress": {
+                            "type": "string",
+                            "description": "The address of the strategy."
+                          },
+                          "apy": {
+                            "type": "number",
+                            "description": "The calculated APY percentage."
+                          },
+                          "tokens": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "tokenAddress": {
+                                  "type": "string",
+                                  "description": "The address of the token."
+                                },
+                                "apy": {
+                                  "type": "number",
+                                  "description": "The APY for the token."
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

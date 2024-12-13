@@ -1,0 +1,549 @@
+{
+  "paths": {
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-pods": {
+      "get": {
+        "summary": "All Pods",
+        "description": "Fetches paginated data of pods and their metadata along with global statistics.",
+        "operationId": "getPods",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing pod data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "pod": {
+                            "type": "string",
+                            "description": "The identifier of the pod."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker associated with the pod."
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number of the last update."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the last update."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash of the last update."
+                              }
+                            }
+                          },
+                          "blockNumber": {
+                            "type": "integer",
+                            "description": "The block number associated with the pod."
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp associated with the pod."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of pods."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalPods": {
+                              "type": "integer",
+                              "description": "Total number of pods globally."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Total number of unique stakers globally."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-info": {
+      "get": {
+        "summary": "Pod Info",
+        "description": "Fetches the latest details of a pod or a staker's associated pod and shares.",
+        "operationId": "getPodDetails",
+        "parameters": [
+          {
+            "name": "pod",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the pod."
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The address of the staker associated with the pod."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing pod details and associated staker shares.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "pod": {
+                          "type": "string",
+                          "description": "The identifier of the pod."
+                        },
+                        "staker": {
+                          "type": "string",
+                          "description": "The staker associated with the pod."
+                        },
+                        "strategy": {
+                          "type": "string",
+                          "description": "The strategy used by the staker."
+                        },
+                        "amount": {
+                          "type": "string",
+                          "description": "The amount of shares held by the staker."
+                        },
+                        "updatedAt": {
+                          "type": "object",
+                          "properties": {
+                            "blockNumber": {
+                              "type": "string",
+                              "description": "The block number of the last update."
+                            },
+                            "blockTimestamp": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The timestamp of the last update."
+                            },
+                            "transactionHash": {
+                              "type": "string",
+                              "description": "The transaction hash of the last update."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-activity": {
+      "get": {
+        "summary": "Pod Activity",
+        "description": "Fetches paginated activities for a specific pod along with global statistics.",
+        "operationId": "getActivities",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "pod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the pod."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing activity data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed in the activity."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator involved in the activity."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker associated with the activity."
+                          },
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy involved in the activity."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token involved in the activity."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "Additional value or state associated with the activity."
+                          },
+                          "pod": {
+                            "type": "string",
+                            "description": "The pod related to the activity."
+                          },
+                          "data": {
+                            "type": "object",
+                            "description": "Additional data related to the activity."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Metadata of the activity."
+                          },
+                          "activity_timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the activity."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of activities."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer",
+                              "description": "Total number of activities globally."
+                            },
+                            "uniqueActions": {
+                              "type": "integer",
+                              "description": "Total number of unique actions globally."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Total number of unique stakers globally."
+                            },
+                            "uniquePods": {
+                              "type": "integer",
+                              "description": "Total number of unique pods globally."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-historical": {
+      "get": {
+        "summary": "Pod Historical",
+        "description": "Fetches paginated shares history for a specific pod along with metadata.",
+        "operationId": "getPodSharesHistory",
+        "parameters": [
+          {
+            "name": "pod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the pod."
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "description": "The number of items per page for pagination. Defaults to 50."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing shares history and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "staker": {
+                      "type": "string",
+                      "description": "The staker associated with the pod."
+                    },
+                    "strategy": {
+                      "type": "string",
+                      "description": "The strategy used by the staker."
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "The token associated with the shares."
+                    },
+                    "history": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "shares": {
+                            "type": "string",
+                            "description": "The amount of shares held by the staker."
+                          },
+                          "blockNumber": {
+                            "type": "string",
+                            "description": "The block number of the update."
+                          },
+                          "blockTimestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the update."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of shares entries."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

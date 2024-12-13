@@ -1,0 +1,594 @@
+{
+  "paths": {
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-operators": {
+      "get": {
+        "summary": "All Operators",
+        "description": "Fetches the latest operator details with metadata and associated statistics.",
+        "operationId": "getLatestOperatorDetails",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination (default is 1)."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page (default is 12)."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operator": {
+                            "type": "string",
+                            "description": "The unique identifier for the operator."
+                          },
+                          "metadataURI": {
+                            "type": "string",
+                            "description": "The metadata URI associated with the operator."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the operator."
+                          },
+                          "logo": {
+                            "type": "string",
+                            "description": "The logo URL of the operator."
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp of the latest operator data."
+                          },
+                          "avsCount": {
+                            "type": "integer",
+                            "description": "The count of AVSs associated with the operator."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of operators."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages available."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "The total number of operators."
+                            },
+                            "totalAVSs": {
+                              "type": "integer",
+                              "description": "The total number of AVSs across all operators."
+                            },
+                            "totalStakers": {
+                              "type": "integer",
+                              "description": "The total number of stakers across all operators."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-info": {
+      "get": {
+        "summary": "Operator Info",
+        "description": "Retrieves detailed information about a specific operator, including metadata, statistics, and strategies.",
+        "operationId": "getOperatorDetails",
+        "parameters": [
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The address of the operator."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "operatorDetails": {
+                          "type": "object",
+                          "properties": {
+                            "operator": {
+                              "type": "string",
+                              "description": "The unique identifier for the operator."
+                            },
+                            "metadataURI": {
+                              "type": "string",
+                              "description": "The metadata URI for the operator."
+                            },
+                            "details": {
+                              "type": "string",
+                              "description": "Additional details about the operator."
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The last update timestamp for the operator details."
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The creation timestamp for the operator details."
+                            }
+                          }
+                        },
+                        "operatorStats": {
+                          "type": "object",
+                          "properties": {
+                            "avs": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "description": "The AVSs associated with the operator."
+                            },
+                            "stakersCount": {
+                              "type": "integer",
+                              "description": "The count of stakers associated with the operator."
+                            },
+                            "strategies": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "strategy": {
+                                    "type": "string",
+                                    "description": "The name of the strategy."
+                                  },
+                                  "shares": {
+                                    "type": "string",
+                                    "description": "The shares for the strategy."
+                                  }
+                                }
+                              },
+                              "description": "The strategies and their shares associated with the operator."
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "The last update timestamp for the operator statistics."
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "metadataURI": {
+                              "type": "string",
+                              "description": "The metadata URI for the operator."
+                            },
+                            "synced": {
+                              "type": "boolean",
+                              "description": "Whether the metadata is synced."
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "The name of the operator."
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "The description of the operator."
+                            },
+                            "logo": {
+                              "type": "string",
+                              "description": "The logo URL of the operator."
+                            },
+                            "website": {
+                              "type": "string",
+                              "description": "The website URL of the operator."
+                            },
+                            "telegram": {
+                              "type": "string",
+                              "description": "The Telegram link for the operator."
+                            },
+                            "discord": {
+                              "type": "string",
+                              "description": "The Discord link for the operator."
+                            },
+                            "x": {
+                              "type": "string",
+                              "description": "Additional metadata."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-activity": {
+      "get": {
+        "summary": "Operator Activity",
+        "description": "Retrieves paginated activities for a specific operator, including global statistics and metadata.",
+        "operationId": "getActivities",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier for the operator."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with activities data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed."
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator identifier."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker identifier."
+                          },
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy associated with the action."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token involved in the action."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS associated with the action."
+                          },
+                          "pod": {
+                            "type": "string",
+                            "description": "The pod associated with the action."
+                          },
+                          "data": {
+                            "type": "object",
+                            "description": "Additional data for the action."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Additional metadata for the action."
+                          },
+                          "activity_timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Timestamp of the activity."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of activities."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether more pages are available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalActivities": {
+                              "type": "integer",
+                              "description": "Total number of activities."
+                            },
+                            "uniqueActions": {
+                              "type": "integer",
+                              "description": "Number of unique actions performed."
+                            },
+                            "uniqueStakers": {
+                              "type": "integer",
+                              "description": "Number of unique stakers."
+                            },
+                            "uniquePods": {
+                              "type": "integer",
+                              "description": "Number of unique pods."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-historical": {
+      "get": {
+        "summary": "Operator Historical",
+        "description": "Retrieves paginated operator statistics for a specific operator, including global metadata.",
+        "operationId": "getOperatorStats",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier for the operator."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with operator statistics data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operator": {
+                            "type": "string",
+                            "description": "The operator identifier."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS associated with the operator."
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Last update timestamp."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of records."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Whether more pages are available."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

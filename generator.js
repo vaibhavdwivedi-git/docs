@@ -102,6 +102,16 @@ async function processJsonFiles() {
     path.join(__dirname, "eigenda-reference/batches/_openapi.json"),
     path.join(__dirname, "eigenda-reference/operators/_openapi.json"),
     path.join(__dirname, "eigenda-reference/quorums/_openapi.json"),
+    path.join(__dirname, "component_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/avs/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/distributionRoot/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/operator/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/pod/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/reward/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/staker/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/strategy/_openapi.json"),
+    path.join(__dirname, "documentation/tracker/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/withdrawal/_openapi.json"),
   ];
 
   try {
