@@ -15465,7 +15465,7 @@
     },
     "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/activity": {
       "get": {
-        "summary": "Track EigenLayer",
+        "summary": "Track Activities",
         "description": "Retrieve a list of activities with optional filters and pagination",
         "parameters": [
           {

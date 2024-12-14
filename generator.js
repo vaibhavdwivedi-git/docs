@@ -110,7 +110,7 @@ async function processJsonFiles() {
     path.join(__dirname, "eigenlayer-reference/reward/_openapi.json"),
     path.join(__dirname, "eigenlayer-reference/staker/_openapi.json"),
     path.join(__dirname, "eigenlayer-reference/strategy/_openapi.json"),
-    path.join(__dirname, "documentation/tracker/_openapi.json"),
+    path.join(__dirname, "eigenlayer-reference/ecosystem/_openapi.json"),
     path.join(__dirname, "eigenlayer-reference/withdrawal/_openapi.json"),
   ];
 

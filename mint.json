@@ -88,10 +88,10 @@
       ]
     },
     {
-      "group": "Tracker",
+      "group": "Ecosystem",
       "pages": [
-        "documentation/tracker/activity",
-        "documentation/tracker/tokens"
+        "eigenlayer-reference/ecosystem/activity",
+        "eigenlayer-reference/ecosystem/tokens"
       ]
     },
     {
