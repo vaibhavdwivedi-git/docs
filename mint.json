@@ -165,16 +165,22 @@
       "group": "AVS",
       "pages": [
         "eigenlayer-reference/avs/all",
+        "eigenlayer-reference/avs/operators",
         "eigenlayer-reference/avs/info",
-        "eigenlayer-reference/avs/activity"
+        "eigenlayer-reference/avs/apy",
+        "eigenlayer-reference/avs/activity",
+        "eigenlayer-reference/avs/rewards"
       ]
     },
     {
       "group": "Operators",
       "pages": [
         "eigenlayer-reference/operator/all",
+        "eigenlayer-reference/operator/avs",
         "eigenlayer-reference/operator/info",
         "eigenlayer-reference/operator/historical",
+        "eigenlayer-reference/operator/strategies",
+        "eigenlayer-reference/operator/tvl",
         "eigenlayer-reference/operator/activity"
       ]
     },

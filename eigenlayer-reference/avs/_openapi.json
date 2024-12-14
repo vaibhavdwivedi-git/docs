@@ -459,39 +459,323 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response containing APY data.",
+            "description": "APY calculation successful.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "avsAddress": {
+                      "type": "string",
+                      "description": "The AVS address provided."
+                    },
+                    "apy": {
+                      "type": "number",
+                      "description": "The total APY for the AVS address."
+                    },
                     "strategyApys": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
-                          "strategyAddress": {
+                          "strategy": {
                             "type": "string",
-                            "description": "The address of the strategy."
+                            "description": "The strategy address."
                           },
-                          "apy": {
+                          "strategyTvl": {
                             "type": "number",
-                            "description": "The calculated APY percentage."
+                            "description": "The total value locked (TVL) for the strategy in ETH."
                           },
-                          "tokens": {
+                          "totalApy": {
+                            "type": "number",
+                            "description": "The total APY for the strategy."
+                          },
+                          "tokenApys": {
                             "type": "array",
                             "items": {
                               "type": "object",
                               "properties": {
-                                "tokenAddress": {
+                                "token": {
                                   "type": "string",
-                                  "description": "The address of the token."
+                                  "description": "The token address."
                                 },
                                 "apy": {
                                   "type": "number",
-                                  "description": "The APY for the token."
+                                  "description": "The APY for the specific token."
+                                },
+                                "duration": {
+                                  "type": "integer",
+                                  "description": "The duration in seconds for which rewards are calculated."
+                                },
+                                "rewardInEth": {
+                                  "type": "number",
+                                  "description": "The rewards in ETH for the specific token."
                                 }
                               }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-rewards": {
+      "get": {
+        "summary": "AVS Rewards",
+        "description": "Fetches paginated rewards history of an AVS along with metadata and global statistics.",
+        "operationId": "getRewardsHistory",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "description": "The page number for pagination. Defaults to 1."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 12,
+              "description": "The number of items per page for pagination. Defaults to 12."
+            }
+          },
+          {
+            "name": "avs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The AVS value to filter by."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing rewards data and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": { "type": "string" },
+                          "avs": { "type": "string" },
+                          "submitter": { "type": "string" },
+                          "tokenHopper": { "type": "string" },
+                          "submissionNonce": { "type": "string" },
+                          "rewardsSubmissionHash": { "type": "string" },
+                          "strategies": { "type": "string" },
+                          "token": { "type": "string" },
+                          "amount": { "type": "string" },
+                          "startTimestamp": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "duration": { "type": "string" },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": { "type": "integer" },
+                        "page": { "type": "integer" },
+                        "limit": { "type": "integer" },
+                        "totalPages": { "type": "integer" },
+                        "hasMore": { "type": "boolean" },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalRewards": { "type": "integer" },
+                            "totalAmount": { "type": "number" },
+                            "uniqueTokens": { "type": "integer" }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-operators": {
+      "get": {
+        "summary": "AVS Operators",
+        "description": "Returns a paginated list of operators for a specified AVS address, including metadata details for each operator.",
+        "parameters": [
+          {
+            "name": "avs",
+            "in": "query",
+            "required": true,
+            "description": "The AVS address to fetch operators for.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "The page number for pagination (default is 1).",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of results per page (default is 12).",
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operators fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "operators": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "operator": {
+                                "type": "string",
+                                "description": "The operator address."
+                              },
+                              "metadataURI": {
+                                "type": "string",
+                                "description": "The URI for operator metadata."
+                              },
+                              "metadata": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "description": "The name of the operator."
+                                  },
+                                  "description": {
+                                    "type": "string",
+                                    "description": "A description of the operator."
+                                  },
+                                  "logo": {
+                                    "type": "string",
+                                    "description": "The logo URL of the operator."
+                                  },
+                                  "website": {
+                                    "type": "string",
+                                    "description": "The website URL of the operator."
+                                  },
+                                  "telegram": {
+                                    "type": "string",
+                                    "description": "The Telegram link for the operator."
+                                  },
+                                  "discord": {
+                                    "type": "string",
+                                    "description": "The Discord link for the operator."
+                                  },
+                                  "x": {
+                                    "type": "string",
+                                    "description": "Additional metadata for the operator."
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "integer",
+                              "description": "The current page number."
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "description": "The number of results per page."
+                            },
+                            "totalPages": {
+                              "type": "integer",
+                              "description": "The total number of pages available."
+                            },
+                            "hasMore": {
+                              "type": "boolean",
+                              "description": "Indicates if there are more results available."
                             }
                           }
                         }
