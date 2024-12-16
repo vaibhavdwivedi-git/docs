@@ -16300,7 +16300,7 @@
     },
     "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-deposits": {
       "get": {
-        "summary": "All Deposits",
+        "summary": "Total Deposits",
         "description": "Returns the total count of deposits where the action is 'SHARES_DEPOSITED_IN_STRATEGY'.",
         "responses": {
           "200": {
@@ -16350,7 +16350,7 @@
     },
     "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-operators": {
       "get": {
-        "summary": "All Operators",
+        "summary": "Total Operators",
         "description": "Returns the total count of distinct operators.",
         "responses": {
           "200": {
@@ -16400,7 +16400,7 @@
     },
     "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-stakers": {
       "get": {
-        "summary": "All Stakers",
+        "summary": "Total Stakers",
         "description": "Returns the stake summary including total unique stakers, delegated stakes, and undelegated stakes based on the latest record for each staker.",
         "responses": {
           "200": {
