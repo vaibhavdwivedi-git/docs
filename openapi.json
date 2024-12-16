@@ -16258,6 +16258,63 @@
         }
       }
     },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-stakers": {
+      "get": {
+        "summary": "All Stakers",
+        "description": "Returns the stake summary including total unique stakers, delegated stakes, and undelegated stakes based on the latest record for each staker.",
+        "responses": {
+          "200": {
+            "description": "Stake summary fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "allTime": {
+                          "type": "integer",
+                          "description": "Total number of unique stakers."
+                        },
+                        "delegatedWithOperator": {
+                          "type": "integer",
+                          "description": "Number of stakers who have delegated stakes with an operator."
+                        },
+                        "undelegatedWithoutOperator": {
+                          "type": "integer",
+                          "description": "Number of stakers who have not delegated stakes and do not have an operator."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error."
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Detailed error message."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-withdrawals": {
       "get": {
         "summary": "All Withdrawals",
