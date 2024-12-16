@@ -1,0 +1,156 @@
+{
+  "paths": {
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-deposits": {
+      "get": {
+        "summary": "All Deposits",
+        "description": "Returns a paginated list of all deposits filtered by optional parameters such as staker, strategy, and token, with metadata.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "The page number for pagination (default is 1).",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of results per page (default is 12).",
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "staker",
+            "in": "query",
+            "required": false,
+            "description": "Filter by staker address.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "strategy",
+            "in": "query",
+            "required": false,
+            "description": "Filter by strategy.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "Filter by token.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Activities fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "description": "The action performed."
+                          },
+                          "staker": {
+                            "type": "string",
+                            "description": "The staker address."
+                          },
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy identifier."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The token address."
+                          },
+                          "data": {
+                            "type": "object",
+                            "description": "Additional data as JSON."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Metadata about the activity."
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Timestamp of the activity."
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of activities."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of results per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more results available."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  }
+}

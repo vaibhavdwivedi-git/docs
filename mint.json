@@ -91,7 +91,13 @@
       "group": "Ecosystem",
       "pages": [
         "eigenlayer-reference/ecosystem/activity",
-        "eigenlayer-reference/ecosystem/tokens"
+        "eigenlayer-reference/ecosystem/tokens",
+        "eigenlayer-reference/ecosystem/avs",
+        "eigenlayer-reference/ecosystem/operators",
+        "eigenlayer-reference/ecosystem/stakers",
+        "eigenlayer-reference/ecosystem/tvl",
+        "eigenlayer-reference/ecosystem/withdrawal",
+        "eigenlayer-reference/ecosystem/deposits"
       ]
     },
     {
@@ -150,7 +156,8 @@
         "eigenlayer-reference/reward/all",
         "eigenlayer-reference/reward/info",
         "eigenlayer-reference/reward/claim",
-        "eigenlayer-reference/reward/strategy"
+        "eigenlayer-reference/reward/strategy",
+        "eigenlayer-reference/reward/status"
       ]
     },
     {
@@ -159,6 +166,10 @@
         "eigenlayer-reference/withdrawal/all",
         "eigenlayer-reference/withdrawal/info"
       ]
+    },
+    {
+      "group": "Deposits",
+      "pages": ["eigenlayer-reference/deposit/all"]
     },
     {
       "group": "Distribution Roots",

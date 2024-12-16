@@ -635,6 +635,176 @@
           }
         }
       }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/rewards-status": {
+      "get": {
+        "summary": "Rewards Status",
+        "description": "Returns a paginated list of rewards filtered by status (active/inactive), with metadata and statistics.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "The page number for pagination (default is 1).",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of results per page (default is 12).",
+            "schema": {
+              "type": "integer",
+              "default": 12
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "The status of the rewards (active or inactive). Default is 'active'.",
+            "schema": {
+              "type": "string",
+              "enum": ["active", "inactive"],
+              "default": "active"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rewards fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "The type of reward."
+                          },
+                          "avs": {
+                            "type": "string",
+                            "description": "The AVS address."
+                          },
+                          "submitter": {
+                            "type": "string",
+                            "description": "The submitter's address."
+                          },
+                          "tokenHopper": {
+                            "type": "string",
+                            "description": "The token hopper address."
+                          },
+                          "submissionNonce": {
+                            "type": "string",
+                            "description": "The submission nonce."
+                          },
+                          "rewardsSubmissionHash": {
+                            "type": "string",
+                            "description": "The hash of the rewards submission."
+                          },
+                          "strategies": {
+                            "type": "array",
+                            "items": { "type": "object" },
+                            "description": "The parsed strategies for the reward."
+                          },
+                          "token": {
+                            "type": "string",
+                            "description": "The reward token address."
+                          },
+                          "amount": {
+                            "type": "string",
+                            "description": "The reward amount."
+                          },
+                          "startTimestamp": {
+                            "type": "string",
+                            "description": "The start timestamp of the reward."
+                          },
+                          "duration": {
+                            "type": "string",
+                            "description": "The duration of the reward."
+                          },
+                          "updatedAt": {
+                            "type": "object",
+                            "description": "Metadata for the last update.",
+                            "additionalProperties": true
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "The total number of rewards."
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "The current page number."
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "The number of results per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more results available."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalRewards": {
+                              "type": "integer",
+                              "description": "The total number of rewards."
+                            },
+                            "totalRewardAmount": {
+                              "type": "number",
+                              "description": "The total reward amount."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
     }
   }
 }

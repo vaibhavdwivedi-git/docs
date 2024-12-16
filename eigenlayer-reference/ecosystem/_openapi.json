@@ -371,6 +371,120 @@
           }
         }
       }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-avs": {
+      "get": {
+        "summary": "Total AVS",
+        "description": "Returns the latest avs count.",
+        "responses": {
+          "200": {
+            "description": "Latest stats fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "avs": {
+                          "type": "number",
+                          "description": "The AVS value from the latest stats."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No stats found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "No stats found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error."
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Detailed error message."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-withdrawals": {
+      "get": {
+        "summary": "Total Withdrawals",
+        "description": "Returns the total count of queued withdrawals with the action SHARES_DEPOSITED_IN_STRATEGY.",
+        "responses": {
+          "200": {
+            "description": "Withdrawal queued count fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "withdrawalQueuedCount": {
+                          "type": "integer",
+                          "description": "The total count of queued withdrawals."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error."
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Detailed error message."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
