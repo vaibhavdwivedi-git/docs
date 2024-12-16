@@ -16160,6 +16160,55 @@
         }
       }
     },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-deposits": {
+      "get": {
+        "summary": "All Deposits",
+        "description": "Returns the total count of deposits where the action is 'SHARES_DEPOSITED_IN_STRATEGY'.",
+        "responses": {
+          "200": {
+            "description": "Total deposit count fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "totalDeposits": {
+                          "type": "integer",
+                          "description": "The total number of deposits with the action 'SHARES_DEPOSITED_IN_STRATEGY'."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error."
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Detailed error message."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-withdrawals": {
       "get": {
         "summary": "All Withdrawals",
