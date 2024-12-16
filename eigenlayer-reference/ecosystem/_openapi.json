@@ -534,6 +534,55 @@
           }
         }
       }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-operators": {
+      "get": {
+        "summary": "All Operators",
+        "description": "Returns the total count of distinct operators.",
+        "responses": {
+          "200": {
+            "description": "Distinct operator count fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "operators": {
+                          "type": "integer",
+                          "description": "The total number of distinct operators."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error."
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Detailed error message."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
