@@ -96,7 +96,7 @@
         "eigenlayer-reference/ecosystem/operators",
         "eigenlayer-reference/ecosystem/stakers",
         "eigenlayer-reference/ecosystem/tvl",
-        "eigenlayer-reference/ecosystem/withdrawal",
+        "eigenlayer-reference/ecosystem/withdrawals",
         "eigenlayer-reference/ecosystem/deposits"
       ]
     },
