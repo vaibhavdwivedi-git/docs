@@ -16072,41 +16072,26 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
           "404": {
-            "description": "No stats found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "No stats found."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
           },
           "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Internal server error."
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Detailed error message."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -16137,25 +16122,26 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
           "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Internal server error."
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Detailed error message."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -16186,25 +16172,26 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
           "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Internal server error."
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Detailed error message."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -16235,25 +16222,26 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
           "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Internal server error."
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Detailed error message."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -16292,25 +16280,109 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
           "500": {
-            "description": "Internal server error.",
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-tvl": {
+      "get": {
+        "summary": "Total Value Locked",
+        "description": "Returns the total value locked [Actively Delegated]",
+        "responses": {
+          "200": {
+            "description": "Statistics fetched successfully.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Internal server error."
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Detailed error message."
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "stat": {
+                          "type": "string",
+                          "description": "The stat value from the latest entry."
+                        },
+                        "stakers": {
+                          "type": "integer",
+                          "description": "The total number of stakers."
+                        },
+                        "avs": {
+                          "type": "number",
+                          "description": "The average value statistic."
+                        },
+                        "operators": {
+                          "type": "integer",
+                          "description": "The total number of operators."
+                        },
+                        "strategies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "shares": {
+                                "type": "string",
+                                "description": "Shares associated with the strategy."
+                              }
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "totalShares": {
+                              "type": "string",
+                              "description": "The total calculated shares as a string."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       }
