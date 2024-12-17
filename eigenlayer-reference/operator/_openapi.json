@@ -157,120 +157,114 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response with operator details.",
+            "description": "Staker details fetched successfully.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "data": {
+                    "staker": {
+                      "type": "string",
+                      "description": "The staker address."
+                    },
+                    "operator": {
+                      "type": "string",
+                      "description": "The operator associated with the staker."
+                    },
+                    "strategies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy identifier."
+                          },
+                          "shares": {
+                            "type": "string",
+                            "description": "The total shares allocated to the strategy."
+                          },
+                          "tokens": {
+                            "type": "string",
+                            "description": "The calculated tokens based on shares and decimals."
+                          },
+                          "tvl": {
+                            "type": "string",
+                            "description": "The total value locked calculated based on token price and shares."
+                          },
+                          "tokenDetails": {
+                            "type": "object",
+                            "properties": {
+                              "name": { "type": "string" },
+                              "symbol": { "type": "string" },
+                              "sharesUnderlying": { "type": "string" },
+                              "dollarPrice": { "type": "string" },
+                              "decimals": { "type": "string" },
+                              "ethPrice": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "stakerUpdatedAt": {
                       "type": "object",
                       "properties": {
-                        "operatorDetails": {
+                        "blockNumber": { "type": "string" },
+                        "blockTimestamp": { "type": "string" },
+                        "transactionHash": { "type": "string" }
+                      }
+                    },
+                    "operatorDetails": {
+                      "type": "object",
+                      "properties": {
+                        "metadataURI": { "type": "string" },
+                        "details": { "type": "string" },
+                        "operatorUpdatedAt": {
                           "type": "object",
                           "properties": {
-                            "operator": {
-                              "type": "string",
-                              "description": "The unique identifier for the operator."
-                            },
-                            "metadataURI": {
-                              "type": "string",
-                              "description": "The metadata URI for the operator."
-                            },
-                            "details": {
-                              "type": "string",
-                              "description": "Additional details about the operator."
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time",
-                              "description": "The last update timestamp for the operator details."
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time",
-                              "description": "The creation timestamp for the operator details."
-                            }
+                            "blockNumber": { "type": "string" },
+                            "blockTimestamp": { "type": "string" },
+                            "transactionHash": { "type": "string" }
                           }
                         },
-                        "operatorStats": {
+                        "operatorCreatedAt": {
                           "type": "object",
                           "properties": {
-                            "avs": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "The AVSs associated with the operator."
-                            },
-                            "stakersCount": {
-                              "type": "integer",
-                              "description": "The count of stakers associated with the operator."
-                            },
-                            "strategies": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "strategy": {
-                                    "type": "string",
-                                    "description": "The name of the strategy."
-                                  },
-                                  "shares": {
-                                    "type": "string",
-                                    "description": "The shares for the strategy."
-                                  }
-                                }
-                              },
-                              "description": "The strategies and their shares associated with the operator."
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time",
-                              "description": "The last update timestamp for the operator statistics."
-                            }
+                            "blockNumber": { "type": "string" },
+                            "blockTimestamp": { "type": "string" },
+                            "transactionHash": { "type": "string" }
                           }
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "metadataURI": { "type": "string" },
+                        "synced": { "type": "boolean" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" },
+                        "logo": { "type": "string" },
+                        "website": { "type": "string" },
+                        "telegram": { "type": "string" },
+                        "discord": { "type": "string" },
+                        "x": { "type": "string" }
+                      }
+                    },
+                    "statistics": {
+                      "type": "object",
+                      "properties": {
+                        "totalStrategies": {
+                          "type": "integer",
+                          "description": "Total number of strategies associated with the staker."
                         },
-                        "metadata": {
-                          "type": "object",
-                          "properties": {
-                            "metadataURI": {
-                              "type": "string",
-                              "description": "The metadata URI for the operator."
-                            },
-                            "synced": {
-                              "type": "boolean",
-                              "description": "Whether the metadata is synced."
-                            },
-                            "name": {
-                              "type": "string",
-                              "description": "The name of the operator."
-                            },
-                            "description": {
-                              "type": "string",
-                              "description": "The description of the operator."
-                            },
-                            "logo": {
-                              "type": "string",
-                              "description": "The logo URL of the operator."
-                            },
-                            "website": {
-                              "type": "string",
-                              "description": "The website URL of the operator."
-                            },
-                            "telegram": {
-                              "type": "string",
-                              "description": "The Telegram link for the operator."
-                            },
-                            "discord": {
-                              "type": "string",
-                              "description": "The Discord link for the operator."
-                            },
-                            "x": {
-                              "type": "string",
-                              "description": "Additional metadata."
-                            }
-                          }
+                        "totalTVL": {
+                          "type": "string",
+                          "description": "Total value locked across all strategies."
+                        },
+                        "totalShares": {
+                          "type": "string",
+                          "description": "Total shares across all strategies."
                         }
                       }
                     }
@@ -607,35 +601,67 @@
         ],
         "responses": {
           "200": {
-            "description": "Operator TVL fetched successfully.",
+            "description": "Operator TVL details fetched successfully.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "operator": {
-                          "type": "string",
-                          "description": "The operator address."
-                        },
-                        "totalStakers": {
-                          "type": "integer",
-                          "description": "The total number of unique stakers."
-                        },
-                        "strategiesTVL": {
-                          "type": "array",
-                          "items": {
+                    "operator": {
+                      "type": "string",
+                      "description": "The operator address."
+                    },
+                    "totalStakers": {
+                      "type": "integer",
+                      "description": "The total number of stakers for the operator."
+                    },
+                    "strategiesTVL": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strategy": {
+                            "type": "string",
+                            "description": "The strategy identifier."
+                          },
+                          "totalShares": {
+                            "type": "string",
+                            "description": "The total shares allocated to the strategy."
+                          },
+                          "tokens": {
+                            "type": "string",
+                            "description": "The calculated tokens based on shares and decimals."
+                          },
+                          "tvl": {
+                            "type": "string",
+                            "description": "The total value locked calculated based on token price and shares."
+                          },
+                          "tokenDetails": {
                             "type": "object",
                             "properties": {
-                              "strategy": {
+                              "name": {
                                 "type": "string",
-                                "description": "The strategy identifier."
+                                "description": "The token name."
                               },
-                              "totalShares": {
+                              "symbol": {
                                 "type": "string",
-                                "description": "The total shares for the strategy."
+                                "description": "The token symbol."
+                              },
+                              "sharesUnderlying": {
+                                "type": "string",
+                                "description": "The underlying shares of the token."
+                              },
+                              "dollarPrice": {
+                                "type": "string",
+                                "description": "The dollar price of the token."
+                              },
+                              "decimals": {
+                                "type": "string",
+                                "description": "The decimals of the token."
+                              },
+                              "ethPrice": {
+                                "type": "string",
+                                "description": "The ETH price of the token."
                               }
                             }
                           }
@@ -699,81 +725,74 @@
         ],
         "responses": {
           "200": {
-            "description": "Strategies fetched successfully.",
+            "description": "Operator TVL details fetched successfully.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "operator": {
-                            "type": "string",
-                            "description": "The operator address."
-                          },
-                          "strategies": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "strategy": {
-                                  "type": "string",
-                                  "description": "The strategy identifier."
-                                },
-                                "totalShares": {
-                                  "type": "string",
-                                  "description": "The total shares for the strategy as a BigNumber."
-                                },
-                                "uniqueStakers": {
-                                  "type": "integer",
-                                  "description": "The number of unique stakers for the strategy."
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "meta": {
                       "type": "object",
                       "properties": {
-                        "total": {
+                        "operator": {
+                          "type": "string",
+                          "description": "The operator address."
+                        },
+                        "totalStakers": {
                           "type": "integer",
-                          "description": "The total number of operators."
+                          "description": "The total number of stakers for the operator."
                         },
-                        "page": {
-                          "type": "integer",
-                          "description": "The current page number."
-                        },
-                        "limit": {
-                          "type": "integer",
-                          "description": "The number of items per page."
-                        },
-                        "totalPages": {
-                          "type": "integer",
-                          "description": "The total number of pages."
-                        },
-                        "hasMore": {
-                          "type": "boolean",
-                          "description": "Indicates if there are more pages available."
-                        },
-                        "statistics": {
-                          "type": "object",
-                          "properties": {
-                            "totalOperators": {
-                              "type": "integer",
-                              "description": "The total number of unique operators."
-                            },
-                            "totalStrategies": {
-                              "type": "integer",
-                              "description": "The total number of strategies across all operators."
-                            },
-                            "totalUniqueStakers": {
-                              "type": "integer",
-                              "description": "The total number of unique stakers across all strategies."
+                        "strategiesTVL": {
+                          "type": "array",
+                          "description": "List of strategies with TVL details.",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "strategy": {
+                                "type": "string",
+                                "description": "The strategy identifier."
+                              },
+                              "totalShares": {
+                                "type": "string",
+                                "description": "The total shares allocated to the strategy."
+                              },
+                              "tokens": {
+                                "type": "string",
+                                "description": "The calculated tokens based on shares and decimals."
+                              },
+                              "tvl": {
+                                "type": "string",
+                                "description": "The total value locked calculated based on token price and shares."
+                              },
+                              "tokenDetails": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "description": "The token name."
+                                  },
+                                  "symbol": {
+                                    "type": "string",
+                                    "description": "The token symbol."
+                                  },
+                                  "sharesUnderlying": {
+                                    "type": "string",
+                                    "description": "The underlying shares of the token."
+                                  },
+                                  "dollarPrice": {
+                                    "type": "string",
+                                    "description": "The dollar price of the token."
+                                  },
+                                  "decimals": {
+                                    "type": "string",
+                                    "description": "The decimals of the token."
+                                  },
+                                  "ethPrice": {
+                                    "type": "string",
+                                    "description": "The ETH price of the token."
+                                  }
+                                }
+                              }
                             }
                           }
                         }

@@ -168,7 +168,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response with AVS details, metadata, and operator statistics.",
+            "description": "AVS details fetched successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -182,45 +182,24 @@
                           "properties": {
                             "avs": {
                               "type": "string",
-                              "description": "The AVS identifier."
+                              "description": "The AVS address."
                             },
                             "metadataURI": {
                               "type": "string",
-                              "description": "The URI pointing to the AVS metadata."
+                              "description": "The metadata URI for the AVS."
                             }
                           }
                         },
                         "metadata": {
                           "type": "object",
                           "properties": {
-                            "name": {
-                              "type": "string",
-                              "description": "Name of the AVS."
-                            },
-                            "description": {
-                              "type": "string",
-                              "description": "Description of the AVS."
-                            },
-                            "logo": {
-                              "type": "string",
-                              "description": "Logo URL of the AVS."
-                            },
-                            "website": {
-                              "type": "string",
-                              "description": "Website URL of the AVS."
-                            },
-                            "telegram": {
-                              "type": "string",
-                              "description": "Telegram link for the AVS."
-                            },
-                            "discord": {
-                              "type": "string",
-                              "description": "Discord link for the AVS."
-                            },
-                            "x": {
-                              "type": "string",
-                              "description": "Additional metadata field X."
-                            }
+                            "name": { "type": "string" },
+                            "description": { "type": "string" },
+                            "logo": { "type": "string" },
+                            "website": { "type": "string" },
+                            "telegram": { "type": "string" },
+                            "discord": { "type": "string" },
+                            "x": { "type": "string" }
                           }
                         },
                         "operatorStats": {
@@ -228,7 +207,7 @@
                           "properties": {
                             "totalOperators": {
                               "type": "integer",
-                              "description": "Total number of operators associated with the AVS."
+                              "description": "The total number of operators associated with the AVS."
                             },
                             "strategySummary": {
                               "type": "array",
@@ -237,11 +216,30 @@
                                 "properties": {
                                   "strategy": {
                                     "type": "string",
-                                    "description": "The strategy name."
+                                    "description": "The strategy identifier."
                                   },
                                   "shares": {
                                     "type": "string",
-                                    "description": "The total shares for the strategy, represented as a string for precision."
+                                    "description": "The total shares allocated to the strategy."
+                                  },
+                                  "tokens": {
+                                    "type": "string",
+                                    "description": "The calculated tokens based on shares and decimals."
+                                  },
+                                  "tvl": {
+                                    "type": "string",
+                                    "description": "The total value locked calculated based on token price and shares."
+                                  },
+                                  "tokenDetails": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": { "type": "string" },
+                                      "symbol": { "type": "string" },
+                                      "sharesUnderlying": { "type": "string" },
+                                      "dollarPrice": { "type": "string" },
+                                      "decimals": { "type": "string" },
+                                      "ethprice": { "type": "string" }
+                                    }
                                   }
                                 }
                               }

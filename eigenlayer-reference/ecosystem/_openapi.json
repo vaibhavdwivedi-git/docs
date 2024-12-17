@@ -253,7 +253,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response containing token data and metadata.",
+            "description": "Successful response with token data and metadata.",
             "content": {
               "application/json": {
                 "schema": {
@@ -264,43 +264,22 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "token": {
-                            "type": "string",
-                            "description": "The unique identifier of the token."
-                          },
-                          "name": {
-                            "type": "string",
-                            "description": "The name of the token."
-                          },
-                          "symbol": {
-                            "type": "string",
-                            "description": "The symbol of the token."
-                          },
-                          "decimals": {
-                            "type": "integer",
-                            "description": "The decimal places of the token."
-                          },
-                          "synced": {
-                            "type": "boolean",
-                            "description": "Indicates whether the token is synced."
-                          },
-                          "sharesUnderlying": {
-                            "type": "string",
-                            "description": "Underlying shares of the token."
-                          },
-                          "ethPrice": {
-                            "type": "number",
-                            "description": "ETH price of the token."
-                          },
+                          "token": { "type": "string" },
+                          "strategy": { "type": "string" },
+                          "name": { "type": "string" },
+                          "symbol": { "type": "string" },
+                          "decimals": { "type": "integer" },
+                          "synced": { "type": "boolean" },
+                          "sharesUnderlying": { "type": "number" },
+                          "ethPrice": { "type": "number" },
+                          "dollarPrice": { "type": "string" },
                           "updatedAt": {
                             "type": "string",
-                            "format": "date-time",
-                            "description": "The last update timestamp of the token."
+                            "format": "date-time"
                           },
                           "timestamp": {
                             "type": "string",
-                            "format": "date-time",
-                            "description": "The timestamp of the token record."
+                            "format": "date-time"
                           }
                         }
                       }
@@ -308,37 +287,16 @@
                     "meta": {
                       "type": "object",
                       "properties": {
-                        "total": {
-                          "type": "integer",
-                          "description": "Total number of tokens."
-                        },
-                        "page": {
-                          "type": "integer",
-                          "description": "Current page number."
-                        },
-                        "limit": {
-                          "type": "integer",
-                          "description": "Number of items per page."
-                        },
-                        "totalPages": {
-                          "type": "integer",
-                          "description": "Total number of pages."
-                        },
-                        "hasMore": {
-                          "type": "boolean",
-                          "description": "Indicates if more pages are available."
-                        },
+                        "total": { "type": "integer" },
+                        "page": { "type": "integer" },
+                        "limit": { "type": "integer" },
+                        "totalPages": { "type": "integer" },
+                        "hasMore": { "type": "boolean" },
                         "statistics": {
                           "type": "object",
                           "properties": {
-                            "totalTokens": {
-                              "type": "integer",
-                              "description": "Total number of tokens globally."
-                            },
-                            "syncedTokens": {
-                              "type": "integer",
-                              "description": "Total number of synced tokens globally."
-                            }
+                            "totalTokens": { "type": "integer" },
+                            "syncedTokens": { "type": "integer" }
                           }
                         }
                       }
