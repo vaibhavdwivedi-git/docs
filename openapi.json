@@ -8689,7 +8689,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Paginated list of strategies with details and global statistics",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -8716,10 +8716,28 @@
                             "type": "integer"
                           },
                           "tvl": {
-                            "type": "number"
+                            "type": "string"
                           },
                           "withdrawals": {
-                            "type": "number"
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "symbol": {
+                            "type": "string"
+                          },
+                          "sharesUnderlying": {
+                            "type": "string"
+                          },
+                          "dollarPrice": {
+                            "type": "string"
+                          },
+                          "ethPrice": {
+                            "type": "string"
+                          },
+                          "tokens": {
+                            "type": "string"
                           }
                         }
                       }
@@ -8753,6 +8771,9 @@
                             },
                             "whitelistedStrategiesCount": {
                               "type": "integer"
+                            },
+                            "totalTokenValue": {
+                              "type": "number"
                             }
                           }
                         }

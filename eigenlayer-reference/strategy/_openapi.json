@@ -29,7 +29,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Paginated list of strategies with details and global statistics",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -40,60 +40,37 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "strategy": {
-                            "type": "string"
-                          },
-                          "token": {
-                            "type": "string"
-                          },
-                          "whitelisted": {
-                            "type": "boolean"
-                          },
-                          "thirdPartyTransfersForbidden": {
-                            "type": "boolean"
-                          },
-                          "withdrawalDelayBlocks": {
-                            "type": "integer"
-                          },
-                          "tvl": {
-                            "type": "number"
-                          },
-                          "withdrawals": {
-                            "type": "number"
-                          }
+                          "strategy": { "type": "string" },
+                          "token": { "type": "string" },
+                          "whitelisted": { "type": "boolean" },
+                          "thirdPartyTransfersForbidden": { "type": "boolean" },
+                          "withdrawalDelayBlocks": { "type": "integer" },
+                          "tvl": { "type": "string" },
+                          "withdrawals": { "type": "string" },
+                          "name": { "type": "string" },
+                          "symbol": { "type": "string" },
+                          "sharesUnderlying": { "type": "string" },
+                          "dollarPrice": { "type": "string" },
+                          "ethPrice": { "type": "string" },
+                          "tokens": { "type": "string" }
                         }
                       }
                     },
                     "meta": {
                       "type": "object",
                       "properties": {
-                        "total": {
-                          "type": "integer"
-                        },
-                        "page": {
-                          "type": "integer"
-                        },
-                        "limit": {
-                          "type": "integer"
-                        },
-                        "totalPages": {
-                          "type": "integer"
-                        },
-                        "hasMore": {
-                          "type": "boolean"
-                        },
+                        "total": { "type": "integer" },
+                        "page": { "type": "integer" },
+                        "limit": { "type": "integer" },
+                        "totalPages": { "type": "integer" },
+                        "hasMore": { "type": "boolean" },
                         "statistics": {
                           "type": "object",
                           "properties": {
-                            "totalStrategies": {
-                              "type": "integer"
-                            },
-                            "uniqueTokens": {
-                              "type": "integer"
-                            },
-                            "whitelistedStrategiesCount": {
-                              "type": "integer"
-                            }
+                            "totalStrategies": { "type": "integer" },
+                            "uniqueTokens": { "type": "integer" },
+                            "whitelistedStrategiesCount": { "type": "integer" },
+                            "totalTokenValue": { "type": "number" }
                           }
                         }
                       }
