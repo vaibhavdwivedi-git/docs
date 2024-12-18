@@ -9902,7 +9902,7 @@
         "description": "Returns the total value locked [Actively Delegated]",
         "responses": {
           "200": {
-            "description": "Statistics fetched successfully.",
+            "description": "Latest stats and token details fetched successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9911,30 +9911,50 @@
                     "data": {
                       "type": "object",
                       "properties": {
-                        "stat": {
-                          "type": "string",
-                          "description": "The stat value from the latest entry."
-                        },
-                        "stakers": {
-                          "type": "integer",
-                          "description": "The total number of stakers."
-                        },
-                        "avs": {
-                          "type": "number",
-                          "description": "The average value statistic."
-                        },
-                        "operators": {
-                          "type": "integer",
-                          "description": "The total number of operators."
-                        },
                         "strategies": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
+                              "strategy": {
+                                "type": "string",
+                                "description": "The strategy identifier."
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "The token name."
+                              },
+                              "symbol": {
+                                "type": "string",
+                                "description": "The token symbol."
+                              },
                               "shares": {
                                 "type": "string",
-                                "description": "Shares associated with the strategy."
+                                "description": "The shares allocated to the strategy."
+                              },
+                              "tokens": {
+                                "type": "string",
+                                "description": "The calculated tokens based on shares and decimals."
+                              },
+                              "tvl": {
+                                "type": "string",
+                                "description": "The total value locked calculated based on token price and shares."
+                              },
+                              "sharesUnderlying": {
+                                "type": "string",
+                                "description": "The underlying shares of the token."
+                              },
+                              "dollarPrice": {
+                                "type": "string",
+                                "description": "The dollar price of the token."
+                              },
+                              "ethPrice": {
+                                "type": "string",
+                                "description": "The ETH price of the token."
+                              },
+                              "decimals": {
+                                "type": "string",
+                                "description": "The decimals of the token."
                               }
                             }
                           }
@@ -9944,7 +9964,20 @@
                           "properties": {
                             "totalShares": {
                               "type": "string",
-                              "description": "The total calculated shares as a string."
+                              "description": "The total shares across all strategies."
+                            }
+                          }
+                        },
+                        "tokenStatistics": {
+                          "type": "object",
+                          "properties": {
+                            "uniqueTokens": {
+                              "type": "integer",
+                              "description": "The count of unique tokens."
+                            },
+                            "totalTokenValue": {
+                              "type": "number",
+                              "description": "The total value of all tokens."
                             }
                           }
                         }
