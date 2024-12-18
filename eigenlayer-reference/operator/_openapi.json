@@ -157,114 +157,73 @@
         ],
         "responses": {
           "200": {
-            "description": "Staker details fetched successfully.",
+            "description": "Successful response with operator details, strategies, and metadata.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "staker": {
-                      "type": "string",
-                      "description": "The staker address."
-                    },
-                    "operator": {
-                      "type": "string",
-                      "description": "The operator associated with the staker."
-                    },
-                    "strategies": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "strategy": {
-                            "type": "string",
-                            "description": "The strategy identifier."
-                          },
-                          "shares": {
-                            "type": "string",
-                            "description": "The total shares allocated to the strategy."
-                          },
-                          "tokens": {
-                            "type": "string",
-                            "description": "The calculated tokens based on shares and decimals."
-                          },
-                          "tvl": {
-                            "type": "string",
-                            "description": "The total value locked calculated based on token price and shares."
-                          },
-                          "tokenDetails": {
-                            "type": "object",
-                            "properties": {
-                              "name": { "type": "string" },
-                              "symbol": { "type": "string" },
-                              "sharesUnderlying": { "type": "string" },
-                              "dollarPrice": { "type": "string" },
-                              "decimals": { "type": "string" },
-                              "ethPrice": { "type": "string" }
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "operatorDetails": {
+                          "type": "object",
+                          "properties": {
+                            "operator": { "type": "string" },
+                            "metadataURI": { "type": "string" },
+                            "details": { "type": "string" },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
                             }
                           }
-                        }
-                      }
-                    },
-                    "stakerUpdatedAt": {
-                      "type": "object",
-                      "properties": {
-                        "blockNumber": { "type": "string" },
-                        "blockTimestamp": { "type": "string" },
-                        "transactionHash": { "type": "string" }
-                      }
-                    },
-                    "operatorDetails": {
-                      "type": "object",
-                      "properties": {
-                        "metadataURI": { "type": "string" },
-                        "details": { "type": "string" },
-                        "operatorUpdatedAt": {
+                        },
+                        "operatorStats": {
                           "type": "object",
                           "properties": {
-                            "blockNumber": { "type": "string" },
-                            "blockTimestamp": { "type": "string" },
-                            "transactionHash": { "type": "string" }
+                            "avs": { "type": "number" },
+                            "stakersCount": { "type": "integer" },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "strategies": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "strategy": { "type": "string" },
+                                  "shares": { "type": "string" },
+                                  "token": { "type": "string" },
+                                  "tvl": { "type": "string" },
+                                  "name": { "type": "string" },
+                                  "symbol": { "type": "string" },
+                                  "sharesUnderlying": { "type": "number" },
+                                  "dollarPrice": { "type": "number" },
+                                  "ethPrice": { "type": "number" },
+                                  "decimals": { "type": "integer" }
+                                }
+                              }
+                            }
                           }
                         },
-                        "operatorCreatedAt": {
+                        "metadata": {
                           "type": "object",
                           "properties": {
-                            "blockNumber": { "type": "string" },
-                            "blockTimestamp": { "type": "string" },
-                            "transactionHash": { "type": "string" }
+                            "metadataURI": { "type": "string" },
+                            "synced": { "type": "boolean" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" },
+                            "logo": { "type": "string" },
+                            "website": { "type": "string" },
+                            "telegram": { "type": "string" },
+                            "discord": { "type": "string" },
+                            "x": { "type": "string" }
                           }
-                        }
-                      }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "metadataURI": { "type": "string" },
-                        "synced": { "type": "boolean" },
-                        "name": { "type": "string" },
-                        "description": { "type": "string" },
-                        "logo": { "type": "string" },
-                        "website": { "type": "string" },
-                        "telegram": { "type": "string" },
-                        "discord": { "type": "string" },
-                        "x": { "type": "string" }
-                      }
-                    },
-                    "statistics": {
-                      "type": "object",
-                      "properties": {
-                        "totalStrategies": {
-                          "type": "integer",
-                          "description": "Total number of strategies associated with the staker."
-                        },
-                        "totalTVL": {
-                          "type": "string",
-                          "description": "Total value locked across all strategies."
-                        },
-                        "totalShares": {
-                          "type": "string",
-                          "description": "Total shares across all strategies."
                         }
                       }
                     }
