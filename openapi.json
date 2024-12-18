@@ -2761,13 +2761,13 @@
         "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
         "parameters": [
           {
-            "name": "operatorId",
+            "name": "operator",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "description": "The unique ID of the operator to fetch details for."
+            "description": "The unique address of the operator to fetch details for."
           }
         ],
         "responses": {
@@ -3276,13 +3276,13 @@
         "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
         "parameters": [
           {
-            "name": "operatorId",
+            "name": "operator",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "description": "The unique ID of the operator to filter batches for."
+            "description": "The unique address of the operator to filter batches for."
           },
           {
             "name": "page",
@@ -3710,12 +3710,12 @@
         "operationId": "getOperatorActivities",
         "parameters": [
           {
-            "name": "operatorId",
+            "name": "operator",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The unique identifier of the operator."
+              "description": "The unique address of the operator."
             }
           },
           {
@@ -4230,13 +4230,13 @@
             "description": "The unique quorum number for which activities are retrieved."
           },
           {
-            "name": "operatorId",
+            "name": "operator",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string"
             },
-            "description": "The ID of a specific operator to filter activities."
+            "description": "The address of a specific operator to filter activities."
           },
           {
             "name": "action",

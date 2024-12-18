@@ -362,13 +362,13 @@
             "description": "The unique quorum number for which activities are retrieved."
           },
           {
-            "name": "operatorId",
+            "name": "operator",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string"
             },
-            "description": "The ID of a specific operator to filter activities."
+            "description": "The address of a specific operator to filter activities."
           },
           {
             "name": "action",
