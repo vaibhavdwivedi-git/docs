@@ -6433,74 +6433,113 @@
         ],
         "responses": {
           "200": {
-            "description": "Operator TVL details fetched successfully.",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "object",
-                      "properties": {
-                        "operator": {
-                          "type": "string",
-                          "description": "The operator address."
-                        },
-                        "totalStakers": {
-                          "type": "integer",
-                          "description": "The total number of stakers for the operator."
-                        },
-                        "strategiesTVL": {
-                          "type": "array",
-                          "description": "List of strategies with TVL details.",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "strategy": {
-                                "type": "string",
-                                "description": "The strategy identifier."
-                              },
-                              "totalShares": {
-                                "type": "string",
-                                "description": "The total shares allocated to the strategy."
-                              },
-                              "tokens": {
-                                "type": "string",
-                                "description": "The calculated tokens based on shares and decimals."
-                              },
-                              "tvl": {
-                                "type": "string",
-                                "description": "The total value locked calculated based on token price and shares."
-                              },
-                              "tokenDetails": {
-                                "type": "object",
-                                "properties": {
-                                  "name": {
-                                    "type": "string",
-                                    "description": "The token name."
-                                  },
-                                  "symbol": {
-                                    "type": "string",
-                                    "description": "The token symbol."
-                                  },
-                                  "sharesUnderlying": {
-                                    "type": "string",
-                                    "description": "The underlying shares of the token."
-                                  },
-                                  "dollarPrice": {
-                                    "type": "string",
-                                    "description": "The dollar price of the token."
-                                  },
-                                  "decimals": {
-                                    "type": "string",
-                                    "description": "The decimals of the token."
-                                  },
-                                  "ethPrice": {
-                                    "type": "string",
-                                    "description": "The ETH price of the token."
-                                  }
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operator": {
+                            "type": "string",
+                            "description": "Operator address"
+                          },
+                          "strategies": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "strategy": {
+                                  "type": "string",
+                                  "description": "Strategy identifier"
+                                },
+                                "totalShares": {
+                                  "type": "string",
+                                  "description": "Total shares for the strategy"
+                                },
+                                "uniqueStakers": {
+                                  "type": "integer",
+                                  "description": "Number of unique stakers"
+                                },
+                                "token": {
+                                  "type": "string",
+                                  "description": "Token address"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "description": "Token name"
+                                },
+                                "symbol": {
+                                  "type": "string",
+                                  "description": "Token symbol"
+                                },
+                                "sharesUnderlying": {
+                                  "type": "string",
+                                  "description": "Shares underlying the token"
+                                },
+                                "dollarPrice": {
+                                  "type": "string",
+                                  "description": "Token price in USD"
+                                },
+                                "ethPrice": {
+                                  "type": "string",
+                                  "description": "Token price in ETH"
+                                },
+                                "tokens": {
+                                  "type": "string",
+                                  "description": "Calculated number of tokens"
+                                },
+                                "tvl": {
+                                  "type": "string",
+                                  "description": "Total value locked for the strategy"
                                 }
                               }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of operators"
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "Current page number"
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Number of items per page"
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "Total number of pages"
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates if there are more pages available"
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalOperators": {
+                              "type": "integer",
+                              "description": "Total number of operators"
+                            },
+                            "totalStrategies": {
+                              "type": "integer",
+                              "description": "Total number of strategies"
+                            },
+                            "totalUniqueStakers": {
+                              "type": "integer",
+                              "description": "Total number of unique stakers across all operators"
                             }
                           }
                         }
