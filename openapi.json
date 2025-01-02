@@ -1276,6 +1276,20 @@
         "operationId": "getBatchData",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "page",
             "in": "query",
             "required": false,
@@ -1492,6 +1506,20 @@
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
         "operationId": "getBatchData",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "batchId",
             "in": "query",
@@ -1826,6 +1854,20 @@
         "operationId": "getBatchData",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "batchHeaderHash",
             "in": "query",
             "required": true,
@@ -2148,6 +2190,20 @@
         "description": "Fetches detailed information about a batch, including metadata, logs, transactions, and block details.",
         "operationId": "getBatchDetails",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "batchId",
             "in": "query",
@@ -2472,6 +2528,20 @@
         "operationId": "getNonSignersByBatchId",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "batchId",
             "in": "query",
             "required": true,
@@ -2593,6 +2663,20 @@
         "summary": "All Operators",
         "description": "Retrieves a paginated list of operators along with their latest quorum stakes, metadata, and statistics about the operators.",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "page",
             "in": "query",
@@ -2761,6 +2845,20 @@
         "description": "Retrieves detailed information for a specific operator, including quorum-related data and calculated statistics.",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "operator",
             "in": "query",
             "required": true,
@@ -2921,6 +3019,20 @@
         "summary": "Operators by Status",
         "description": "Retrieves a list of operators filtered by their status, with pagination and aggregated statistics.",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "status",
             "in": "query",
@@ -3099,6 +3211,20 @@
         "description": "Retrieves a list of operators filtered by their ejection status, with pagination and aggregated statistics.",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "ejected",
             "in": "query",
             "required": true,
@@ -3275,6 +3401,20 @@
         "summary": "Operator Non-Signings",
         "description": "Fetches distinct non-signed batch IDs associated with a specific operator, filtered by optional time and block ranges, with pagination.",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "operator",
             "in": "query",
@@ -3485,6 +3625,20 @@
         "summary": "Operators with Issues",
         "description": "Retrieves a list of operators who have been non-signers with optional time and block-based filtering",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "startTime",
             "in": "query",
@@ -3710,6 +3864,20 @@
         "operationId": "getOperatorActivities",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "operator",
             "in": "query",
             "required": true,
@@ -3871,6 +4039,20 @@
         "description": "Retrieves the latest information about all quorums with pagination and metadata, including statistics.",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "page",
             "in": "query",
             "schema": {
@@ -4013,6 +4195,20 @@
         "description": "Retrieves detailed information about a specific quorum, including strategies, stake, and member counts.",
         "parameters": [
           {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
+          {
             "name": "quorumNumber",
             "in": "query",
             "schema": {
@@ -4082,6 +4278,20 @@
         "summary": "Quorum Operators",
         "description": "Retrieves a paginated list of operators in a specified quorum, along with metadata and additional statistics.",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "quorumNumber",
             "in": "query",
@@ -4220,6 +4430,20 @@
         "summary": "Quorum Activities",
         "description": "Retrieves a paginated list of operator activities for a specified quorum, filtered by optional parameters such as `operatorId` and `action`. The response also includes metadata and a summary of actions.",
         "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "holesky"
+              ],
+              "default": "holesky"
+            },
+            "required": true,
+            "description": "Select the network you want to track."
+          },
           {
             "name": "quorumNumber",
             "in": "query",
