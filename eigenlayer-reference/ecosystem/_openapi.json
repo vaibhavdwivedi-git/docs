@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/activity": {
+    "/eigenlayer/activity": {
       "get": {
         "summary": "Track Activities",
         "description": "Retrieve a list of activities with optional filters and pagination",
@@ -197,7 +197,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-tokens": {
+    "/eigenlayer/all-tokens": {
       "get": {
         "summary": "Ecosystem Tokens",
         "description": "Fetches paginated list of tokens with optional filters and global statistics.",
@@ -330,7 +330,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-avs": {
+    "/eigenlayer/ecosystem-avs": {
       "get": {
         "summary": "Total AVS",
         "description": "Returns the latest avs count.",
@@ -380,7 +380,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-withdrawals": {
+    "/eigenlayer/ecosystem-withdrawals": {
       "get": {
         "summary": "Total Withdrawals",
         "description": "Returns the total count of queued withdrawals with the action SHARES_DEPOSITED_IN_STRATEGY.",
@@ -430,7 +430,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-deposits": {
+    "/eigenlayer/ecosystem-deposits": {
       "get": {
         "summary": "Total Deposits",
         "description": "Returns the total count of deposits where the action is 'SHARES_DEPOSITED_IN_STRATEGY'.",
@@ -480,7 +480,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-operators": {
+    "/eigenlayer/ecosystem-operators": {
       "get": {
         "summary": "Total Operators",
         "description": "Returns the total count of distinct operators.",
@@ -530,7 +530,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-stakers": {
+    "/eigenlayer/ecosystem-stakers": {
       "get": {
         "summary": "Total Stakers",
         "description": "Returns the stake summary including total unique stakers, delegated stakes, and undelegated stakes based on the latest record for each staker.",
@@ -588,7 +588,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-tvl": {
+    "/eigenlayer/ecosystem-tvl": {
       "get": {
         "summary": "Total Value Locked",
         "description": "Returns the total value locked [Actively Delegated]",

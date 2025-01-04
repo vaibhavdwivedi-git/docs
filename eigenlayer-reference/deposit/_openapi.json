@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-deposits": {
+    "/eigenlayer/all-deposits": {
       "get": {
         "summary": "All Deposits",
         "description": "Returns a paginated list of all deposits filtered by optional parameters such as staker, strategy, and token, with metadata.",

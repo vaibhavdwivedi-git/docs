@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-pods": {
+    "/eigenlayer/all-pods": {
       "get": {
         "summary": "All Pods",
         "description": "Fetches paginated data of pods and their metadata along with global statistics.",
@@ -145,7 +145,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-info": {
+    "/eigenlayer/pod-info": {
       "get": {
         "summary": "Pod Info",
         "description": "Fetches the latest details of a pod or a staker's associated pod and shares.",
@@ -246,7 +246,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-activity": {
+    "/eigenlayer/pod-activity": {
       "get": {
         "summary": "Pod Activity",
         "description": "Fetches paginated activities for a specific pod along with global statistics.",
@@ -414,7 +414,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-historical": {
+    "/eigenlayer/pod-historical": {
       "get": {
         "summary": "Pod Historical",
         "description": "Fetches paginated shares history for a specific pod along with metadata.",

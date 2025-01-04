@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-avs": {
+    "/eigenlayer/all-avs": {
       "get": {
         "summary": "All AVS",
         "description": "Fetches paginated AVS details, including operator counts and associated metadata.",
@@ -150,7 +150,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-info": {
+    "/eigenlayer/avs-info": {
       "get": {
         "summary": "AVS Info",
         "description": "Fetches AVS details along with metadata and operator statistics.",
@@ -277,7 +277,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-activity": {
+    "/eigenlayer/avs-activity": {
       "get": {
         "summary": "AVS Activity",
         "description": "Fetches paginated AVS activity details, including metadata and statistics.",
@@ -440,7 +440,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-apy": {
+    "/eigenlayer/avs-apy": {
       "get": {
         "summary": "AVS APY",
         "description": "Fetches APY (Annual Percentage Yield) data for the specified AVS.",
@@ -544,7 +544,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-rewards": {
+    "/eigenlayer/avs-rewards": {
       "get": {
         "summary": "AVS Rewards",
         "description": "Fetches paginated rewards history of an AVS along with metadata and global statistics.",
@@ -661,7 +661,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-operators": {
+    "/eigenlayer/avs-operators": {
       "get": {
         "summary": "AVS Operators",
         "description": "Returns a paginated list of operators for a specified AVS address, including metadata details for each operator.",

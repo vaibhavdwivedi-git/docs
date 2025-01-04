@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-withdrawals": {
+    "/eigenlayer/all-withdrawals": {
       "get": {
         "summary": "All Withdrawals",
         "description": "Fetch a paginated list of withdrawals with optional filters",
@@ -206,7 +206,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/withdrawal-info": {
+    "/eigenlayer/withdrawal-info": {
       "get": {
         "summary": "Withdrawal Info",
         "description": "Fetch the latest withdrawal for a given withdrawal root",

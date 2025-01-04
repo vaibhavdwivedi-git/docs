@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-distribution-roots": {
+    "/eigenlayer/all-distribution-roots": {
       "get": {
         "summary": "All Distribution Roots",
         "description": "Fetches distinct distribution root entries with their latest information, supporting pagination and filtering based on various query parameters.",
@@ -211,7 +211,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/distribution-root-info": {
+    "/eigenlayer/distribution-root-info": {
       "get": {
         "summary": "Distribution Root Info",
         "description": "Fetches the distribution root details for the specified rootIndex.",

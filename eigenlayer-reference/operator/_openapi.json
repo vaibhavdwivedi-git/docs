@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-operators": {
+    "/eigenlayer/all-operators": {
       "get": {
         "summary": "All Operators",
         "description": "Fetches the latest operator details with metadata and associated statistics.",
@@ -139,7 +139,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-info": {
+    "/eigenlayer/operator-info": {
       "get": {
         "summary": "Operator Info",
         "description": "Retrieves detailed information about a specific operator, including metadata, statistics, and strategies.",
@@ -256,7 +256,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-activity": {
+    "/eigenlayer/operator-activity": {
       "get": {
         "summary": "Operator Activity",
         "description": "Retrieves paginated activities for a specific operator, including global statistics and metadata.",
@@ -424,7 +424,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-historical": {
+    "/eigenlayer/operator-historical": {
       "get": {
         "summary": "Operator Historical",
         "description": "Retrieves paginated operator statistics for a specific operator, including global metadata.",
@@ -543,7 +543,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-strategies": {
+    "/eigenlayer/operator-strategies": {
       "get": {
         "summary": "Operator Strategies",
         "description": "Returns the TVL for a specific operator, including details for each strategy and total stakers.",
@@ -656,7 +656,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operators-tvl": {
+    "/eigenlayer/operators-tvl": {
       "get": {
         "summary": "Operators TVL",
         "description": "Returns a paginated list of strategies for all operators, along with metadata and global statistics.",
@@ -825,7 +825,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-avs": {
+    "/eigenlayer/operator-avs": {
       "get": {
         "summary": "Operator AVS",
         "description": "Returns a paginated list of AVS metadata for a specified operator address, including detailed metadata and pagination info.",

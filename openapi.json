@@ -16,22 +16,18 @@
   "paths": {
     "/eigenlayer/all-distribution-roots": {
       "get": {
-        "operationId": "getAllDistributionRoots",
-        "summary": "Retrieve all distribution roots",
-        "description": "Fetches all distribution root records with pagination support. Returns the most recent root for each rootIndex.",
-        "tags": [
-          "Distribution Roots"
-        ],
+        "summary": "All Distribution Roots",
+        "description": "Fetches distinct distribution root entries with their latest information, supporting pagination and filtering based on various query parameters.",
+        "operationId": "getDistributionRoots",
         "parameters": [
           {
             "name": "page",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "default": 1,
-              "description": "The page number to retrieve",
-              "example": 1
+              "description": "The page number for pagination (default is 1)."
             }
           },
           {
@@ -39,16 +35,53 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "default": 12,
-              "description": "The number of records per page",
-              "example": 12
+              "description": "The number of items per page (default is 12)."
+            }
+          },
+          {
+            "name": "rootIndex",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The root index to filter the distribution roots."
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to filter by active status (true or false)."
+            }
+          },
+          {
+            "name": "startTimestamp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The start timestamp to filter distribution roots."
+            }
+          },
+          {
+            "name": "endTimestamp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The end timestamp to filter distribution roots."
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "The list of distribution root records.",
+            "description": "Successful response with distribution root data",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,82 +93,110 @@
                         "type": "object",
                         "properties": {
                           "rootIndex": {
-                            "type": "number",
-                            "description": "The index of the distribution root",
-                            "example": 1
+                            "type": "string",
+                            "description": "The unique identifier for the distribution root."
                           },
                           "root": {
                             "type": "string",
-                            "description": "The Merkle root hash",
-                            "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                            "description": "The root value associated with the distribution root."
                           },
                           "rewardsCalculationEndTimestamp": {
-                            "type": "number",
-                            "description": "The timestamp when rewards calculation ended",
-                            "example": 1727836560
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp marking the end of the rewards calculation."
                           },
                           "activatedAt": {
-                            "type": "number",
-                            "description": "The timestamp when the root was activated",
-                            "example": 1727836560
-                          },
-                          "status": {
                             "type": "string",
-                            "description": "The current status of the distribution root",
-                            "example": "active"
+                            "format": "date-time",
+                            "description": "The timestamp when the distribution root was activated."
                           },
-                          "createdAt": {
-                            "type": "number",
-                            "description": "The timestamp when the record was created",
-                            "example": 1727836560
+                          "active": {
+                            "type": "boolean",
+                            "description": "Indicates whether the distribution root is active."
                           },
                           "updatedAt": {
-                            "type": "number",
-                            "description": "The timestamp when the record was last updated",
-                            "example": 1727836560
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number for the last update."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the block when the last update occurred."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash of the last update."
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "object",
+                            "properties": {
+                              "blockNumber": {
+                                "type": "string",
+                                "description": "The block number when the distribution root was created."
+                              },
+                              "blockTimestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The timestamp of the block when the distribution root was created."
+                              },
+                              "transactionHash": {
+                                "type": "string",
+                                "description": "The transaction hash when the distribution root was created."
+                              }
+                            }
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp when the distribution root was created."
                           }
-                        },
-                        "required": [
-                          "rootIndex",
-                          "root",
-                          "rewardsCalculationEndTimestamp",
-                          "activatedAt",
-                          "status",
-                          "createdAt",
-                          "updatedAt"
-                        ]
+                        }
                       }
                     },
                     "meta": {
                       "type": "object",
                       "properties": {
                         "total": {
-                          "type": "number",
-                          "description": "Total number of records in the database",
-                          "example": 30
+                          "type": "integer",
+                          "description": "The total number of distribution roots."
                         },
                         "page": {
-                          "type": "number",
-                          "description": "The page number of the current response",
-                          "example": 1
+                          "type": "integer",
+                          "description": "The current page number."
                         },
                         "limit": {
-                          "type": "number",
-                          "description": "The number of records returned for this query",
-                          "example": 12
+                          "type": "integer",
+                          "description": "The number of items per page."
+                        },
+                        "totalPages": {
+                          "type": "integer",
+                          "description": "The total number of pages."
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are more pages."
+                        },
+                        "statistics": {
+                          "type": "object",
+                          "properties": {
+                            "totalDistributionRoots": {
+                              "type": "integer",
+                              "description": "The total number of distribution roots."
+                            },
+                            "activeDistributionRoots": {
+                              "type": "integer",
+                              "description": "The total number of active distribution roots."
+                            }
+                          }
                         }
-                      },
-                      "required": [
-                        "total",
-                        "page",
-                        "limit"
-                      ]
+                      }
                     }
-                  },
-                  "required": [
-                    "data",
-                    "meta"
-                  ]
+                  }
                 }
               }
             }
@@ -4607,7 +4668,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-avs": {
+    "/eigenlayer/all-avs": {
       "get": {
         "summary": "All AVS",
         "description": "Fetches paginated AVS details, including operator counts and associated metadata.",
@@ -4757,7 +4818,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-info": {
+    "/eigenlayer/avs-info": {
       "get": {
         "summary": "AVS Info",
         "description": "Fetches AVS details along with metadata and operator statistics.",
@@ -4910,7 +4971,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-activity": {
+    "/eigenlayer/avs-activity": {
       "get": {
         "summary": "AVS Activity",
         "description": "Fetches paginated AVS activity details, including metadata and statistics.",
@@ -5073,7 +5134,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-apy": {
+    "/eigenlayer/avs-apy": {
       "get": {
         "summary": "AVS APY",
         "description": "Fetches APY (Annual Percentage Yield) data for the specified AVS.",
@@ -5177,7 +5238,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-rewards": {
+    "/eigenlayer/avs-rewards": {
       "get": {
         "summary": "AVS Rewards",
         "description": "Fetches paginated rewards history of an AVS along with metadata and global statistics.",
@@ -5330,7 +5391,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/avs-operators": {
+    "/eigenlayer/avs-operators": {
       "get": {
         "summary": "AVS Operators",
         "description": "Returns a paginated list of operators for a specified AVS address, including metadata details for each operator.",
@@ -5477,7 +5538,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-deposits": {
+    "/eigenlayer/all-deposits": {
       "get": {
         "summary": "All Deposits",
         "description": "Returns a paginated list of all deposits filtered by optional parameters such as staker, strategy, and token, with metadata.",
@@ -5629,218 +5690,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-distribution-roots": {
-      "get": {
-        "summary": "All Distribution Roots",
-        "description": "Fetches distinct distribution root entries with their latest information, supporting pagination and filtering based on various query parameters.",
-        "operationId": "getDistributionRoots",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "description": "The page number for pagination (default is 1)."
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 12,
-              "description": "The number of items per page (default is 12)."
-            }
-          },
-          {
-            "name": "rootIndex",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "The root index to filter the distribution roots."
-            }
-          },
-          {
-            "name": "active",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "description": "Whether to filter by active status (true or false)."
-            }
-          },
-          {
-            "name": "startTimestamp",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "description": "The start timestamp to filter distribution roots."
-            }
-          },
-          {
-            "name": "endTimestamp",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "description": "The end timestamp to filter distribution roots."
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response with distribution root data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "rootIndex": {
-                            "type": "string",
-                            "description": "The unique identifier for the distribution root."
-                          },
-                          "root": {
-                            "type": "string",
-                            "description": "The root value associated with the distribution root."
-                          },
-                          "rewardsCalculationEndTimestamp": {
-                            "type": "string",
-                            "format": "date-time",
-                            "description": "The timestamp marking the end of the rewards calculation."
-                          },
-                          "activatedAt": {
-                            "type": "string",
-                            "format": "date-time",
-                            "description": "The timestamp when the distribution root was activated."
-                          },
-                          "active": {
-                            "type": "boolean",
-                            "description": "Indicates whether the distribution root is active."
-                          },
-                          "updatedAt": {
-                            "type": "object",
-                            "properties": {
-                              "blockNumber": {
-                                "type": "string",
-                                "description": "The block number for the last update."
-                              },
-                              "blockTimestamp": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "The timestamp of the block when the last update occurred."
-                              },
-                              "transactionHash": {
-                                "type": "string",
-                                "description": "The transaction hash of the last update."
-                              }
-                            }
-                          },
-                          "createdAt": {
-                            "type": "object",
-                            "properties": {
-                              "blockNumber": {
-                                "type": "string",
-                                "description": "The block number when the distribution root was created."
-                              },
-                              "blockTimestamp": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "The timestamp of the block when the distribution root was created."
-                              },
-                              "transactionHash": {
-                                "type": "string",
-                                "description": "The transaction hash when the distribution root was created."
-                              }
-                            }
-                          },
-                          "timestamp": {
-                            "type": "string",
-                            "format": "date-time",
-                            "description": "The timestamp when the distribution root was created."
-                          }
-                        }
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "total": {
-                          "type": "integer",
-                          "description": "The total number of distribution roots."
-                        },
-                        "page": {
-                          "type": "integer",
-                          "description": "The current page number."
-                        },
-                        "limit": {
-                          "type": "integer",
-                          "description": "The number of items per page."
-                        },
-                        "totalPages": {
-                          "type": "integer",
-                          "description": "The total number of pages."
-                        },
-                        "hasMore": {
-                          "type": "boolean",
-                          "description": "Indicates whether there are more pages."
-                        },
-                        "statistics": {
-                          "type": "object",
-                          "properties": {
-                            "totalDistributionRoots": {
-                              "type": "integer",
-                              "description": "The total number of distribution roots."
-                            },
-                            "activeDistributionRoots": {
-                              "type": "integer",
-                              "description": "The total number of active distribution roots."
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "422": {
-            "$ref": "#/components/responses/422"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/distribution-root-info": {
+    "/eigenlayer/distribution-root-info": {
       "get": {
         "summary": "Distribution Root Info",
         "description": "Fetches the distribution root details for the specified rootIndex.",
@@ -5925,7 +5775,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-operators": {
+    "/eigenlayer/all-operators": {
       "get": {
         "summary": "All Operators",
         "description": "Fetches the latest operator details with metadata and associated statistics.",
@@ -6064,7 +5914,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-info": {
+    "/eigenlayer/operator-info": {
       "get": {
         "summary": "Operator Info",
         "description": "Retrieves detailed information about a specific operator, including metadata, statistics, and strategies.",
@@ -6229,7 +6079,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-activity": {
+    "/eigenlayer/operator-activity": {
       "get": {
         "summary": "Operator Activity",
         "description": "Retrieves paginated activities for a specific operator, including global statistics and metadata.",
@@ -6397,7 +6247,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-historical": {
+    "/eigenlayer/operator-historical": {
       "get": {
         "summary": "Operator Historical",
         "description": "Retrieves paginated operator statistics for a specific operator, including global metadata.",
@@ -6516,7 +6366,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-strategies": {
+    "/eigenlayer/operator-strategies": {
       "get": {
         "summary": "Operator Strategies",
         "description": "Returns the TVL for a specific operator, including details for each strategy and total stakers.",
@@ -6629,7 +6479,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operators-tvl": {
+    "/eigenlayer/operators-tvl": {
       "get": {
         "summary": "Operators TVL",
         "description": "Returns a paginated list of strategies for all operators, along with metadata and global statistics.",
@@ -6798,7 +6648,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/operator-avs": {
+    "/eigenlayer/operator-avs": {
       "get": {
         "summary": "Operator AVS",
         "description": "Returns a paginated list of AVS metadata for a specified operator address, including detailed metadata and pagination info.",
@@ -6945,7 +6795,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-pods": {
+    "/eigenlayer/all-pods": {
       "get": {
         "summary": "All Pods",
         "description": "Fetches paginated data of pods and their metadata along with global statistics.",
@@ -7090,7 +6940,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-info": {
+    "/eigenlayer/pod-info": {
       "get": {
         "summary": "Pod Info",
         "description": "Fetches the latest details of a pod or a staker's associated pod and shares.",
@@ -7191,7 +7041,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-activity": {
+    "/eigenlayer/pod-activity": {
       "get": {
         "summary": "Pod Activity",
         "description": "Fetches paginated activities for a specific pod along with global statistics.",
@@ -7359,7 +7209,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/pod-historical": {
+    "/eigenlayer/pod-historical": {
       "get": {
         "summary": "Pod Historical",
         "description": "Fetches paginated shares history for a specific pod along with metadata.",
@@ -7490,7 +7340,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-rewards": {
+    "/eigenlayer/all-rewards": {
       "get": {
         "summary": "All Rewards",
         "description": "Fetches paginated rewards history with optional filtering by type, AVS, submitter, and token, along with metadata and global statistics.",
@@ -7670,7 +7520,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-info": {
+    "/eigenlayer/reward-info": {
       "get": {
         "summary": "Reward Info",
         "description": "Fetches the most recent reward details based on the provided rewardsSubmissionHash.",
@@ -7778,7 +7628,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-claim": {
+    "/eigenlayer/reward-claim": {
       "get": {
         "summary": "Reward Claims",
         "description": "Fetches a list of reward claims, optionally filtered by various parameters like root, earner, claimer, recipient, and token. The results are paginated.",
@@ -7978,7 +7828,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-strategy": {
+    "/eigenlayer/reward-strategy": {
       "get": {
         "summary": "Reward Strategy",
         "operationId": "getRewardStrategies",
@@ -8162,7 +8012,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/rewards-status": {
+    "/eigenlayer/rewards-status": {
       "get": {
         "summary": "Rewards Status",
         "description": "Returns a paginated list of rewards filtered by status (active/inactive), with metadata and statistics.",
@@ -8337,7 +8187,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-stakers": {
+    "/eigenlayer/all-stakers": {
       "get": {
         "summary": "All Stakers",
         "description": "Fetch staker information with pagination",
@@ -8470,7 +8320,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-info": {
+    "/eigenlayer/staker-info": {
       "get": {
         "summary": "Staker Info",
         "description": "Fetch detailed information about a specific staker",
@@ -8645,7 +8495,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-activity": {
+    "/eigenlayer/staker-activity": {
       "get": {
         "summary": "Staker Activity",
         "description": "Fetches activities for a specific staker",
@@ -8787,7 +8637,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-historical": {
+    "/eigenlayer/staker-historical": {
       "get": {
         "summary": "Staker Historical",
         "description": "Fetch a paginated list of staker details with global statistics",
@@ -8923,7 +8773,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-strategies": {
+    "/eigenlayer/all-strategies": {
       "get": {
         "summary": "All Strategies",
         "description": "Fetch a paginated list of strategies with details and global statistics",
@@ -9071,7 +8921,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-info": {
+    "/eigenlayer/strategy-info": {
       "get": {
         "summary": "Strategy Info",
         "description": "Fetch detailed information for a specific strategy",
@@ -9203,7 +9053,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-activity": {
+    "/eigenlayer/strategy-activity": {
       "get": {
         "summary": "Strategy Activity",
         "description": "Fetch a paginated list of activities related to a specific strategy with global statistics",
@@ -9348,7 +9198,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-historical": {
+    "/eigenlayer/strategy-historical": {
       "get": {
         "summary": "Strategy Historical",
         "description": "Fetch paginated statistics for a specific strategy and global statistics",
@@ -9479,7 +9329,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/activity": {
+    "/eigenlayer/activity": {
       "get": {
         "summary": "Track Activities",
         "description": "Retrieve a list of activities with optional filters and pagination",
@@ -9712,7 +9562,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-tokens": {
+    "/eigenlayer/all-tokens": {
       "get": {
         "summary": "Ecosystem Tokens",
         "description": "Fetches paginated list of tokens with optional filters and global statistics.",
@@ -9877,7 +9727,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-avs": {
+    "/eigenlayer/ecosystem-avs": {
       "get": {
         "summary": "Total AVS",
         "description": "Returns the latest avs count.",
@@ -9927,7 +9777,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-withdrawals": {
+    "/eigenlayer/ecosystem-withdrawals": {
       "get": {
         "summary": "Total Withdrawals",
         "description": "Returns the total count of queued withdrawals with the action SHARES_DEPOSITED_IN_STRATEGY.",
@@ -9977,7 +9827,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-deposits": {
+    "/eigenlayer/ecosystem-deposits": {
       "get": {
         "summary": "Total Deposits",
         "description": "Returns the total count of deposits where the action is 'SHARES_DEPOSITED_IN_STRATEGY'.",
@@ -10027,7 +9877,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-operators": {
+    "/eigenlayer/ecosystem-operators": {
       "get": {
         "summary": "Total Operators",
         "description": "Returns the total count of distinct operators.",
@@ -10077,7 +9927,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-stakers": {
+    "/eigenlayer/ecosystem-stakers": {
       "get": {
         "summary": "Total Stakers",
         "description": "Returns the stake summary including total unique stakers, delegated stakes, and undelegated stakes based on the latest record for each staker.",
@@ -10135,7 +9985,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/ecosystem-tvl": {
+    "/eigenlayer/ecosystem-tvl": {
       "get": {
         "summary": "Total Value Locked",
         "description": "Returns the total value locked [Actively Delegated]",
@@ -10251,7 +10101,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-withdrawals": {
+    "/eigenlayer/all-withdrawals": {
       "get": {
         "summary": "All Withdrawals",
         "description": "Fetch a paginated list of withdrawals with optional filters",
@@ -10457,7 +10307,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/withdrawal-info": {
+    "/eigenlayer/withdrawal-info": {
       "get": {
         "summary": "Withdrawal Info",
         "description": "Fetch the latest withdrawal for a given withdrawal root",

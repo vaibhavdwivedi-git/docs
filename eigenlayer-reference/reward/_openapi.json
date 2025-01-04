@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-rewards": {
+    "/eigenlayer/all-rewards": {
       "get": {
         "summary": "All Rewards",
         "description": "Fetches paginated rewards history with optional filtering by type, AVS, submitter, and token, along with metadata and global statistics.",
@@ -144,7 +144,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-info": {
+    "/eigenlayer/reward-info": {
       "get": {
         "summary": "Reward Info",
         "description": "Fetches the most recent reward details based on the provided rewardsSubmissionHash.",
@@ -252,7 +252,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-claim": {
+    "/eigenlayer/reward-claim": {
       "get": {
         "summary": "Reward Claims",
         "description": "Fetches a list of reward claims, optionally filtered by various parameters like root, earner, claimer, recipient, and token. The results are paginated.",
@@ -452,7 +452,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/reward-strategy": {
+    "/eigenlayer/reward-strategy": {
       "get": {
         "summary": "Reward Strategy",
         "operationId": "getRewardStrategies",
@@ -636,7 +636,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/rewards-status": {
+    "/eigenlayer/rewards-status": {
       "get": {
         "summary": "Rewards Status",
         "description": "Returns a paginated list of rewards filtered by status (active/inactive), with metadata and statistics.",

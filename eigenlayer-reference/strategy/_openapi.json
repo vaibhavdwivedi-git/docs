@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-strategies": {
+    "/eigenlayer/all-strategies": {
       "get": {
         "summary": "All Strategies",
         "description": "Fetch a paginated list of strategies with details and global statistics",
@@ -104,7 +104,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-info": {
+    "/eigenlayer/strategy-info": {
       "get": {
         "summary": "Strategy Info",
         "description": "Fetch detailed information for a specific strategy",
@@ -236,7 +236,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-activity": {
+    "/eigenlayer/strategy-activity": {
       "get": {
         "summary": "Strategy Activity",
         "description": "Fetch a paginated list of activities related to a specific strategy with global statistics",
@@ -381,7 +381,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/strategy-historical": {
+    "/eigenlayer/strategy-historical": {
       "get": {
         "summary": "Strategy Historical",
         "description": "Fetch paginated statistics for a specific strategy and global statistics",

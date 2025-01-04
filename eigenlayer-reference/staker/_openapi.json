@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/all-stakers": {
+    "/eigenlayer/all-stakers": {
       "get": {
         "summary": "All Stakers",
         "description": "Fetch staker information with pagination",
@@ -133,7 +133,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-info": {
+    "/eigenlayer/staker-info": {
       "get": {
         "summary": "Staker Info",
         "description": "Fetch detailed information about a specific staker",
@@ -308,7 +308,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-activity": {
+    "/eigenlayer/staker-activity": {
       "get": {
         "summary": "Staker Activity",
         "description": "Fetches activities for a specific staker",
@@ -450,7 +450,7 @@
         }
       }
     },
-    "/ef21d674-8ec3-464f-bd23-d7e5876b7f6b/staker-historical": {
+    "/eigenlayer/staker-historical": {
       "get": {
         "summary": "Staker Historical",
         "description": "Fetch a paginated list of staker details with global statistics",
